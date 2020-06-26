@@ -169,7 +169,7 @@ function game() {
 var gameloop = pancake.timers.timer(game, 120); // Set frames per second to 120
 ```
 
-> NOTES: More examples can be found in the [Examples folder]()
+> NOTES: More examples can be found in the [Examples folder](https://github.com/Rabios/Pancake/tree/master/examples)
 
 ## Build
 
