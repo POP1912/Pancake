@@ -41,4 +41,4 @@ Gamepad API is supported in major browsers (Except IE 11) and most gamepads,Panc
 1. X gamepad button is the only gamepad button that has variants
 2. Gamepad input does not works on Internet Explorer,It's recommended to use `try` and `catch` in case you want to use it
 3. Sometimes gamepad connected but browser gives error that is not connected or gamepad input doesn't works,In this case try to remove the controller and plug it again,Or...Keep pressing buttons until works
-4. Gamepad analogs are also supported,But to check which direction you will give both analog direction and direction string (Uppercase string contains direction),See `input_04.html` in examples folder to find more about this
+4. Gamepad analogs are also supported,But to check which direction you will give both analog direction and direction string (Uppercase string contains direction),See [`input_04.html`](https://github.com/Rabios/Pancake/blob/master/examples/input_04.html) in examples folder to find more about this
