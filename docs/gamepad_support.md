@@ -1,5 +1,5 @@
 # Gamepad support for Pancake
-Gamepad API is supported in major browsers (Except IE 11) and most gamepads,Pancake using Gamepad API for gamepad controls
+Gamepad API is supported in major browsers (Except IE >= 9) and most gamepads,Pancake using Gamepad API for gamepad controls
 
 ## How to use?
 ```html
