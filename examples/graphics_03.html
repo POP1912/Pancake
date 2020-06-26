@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Pancake - Drawing images</title>
+    </head>
+    <body>
+        <script src="../build/pancake.js"></script>
+        <script>
+            // Create game canvas with width and height of 400,Assign index 0 to it
+            pancake.canvas.create(400, 400, 0);
+
+            // Create context for canvas that have index 0
+            // And assign context index 0 to the context
+            pancake.context.create(0, 0);
+
+            // Tell graphics to use the context with index 0
+            pancake.graphics.useContext(0);
+
+            // Color background
+            pancake.graphics.setBackgroundColor("black");
+
+            // Load image apple.png to images index 0
+            pancake.graphics.loadImage("apple.png", 0);
+
+            function game() {
+                // Clear
+                pancake.graphics.clear();
+
+                // Draw image from images index 0
+                pancake.graphics.imageFromIndex(0, pancake.input.mouse_x, pancake.input.mouse_y, 64, 64);
+            }
+
+            // Create timer for game loop
+            // Set timer's frames per second to 120,With function game to use it
+            var gameloop = pancake.timers.timer(game, 120);
+        </script>
+    </body>
+</html>

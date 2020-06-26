@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Pancake - Detect browser</title>
+    </head>
+    <body>
+        <h1>What is your browser?</h1>
+        <p>Google Chrome: <code id="chrome"></code></p>
+        <p>Mozilla Firefox: <code id="firefox"></code></p>
+        <p>Apple Safari: <code id="safari"></code></p>
+        <p>Opera Browser: <code id="opera"></code></p>
+        <p>Microsoft Edge: <code id="edge"></code></p>
+        <p>Microsoft Internet Explorer: <code id="ie"></code></p>
+        <script src="../build/pancake.js"></script>
+        <script>
+            document.getElementById("chrome").innerHTML = pancake.browser.CHROME;
+            document.getElementById("firefox").innerHTML = pancake.browser.FIREFOX;
+            document.getElementById("safari").innerHTML = pancake.browser.SAFARI;
+            document.getElementById("opera").innerHTML = pancake.browser.OPERA;
+            document.getElementById("edge").innerHTML = pancake.browser.EDGE;
+            document.getElementById("ie").innerHTML = pancake.browser.IE;
+        </script>
+        <style>
+            code { color: red; }
+        </style>
+    </body>
+</html>

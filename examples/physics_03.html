@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Pancake - Canvas sides collisions</title>
+    </head>
+    <body>
+        <script src="../build/pancake.js"></script>
+        <script>
+            // NOTES: Shapes stored in array cause checking collision with canvas sides requires it
+            // x, y, w, h
+            var rectangle = [ 200, 200, 50, 50 ];
+            var rectangle_velocity_y = -3;
+
+            // x, y, r, h, velocity_x, velocity_y
+            var circle = [ 200, 200, 20, 3, 0 ];
+
+            // Create canvas with size compatible on all devices,With index 0
+            // Create context for canvas has index 0 and set graphics to use it
+            // Set background color
+            pancake.canvas.create(400, 400, 0);
+            pancake.context.create(0, 0);
+            pancake.graphics.useContext(0);
+            pancake.graphics.setBackgroundColor("black");
+
+            function game() {
+                // Update positions of shapes according to their speed
+                circle[0] += circle[3];
+                rectangle[1] += rectangle_velocity_y;
+
+                // Clear
+                pancake.graphics.clear();
+
+                // Draw shapes
+                pancake.graphics.color("blue");
+
+                pancake.graphics.circle(circle[0], circle[1], circle[2]);
+                pancake.graphics.rect(rectangle[0], rectangle[1], rectangle[2], rectangle[3]);
+
+                // NOTE 1: index of the canvas is only needed for bottom and right canvas sides
+                // NOTE 2: You can also check collision any side of the canvas with both shapes
+                if (pancake.physics.checkCollisionTopCanvas(rectangle) || pancake.physics.checkCollisionBottomCanvas(rectangle, 0)) rectangle_velocity_y = -rectangle_velocity_y;
+                if (pancake.physics.checkCollisionLeftCanvas(circle) || pancake.physics.checkCollisionRightCanvas(circle, 0)) circle[3] = -circle[3];
+            }
+
+            var gameloop = pancake.timers.timer(game, 120);
+        </script>
+    </body>
+</html>

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Pancake - Circle collisions</title>
+    </head>
+    <body>
+        <script src="../build/pancake.js"></script>
+        <script>
+            // Player color to change
+            var player_color = "blue";
+
+            // Create canvas with size compatible on all devices,With index 0
+            // Create context for canvas has index 0 and set graphics to use it
+            // Set background color
+            pancake.canvas.create(pancake.canvas.compatible_width, pancake.canvas.compatible_height, 0);
+            pancake.context.create(0, 0);
+            pancake.graphics.useContext(0);
+            pancake.graphics.setBackgroundColor("black");
+
+            function game() {
+                // Clear
+                pancake.graphics.clear();
+
+                // Draw player,Following mouse
+                pancake.graphics.color(player_color);
+                pancake.graphics.circle(pancake.input.mouse_x, pancake.input.mouse_y, 30);
+                
+                // Drawing shapes that we will check collision on it
+                pancake.graphics.color("red", "red"); // Set stroke color to same fill color to see line
+                pancake.graphics.circle(300, 300, 30);
+                pancake.graphics.rect(350, 80, 30, 30);
+                pancake.graphics.line(250, 40, 400, 350, 3);
+
+                // If collision between player and rectangle or player and circle
+                // Remember: The player is a circle
+                if (pancake.physics.checkCollisionCircle(pancake.input.mouse_x, pancake.input.mouse_y, 30, 300, 300, 30) ||
+                    pancake.physics.checkCollisionCircleRect(pancake.input.mouse_x, pancake.input.mouse_y, 30, 350, 80, 30, 30) ||
+                    pancake.physics.checkCollisionCircleLine(pancake.input.mouse_x, pancake.input.mouse_y, 30, 250, 40, 400, 350)) {
+                        player_color = "purple";
+                    } else {
+                        player_color = "blue";
+                    }
+            }
+
+            var gameloop = pancake.timers.timer(game, 120);
+        </script>
+    </body>
+</html>

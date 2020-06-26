@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Pancake - Create context</title>
+    </head>
+    <body>
+        <script src="../build/pancake.js"></script>
+        <script>
+            pancake.canvas.create(600, 600, 0);
+
+            // First 0 is the canvas index
+            // Second 0 is the canvas context index
+            pancake.context.create(0, 0);
+        </script>
+    </body>
+</html>

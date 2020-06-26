@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Pancake - Utilities</title>
+    </head>
+    <body>
+        <p id="generated-random-number">0</p>
+        <button id="random">Generate random number</button>
+        <script src="../build/pancake.js"></script>
+        <script>
+            document.getElementById("random").onclick = function() {
+                document.getElementById("generated-random-number").innerHTML = Number(pancake.util.random(1000000));
+            };
+        </script>
+    </body>
+</html>

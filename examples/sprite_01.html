@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Pancake - Sprites</title>
+    </head>
+    <body>
+        <script src="../build/pancake.js"></script>
+        <script>
+            // Create canvas with size compatible on all devices,With index 0
+            // Create context for canvas has index 0 and set graphics to use it
+            // Set background color to black
+            pancake.canvas.create(400, 400, 0);
+            pancake.context.create(0, 0);
+            pancake.graphics.useContext(0);
+            pancake.graphics.setBackgroundColor("black");
+
+            // Index of sprite image
+            var sprite_image = 0;
+
+            // Create a sprite with it's images,And set index of the created sprite to 0
+            // NOTES: You need to cut your spritesheet to images in equivalent width and height
+            // HINT: You can use Piskel or any other tools for spritesheets cutting
+            pancake.sprite.create([
+                "sprite_01/01.png", "sprite_01/02.png", "sprite_01/03.png", "sprite_01/04.png",
+                "sprite_01/05.png", "sprite_01/06.png", "sprite_01/07.png", "sprite_01/08.png",
+                "sprite_01/09.png", "sprite_01/10.png", "sprite_01/11.png", "sprite_01/12.png"
+            ], 0);
+
+            function game() {
+                // Clear
+                pancake.graphics.clear();
+
+                // Get sprite then use array count for sprite images loop
+                // And draw sprite image in loop of sprite images
+                // There are 2 ways to get sprite image to draw it
+
+                // pancake.sprite.get(sprite_index)[image_index];
+                // pancake.sprites[sprite_index][image_index];
+
+                // I used the first way as it's better for beginners
+                pancake.graphics.image(pancake.sprite.get(0)[sprite_image], 100, 100, 128, 128);
+                
+                // When 1/8 of the second pass,Change sprite images (frames) to the next frame
+                // With restarting our sprite's timer
+                if (pancake.sprite.timers[0] >= 15) {
+                    pancake.sprite.timers[0] = 0;
+                    sprite_image++;
+                }
+
+                // If length exceeded,Reset sprite animation
+                if(sprite_image >= pancake.sprites[0].length) sprite_image = 0;
+
+                // Increase timer over loop
+                pancake.sprite.timers[0]++;
+            }
+
+            var gameloop = pancake.timers.timer(game, 120);
+        </script>
+    </body>
+</html>

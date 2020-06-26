@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Pancake - Check support</title>
+    </head>
+    <body>
+        <h1>Does your browser support?</h1>
+        <p><code id="text">CanvasRenderingContext2D</code>: <code id="crc2d"></code></p>
+        <p>Gamepad API: <code id="gamepad"></code></p>
+        <p>MPEG: <code id="mpeg"></code></p>
+        <p>MP3: <code id="mp3"></code></p>
+        <p>OGG: <code id="ogg"></code></p>
+        <p>WAV: <code id="wav"></code></p>
+        <p>MP4: <code id="mp4"></code></p>
+        <p>WEBM: <code id="webm"></code></p>
+        <script src="../build/pancake.js"></script>
+        <script>
+            document.getElementById("crc2d").innerHTML = pancake.browser.support.CANVAS();
+            document.getElementById("gamepad").innerHTML = pancake.browser.support.GAMEPAD();
+            document.getElementById("mpeg").innerHTML = pancake.browser.support.MPEG();
+            document.getElementById("mp3").innerHTML = pancake.browser.support.MP3();
+            document.getElementById("ogg").innerHTML = pancake.browser.support.OGG();
+            document.getElementById("wav").innerHTML = pancake.browser.support.WAV();
+            document.getElementById("mp4").innerHTML = pancake.browser.support.MP4();
+            document.getElementById("webm").innerHTML = pancake.browser.support.WEBM();
+        </script>
+        <style>
+            code { color: red; }
+            #text { color: black; }
+        </style>
+    </body>
+</html>

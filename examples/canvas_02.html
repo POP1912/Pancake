@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Pancake - Custom canvas</title>
+    </head>
+    <body>
+        <canvas id="canvas" width="600" height="600"></canvas>
+        <script src="../build/pancake.min.js"></script>
+        <script>
+            // Create a game canvas with context directly from canvas tag with index 0
+            pancake.context.use(document.getElementById("canvas"), 0);
+        </script>
+    </body>
+</html>

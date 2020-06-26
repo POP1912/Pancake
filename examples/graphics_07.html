@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Pancake - Filters</title>
+    </head>
+    <body>
+        <canvas id="canvas"></canvas>
+        <script src="../build/pancake.js"></script>
+        <script>
+            // Create context and set it external canvas with id "canvas"
+            // Set created context index to 0
+            // Set canvas index to 0,Since custom canvases can't have index
+            pancake.context.use(document.getElementById("canvas"), 0);
+            pancake.canvas.set(document.getElementById("canvas"), 0);
+
+            // Resize canvas to fit the window
+            pancake.canvas.resize(pancake.canvas.compatible_width, pancake.canvas.compatible_height, 0);
+            
+            // Set background image
+            // Whatever size of the background image,It will be set to fit the canvas
+            pancake.graphics.setBackgroundImage("background.jpg");
+
+            // Time to do some filters
+            // NOTES: See both arrays to understand how it goes
+            pancake.graphics.useFilters([
+                "blur", // Set blur filter to 2px
+                "brightness", // Set brightness filter to 50%
+                "hue-rotate" // Set hue rotation to 45 degrees
+            ], [
+                "2px",
+                "50%",
+                "45deg"
+            ]);
+
+            // Uncomment line below to remove all filters used
+            //pancake.graphics.clearFilters();
+        </script>
+    </body>
+</html>

@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Pancake - Device vibration</title>
+    </head>
+    <body>
+        <script src="../build/pancake.js"></script>
+        <script>
+            // Vibrate at first for 1/5 second
+            pancake.device.vibrate(200);
+
+            var start = pancake.timers.countdown(function() {
+
+                // The device will vibrate after 1 second,Following a pattern
+                // But next second vibration will stop
+                pancake.device.vibrate([ 100, 200, 300, 200, 100, 200, 100 ]);
+
+            }, 1000);
+
+            var stop = pancake.timers.countdown(function() {
+                pancake.device.stopVibrating();
+            }, 2000);
+        </script>
+    </body>
+</html>

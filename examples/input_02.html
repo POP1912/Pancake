@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Pancake - Mouse input</title>
+    </head>
+    <body>
+        <p>Move player with mouse,Use mouse buttons to manipulate player's size and color</p>
+        <canvas id="canvas" width="400" height="400" style="background-color: black;"></canvas>
+        <script src="../build/pancake.js"></script>
+        <script>
+            var player_color = pancake.graphics.random.RGB();
+            var player_size = 40;
+
+            // Use HTML <canvas> tags that has id "canvas"
+            pancake.context.use(document.getElementById("canvas"), 0);
+
+            function game() {
+                // Clear
+                pancake.graphics.clear();
+
+                // Draw player
+                pancake.graphics.color(player_color);
+                pancake.graphics.square(pancake.input.mouse_x, pancake.input.mouse_y, player_size);
+
+                // If left or right mouse button down,Manipulate player's size
+                if (pancake.input.mousedown(pancake.input.button.LEFT_MOUSE_BUTTON)) player_size += 10;
+                if (pancake.input.mousedown(pancake.input.button.RIGHT_MOUSE_BUTTON)) player_size -= 10;
+                
+                // If middle mouse button down,Change player's color to random color
+                if (pancake.input.mousedown(pancake.input.button.MIDDLE_MOUSE_BUTTON)) player_color = pancake.graphics.random.RGB();
+
+                // To prevent input loop
+                // Required when using keyboard and mouse buttons
+                pancake.input.preventLoop();
+            }
+            var gameloop = pancake.timers.timer(game, 120);
+        </script>
+    </body>
+</html>

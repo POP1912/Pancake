@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Pancake - Game document</title>
+    </head>
+    <body>
+        <script src="../build/pancake.js"></script>
+        <button id="game-title">Change game title</button>
+        <button id="restart-game">Restart game</button>
+        <button id="close-game">Close game</button>
+        <script>
+            document.getElementById("game-title").onclick = function() {
+                pancake.game.title("Game title changed!!!");
+            };
+
+            document.getElementById("restart-game").onclick = function() {
+                pancake.game.restart();
+            };
+
+            document.getElementById("close-game").onclick = function() {
+                // NOTES: If not game opened by window.open() ,It will throw warning
+                pancake.game.close();
+            };
+
+        </script>
+    </body>
+</html>

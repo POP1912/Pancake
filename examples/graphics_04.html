@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Pancake - Color modes</title>
+    </head>
+    <body>
+        <p><b>Press Space key to change color mode</b></p>
+        <p id="color-mode"></p>
+        <canvas id="canvas" width="400" height="400" style="background-color: black;"></canvas>
+        <script src="../build/pancake.js"></script>
+        <script>
+            // Yes and again,We are about to draw shapes
+            // The goal of this example is to understand colors creation and how to use it
+            pancake.context.use(document.getElementById("canvas"), 0);
+
+            // Create some colors
+            var colors = [
+                pancake.graphics.RGB(0, 0, 255),
+
+                // HSL color
+                // hue (from 0 to 360), saturation percentage, lightness percentage
+                pancake.graphics.HSL(120, 100, 50),
+
+                // Hex color from CSS
+                pancake.graphics.HEX("ff0000"),
+
+                // Color string
+                "purple"
+            ];
+
+            // Set color to be first color
+            var color_index = 0;
+            var main_color = colors[color_index];
+
+            // To change document color mode info
+            var color_modes = [
+                "RGB",
+                "HSL",
+                "Hex",
+                "string"
+            ];
+            document.getElementById("color-mode").innerHTML = "Color mode: " + color_modes[color_index];
+           
+            function game() {
+                // Clear
+                pancake.graphics.clear();
+
+                // Set fill color
+                pancake.graphics.color(colors[color_index]);
+
+                // Draw rectangle
+                pancake.graphics.rect(100, 100, 50, 50);
+
+                // If space key pressed
+                // NOTES: You can still use event.key strings from HTML5
+                if (pancake.input.keypress(" ")) {
+                    // Change color
+                    color_index++
+
+                    // Revert it back to the first one if exceed colors array length
+                    if(color_index >= colors.length) color_index = 0;
+
+                    // Update color mode info
+                    document.getElementById("color-mode").innerHTML = "Color mode: " + color_modes[color_index];
+                }
+
+                // To prevent input loop
+                pancake.input.preventLoop();
+            }
+
+            var gameloop = pancake.timers.timer(game, 120);
+        </script>
+    </body>
+</html>

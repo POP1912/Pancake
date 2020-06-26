@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Pancake - Storage example</title>
+    </head>
+    <body>
+        <p id="score">0</p>
+        <button id="more">Increase score</button>
+        <button id="save">Save score</button>
+        <button id="load">Show saved score</button>
+        <button id="clear">Clear storage</button>
+        <br>
+        <p id="log"></p>
+        <br>
+        <p><b>NOTES: If you saved score,Reload the page and press "Show saved score" button to see load in action</b></p>
+        <script src="../build/pancake.js"></script>
+        <script>
+            var score = 0;
+            document.getElementById("more").onclick = function() {
+                score += 100;
+                document.getElementById("score").innerHTML = Number(score);
+                document.getElementById("log").innerHTML = "Score increased!!!";
+            };
+
+            document.getElementById("save").onclick = function() {
+                pancake.storage.save("saved_score", Number(score));
+                document.getElementById("log").innerHTML = "Score saved";
+            };
+            
+            document.getElementById("load").onclick = function() {
+                document.getElementById("score").innerHTML = pancake.storage.load("saved_score");
+                document.getElementById("log").innerHTML = "Score loaded";
+            };
+
+            document.getElementById("clear").onclick = function() {
+                pancake.storage.clear();
+                document.getElementById("score").innerHTML = "0";
+                score = 0;
+                document.getElementById("log").innerHTML = "Storage reset";
+            };
+        </script>
+    </body>
+</html>

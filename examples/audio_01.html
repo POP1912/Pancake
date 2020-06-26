@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Pancake - Play sound directly</title>
+    </head>
+    <body>
+        <button id="play-sound">Play sound</button>
+        <script src="../build/pancake.js"></script>
+        <script>
+            document.getElementById("play-sound").onclick = function() {
+                // That's it,Just nothing else
+                pancake.audio.play("click.wav");
+            };
+        </script>
+    </body>
+</html>

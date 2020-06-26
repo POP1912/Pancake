@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Pancake - Timers</title>
+    </head>
+    <body>
+        <p id="status"></p>
+        <button onclick="pancake.timers.pause(gameloop)">Stop game loop</button>
+        <script src="../build/pancake.js"></script>
+        <script>
+            var gameloop;
+            var game = function() {
+                document.getElementById("status").innerHTML = "STATUS: RUNNING GAME LOOP...";
+                console.info("Game loop running...");
+            };
+
+            document.getElementById("status").innerHTML = "STATUS: WAITING 3 SECONDS TO RUN...";
+
+            // After 3 seconds,Start function game as game loop
+            // That can be did with timers
+            var wait = pancake.timers.countdown(function() {
+               gameloop = pancake.timers.timer(game,120);
+            }, 3000);
+
+            // Yes but after another 3 seconds game loop will stop
+            var stop = pancake.timers.countdown(function() {
+                pancake.timers.pause(gameloop);
+                document.getElementById("status").innerHTML = "STATUS: GAME LOOP PAUSED...";
+
+            }, 6000);
+        </script>
+    </body>
+</html>

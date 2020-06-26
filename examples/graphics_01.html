@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Pancake - Drawing texts</title>
+    </head>
+    <body>
+        <script src="../build/pancake.js"></script>
+        <script>
+            // Create game canvas with width and height of 400,Assign index 0 to it
+            pancake.canvas.create(400, 400, 0);
+
+            // Create context for canvas that have index 0
+            // And assign context index 0 to the context
+            pancake.context.create(0, 0);
+
+            // Tell graphics to use the context with index 0
+            pancake.graphics.useContext(0);
+
+            // Color background
+            pancake.graphics.setBackgroundColor("black");
+
+            // Set fill color to white
+            pancake.graphics.color("white");
+            
+            // Draw text,Without font setup
+            pancake.graphics.text("Text without fonts", 10, 20);
+
+            // Setup and set font and set font size to 24px
+            pancake.graphics.setFont("Georgia", 24);
+
+            // Draw text with the font set
+            pancake.graphics.text("Text with font", 10, 50);
+
+            // Let's change graphics mode to stroke
+            // Second parameter of color function is for stroke color
+            pancake.graphics.mode = pancake.graphics.STROKE;
+            pancake.graphics.color("white", "white");
+
+            // Draw stroked text
+            pancake.graphics.setFont("Georgia", 48);
+            pancake.graphics.text("Here we go", 10, 100);
+        </script>
+    </body>
+</html>
