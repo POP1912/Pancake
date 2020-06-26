@@ -189,7 +189,7 @@ A folder named `build` will created (if not exist) in the repository folders,Con
 ```
 MIT License
 
-Copyright (c) 2020 - 2021 Rabia Alhaffar and other contributors
+Copyright (c) 2020 - 2021 Rabia Alhaffar
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
