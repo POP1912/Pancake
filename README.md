@@ -187,6 +187,8 @@ A folder named `build` will created (if not exist) in the repository folders,Con
 
 ## License
 ```
+MIT License
+
 Copyright (c) 2020 - 2021 Rabia Alhaffar and other contributors
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
