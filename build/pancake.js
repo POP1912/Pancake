@@ -1,6 +1,6 @@
 // Pancake HTML5 game framework
 // Copyright (c) 2020 - 2021 Rabia Alhaffar,Licensed under MIT License
-// Build Date: 26/June/2020
+// Build Date: 27/June/2020
 var pancake = {};
 pancake.version = "v0.0.1";
 console.info("Made with Pancake " + pancake.version + "\nhttps://github.com/Rabios/Pancake");
@@ -1073,7 +1073,7 @@ pancake.timers.pause = function(timer) {
 };
 
 // Don't judge me,I used that one by Paul Irish
-// Sorry if that makes Pancake
+// Sorry if that makes Pancake sucks
 pancake.timers.animate = function() {
     return  window.requestAnimationFrame       ||
             window.webkitRequestAnimationFrame ||
