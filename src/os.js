@@ -1,0 +1,10 @@
+pancake.os = {};
+pancake.os.iOS = navigator.userAgent.match(/iPhone|iPad|iPod|Apple-iPhone/i) != null;
+pancake.os.ANDROID = navigator.userAgent.match(/Android/i) != null;
+pancake.os.OSX = navigator.userAgent.match(/Macintosh|Intel Mac OS X/i) != null;
+pancake.os.WINDOWS = navigator.userAgent.match(/Windows|Windows NT/i) != null;
+pancake.os.WINDOWS_PHONE = navigator.userAgent.match(/Windows Phone/i) != null;
+pancake.os.LINUX = navigator.userAgent.match(/Linux|X11/i) != null;
+pancake.os.UBUNTU = navigator.userAgent.match(/Ubuntu/i) != null;
+pancake.os.PLAYSTATION = navigator.userAgent.match(/PlayStation/i) != null;
+pancake.os.XBOX = navigator.userAgent.match(/Xbox|XBOX_ONE_ED|Xbox One/i) != null;
