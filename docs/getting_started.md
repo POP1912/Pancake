@@ -51,4 +51,4 @@
 ```
 
 ------
-> If you're ready,Check [`canvas_01.html`](https://github.com/Rabios/Pancake/blob/master/examples/canvas_01.html) example from examples folder,It's great to get started,Then move on other examples
+> If you're ready,Check [`graphics_01.html`](https://github.com/Rabios/Pancake/blob/master/examples/graphics_01.html) example from examples folder,It's great to get started,Then move on other examples
