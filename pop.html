@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Pancake - POP!!!</title>
+    </head>
+    <body>
+        <canvas id="canvas"></canvas>
+        <script src="../build/pancake.js"></script>
+        <script>
+            // Written by Rabia Alhaffar in 27/June/2020
+            // Create context and set it external canvas with id "canvas"
+            // Set created context index to 0
+            // Set canvas index to 0,Since custom canvases can't have index
+            pancake.context.use(document.getElementById("canvas"), 0);
+            pancake.canvas.set(document.getElementById("canvas"), 0);
+
+            // Resize canvas to fit the window
+            pancake.canvas.resize(pancake.canvas.compatible_width, pancake.canvas.compatible_height, 0);
+            
+            // Set background color to black
+            pancake.graphics.setBackgroundColor("black");
+
+            var seconds = 10;
+            var score = 0, timer = 0;
+            // Store game scenes(levels) in array
+            var scenes = [], scene = 0;
+            var frames_per_second = 120;
+            var lose = false;
+            var circle = { 
+                color: pancake.graphics.random.RGB(),
+                r: 50,
+                x: pancake.util.random(pancake.canvas.compatible_width),
+                y: pancake.util.random(pancake.canvas.compatible_height)
+            };
+
+            // First scene (game)
+            scenes[0] = function() {
+                // Draw circle
+                pancake.graphics.mode = pancake.graphics.FILL;
+                pancake.graphics.color(circle.color, "white");
+                pancake.graphics.circle(circle.x, circle.y, circle.r);
+                
+                // Draw score and seconds
+                pancake.graphics.mode = pancake.graphics.STROKE;
+                pancake.graphics.setFont("Monospace", 32);
+                pancake.graphics.text("Score: " + score, 10, 40);
+                pancake.graphics.text("Seconds: " + seconds, 10, 80);
+
+                // If clicked or tapped
+                if (pancake.input.click || pancake.input.tap) {
+                    // Draw transparent square to check collision at mouse/touch position
+                    pancake.graphics.color(circle.color, "transparent");
+                    pancake.graphics.square(pancake.input.mouse_x || pancake.input.touch_x, pancake.input.mouse_y || pancake.input.touch_y, 10);
+
+                    // Check collision and if true
+                    // Increase score with changing circle's position and color
+                    if (pancake.physics.checkCollisionCircleRect(circle.x, circle.y, circle.r, pancake.input.mouse_x || pancake.input.touch_x, pancake.input.mouse_y || pancake.input.touch_y, 10, 10)) {
+                        score += 100;
+                        circle.x = pancake.util.random(pancake.canvas.compatible_width) - (circle.r * 2);
+                        circle.y = pancake.util.random(pancake.canvas.compatible_height) - (circle.r * 2);
+                        circle.color = pancake.graphics.random.RGB();
+                    }
+                }
+
+                // If second pass, Decrease second
+                if (timer >= pancake.timers.second) {
+                    timer = 0, seconds--;
+                }
+
+                // Lose condition: score <= -1
+                if (seconds < 0) scene = 1;
+
+                // Increase timer
+                timer++;
+            };
+
+            // Second scene (Game over scene)
+            scenes[1] = function() {
+                // Draw restarting game text
+                pancake.graphics.mode = pancake.graphics.STROKE;
+                pancake.graphics.text("Click/Tap again to restart game", 10, 40);
+
+                // If clicked or tapped
+                // Reset score and seconds,Then restart game
+                if (pancake.input.click || pancake.input.tap) {
+                    seconds = 10;
+                    score = 0;
+                    scene = 0;
+                }
+            }
+
+            var game = pancake.timers.timer(function() {
+
+                // Clear
+                pancake.graphics.clear();
+
+                // Run current scene
+                scenes[scene]();
+
+                // Prevent input loop
+                pancake.input.preventLoop();
+
+            }, frames_per_second);
+        </script>
+    </body>
+</html>
