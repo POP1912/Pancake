@@ -31,18 +31,28 @@ pancake.graphics.random.HSLA = function() {
 };
 
 pancake.graphics.toggleFullscreen = function() {
-    var screen = document.documentElement;
-	if (screen.requestFullscreen) screen.requestFullscreen(); 
-    if (screen.mozRequestFullScreen) screen.mozRequestFullScreen(); 
-    if (screen.webkitRequestFullscreen) screen.webkitRequestFullscreen(); 
-    if (screen.msRequestFullscreen) screen.msRequestFullscreen();
+    var canvas = pancake.graphics.context.canvas;
+    canvas.width = screen.width;
+    canvas.height = screen.height;
+	if (canvas.requestFullscreen) canvas.requestFullscreen();
+    if (canvas.mozRequestFullScreen) canvas.mozRequestFullScreen();
+    if (canvas.webkitRequestFullscreen) canvas.webkitRequestFullscreen();
+    if (canvas.msRequestFullscreen) canvas.msRequestFullscreen();
+    document.onfullscreenchange = function() {
+        if(!document.fullscreen) {
+            canvas.width = pancake.canvas.compatible_width;
+            canvas.height = pancake.canvas.compatible_height;
+        }
+    };
 };
 
 pancake.graphics.exitFullscreen = function() {
     if (document.exitFullscreen) document.exitFullscreen();
 	if (document.mozCancelFullScreen) document.mozCancelFullScreen();
 	if (document.webkitExitFullscreen) document.webkitExitFullscreen();
-	if (document.msExitFullscreen) document.msExitFullscreen();
+    if (document.msExitFullscreen) document.msExitFullscreen();
+    pancake.graphics.context.canvas.width = pancake.canvas.compatible_width;
+    pancake.graphics.context.canvas.height = pancake.canvas.compatible_height;
 };
 
 pancake.graphics.useContext = function(context_index) {
@@ -208,12 +218,14 @@ pancake.graphics.erase = function(x, y, w, h) {
     pancake.graphics.context.clearRect(x, y, w, h);
 };
 
-pancake.graphics.canvasToImage = function() {
-    return pancake.graphics.context.canvas.toDataURL();
+pancake.graphics.canvasToImage = function(canvas_index) {
+    if (pancake.debug.unknown(canvas_index)) canvas_index = 0;
+    return pancake.canvases[canvas_index].toDataURL();
 };
 
-pancake.graphics.screenshot = function() {
-    window.open(pancake.graphics.context.canvas.toDataURL());
+pancake.graphics.screenshot = function(canvas_index) {
+    if (pancake.debug.unknown(canvas_index)) canvas_index = 0;
+    window.open(pancake.canvases[canvas_index].toDataURL());
 };
 
 pancake.graphics.square = function(x, y, size) {
@@ -265,11 +277,6 @@ pancake.graphics.grid = function(size) {
 pancake.graphics.setAntialiasing = function(enable, quality) {
     pancake.graphics.context.imageSmoothingEnabled = enable;
     pancake.graphics.context.imageSmoothingQuality = quality;
-};
-
-pancake.graphics.setResolution = function(width, height) {
-    pancake.graphics.context.canvas.style.width = width;
-    pancake.graphics.context.canvas.style.height = height;
 };
 
 pancake.graphics.setContext = function(context, context_index) {

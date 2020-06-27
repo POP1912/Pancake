@@ -15,7 +15,7 @@ pancake.timers.pause = function(timer) {
 
 // Don't judge me,I used that one by Paul Irish
 // Sorry if that makes Pancake sucks
-pancake.timers.animate = function() {
+window.animate = (function() {
     return  window.requestAnimationFrame       ||
             window.webkitRequestAnimationFrame ||
             window.mozRequestAnimationFrame    ||
@@ -24,4 +24,4 @@ pancake.timers.animate = function() {
             function(callback, fps) {
                 window.setTimeout(callback, 1000 / fps);
             };
-};
+})();
