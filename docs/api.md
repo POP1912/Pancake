@@ -187,6 +187,10 @@ pancake.audio.finishedPlayingFromIndex(audio_index)          // Returns if audio
 
 ## Timers
 ```javascript
+// Variables
+pancake.timers.second                                        // Returns 80 (Which can be used to count 1 second using timers)
+
+// Functions
 pancake.timers.countdown(f, ms)                              // Sets countdown then run function (Countdown in milliseconds)
 pancake.timers.timer(f, frames_per_second)                   // Sets interval then run function (frames per second integer from 0 to any)
 pancake.timers.pause(timer_variable)                         // Pauses countdown or interval
@@ -272,6 +276,7 @@ pancake.script.load(src, script_index)                       // Loads a script f
 ## Utilities
 ```javascript
 pancake.util.random(n)                                       // Returns random number between 1 and number n
+pancake.util.randomBetween(a, b)                             // Returns random number between a and b
 pancake.util.quote(s)                                        // Returns string s quoted
 ```
 
@@ -319,7 +324,7 @@ pancake.sprite.create([ "sprite0_01.png", "sprite0_02.png", "sprite0_03.png" ], 
 pancake.sprite.get(0);                                       // Return sprite with index 0
 pancake.sprite.get(0)[0];                                    // Gets first image of sprite that have index 0
 pancake.sprites[0](0);                                       // Another way to do same as line above
-pancake.sprite.timers[0];                                    // Gets timer of the sprite that have index 0,Timer is 0 but increase it in game loop and check if equals FPS (to count 1 second then reset timer to 0)
+pancake.sprite.timers[0];                                    // Gets timer of the sprite that have index 0,Timer is 0 but increase it in game loop and check if equals pancake.timers.second (to count 1 second then reset timer to 0)
 
 // Scripts
 pancake.script.load("script.js", 0);                         // Load script to index 0
