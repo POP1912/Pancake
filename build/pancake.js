@@ -67,6 +67,11 @@ pancake.util.random = function(a) {
     return Math.floor(Math.random() * a);
 };
 
+// https://stackoverflow.com/a/1527820/2124254
+pancake.util.randomBetween = function(a, b) {
+    return Math.floor(Math.random() * (b - a)) + a;
+};
+
 pancake.util.quote = function(s) {
     return JSON.stringify(s);
 };
@@ -1051,6 +1056,7 @@ pancake.storage.clear = function() {
 };
 
 pancake.timers = {};
+pancake.timers.second = 80;
 
 pancake.timers.countdown = function(f, ms) {
     return window.setTimeout(f, ms);
