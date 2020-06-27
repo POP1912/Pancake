@@ -5,8 +5,6 @@ Pancake is successor of [Cake game engine](https://github.com/Cake-Engine/Cake)
 
 Pancake inspired by LOVE,Pygame,And even AppGameKit and it shares some of their concepts
 
-Want to know a lot? See the [documentation](https://github.com/Rabios/Pancake/tree/master/docs/README.md)
-
 ## Features
 - Shares concepts of most lovable frameworks like LOVE,Pygame,And AppGameKit
 - Easy and simple to setup
@@ -19,6 +17,8 @@ Want to know a lot? See the [documentation](https://github.com/Rabios/Pancake/tr
 - Supports browsers that can't run ES6 (Internet Explorer >= 9 for example)
 - Using indexes,Which can be good for ordering sometimes,And gives easy control of game content
  
+Want to know a lot? See the [documentation](https://github.com/Rabios/Pancake/tree/master/docs/README.md)
+
 ## Examples
 - Creating a game canvas
 ```javascript
