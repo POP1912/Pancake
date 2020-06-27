@@ -2,12 +2,10 @@
 <!-- https://gist.github.com/straker/ff00b4b49669ad3dec890306d348adc4 -->
 <!--
     In this game we're going to learn:
-
     Setup a canvas and context
     Using improved version of requestAnimationFrame (window.animate)
     Snake game logic
     Adding controls (Keyboard, Swipe, Gamepad)
-
 -->
 <!DOCTYPE html>
 <html>
@@ -18,6 +16,12 @@
         <script src="../build/pancake.js"></script>
         <canvas id="canvas" onclick="pancake.graphics.toggleFullscreen();"></canvas>
         <script>
+            // If IE
+            if (pancake.browser.IE) {
+                alert("Internet Explorer does not support offline localStorage,So online version will open");
+                pancake.browser.open("https://rabios.github.io/Pancake/examples/storage_01.html");
+            }
+            
             // Create context and set it external canvas with id "canvas"
             // Set created context index to 0
             // Set canvas index to 0,Since custom canvases can't have index
@@ -31,7 +35,7 @@
             pancake.graphics.setBackgroundColor("black");
             
             var grid_size = 32;
-            var count = 0, score = 0, highscore = Number(pancake.storage.load("highscore"));
+            var count = 0, score = 0, highscore = Number(pancake.storage.load("highscore")) || 0;
             
             var snake = {
                 x: 0, y: 0,
@@ -125,19 +129,19 @@
                 pancake.graphics.text(Number(pancake.storage.load("highscore")), pancake.graphics.context.canvas.width - 128, 64);
 
                 // Input
-                if (pancake.input.keydown("ArrowUp") || pancake.input.keydown("w") || pancake.input.swipe("UP")) {
+                if (pancake.input.keydown(pancake.input.key.UP) || pancake.input.keydown(pancake.input.key.W) || pancake.input.swipe("UP")) {
                     snake.vy = -grid_size, snake.vx = 0;
                 }
 
-                if (pancake.input.keydown("ArrowDown") || pancake.input.keydown("s") || pancake.input.swipe("DOWN")) {
+                if (pancake.input.keydown(pancake.input.key.DOWN) || pancake.input.keydown(pancake.input.key.S) || pancake.input.swipe("DOWN")) {
                     snake.vy = grid_size, snake.vx = 0;
                 }
 
-                if (pancake.input.keydown("ArrowLeft") || pancake.input.keydown("a") || pancake.input.swipe("LEFT")) {
+                if (pancake.input.keydown(pancake.input.key.LEFT) || pancake.input.keydown(pancake.input.key.A) || pancake.input.swipe("LEFT")) {
                     snake.vx = -grid_size, snake.vy = 0;
                 }
 
-                if (pancake.input.keydown("ArrowRight") || pancake.input.keydown("d") || pancake.input.swipe("RIGHT")) {
+                if (pancake.input.keydown(pancake.input.key.RIGHT) || pancake.input.keydown(pancake.input.key.D) || pancake.input.swipe("RIGHT")) {
                     snake.vx = grid_size, snake.vy = 0;
                 }
 
