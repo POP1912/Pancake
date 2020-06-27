@@ -16,12 +16,11 @@
         <script src="../build/pancake.js"></script>
         <canvas id="canvas" onclick="pancake.graphics.toggleFullscreen();"></canvas>
         <script>
-            // If IE
-            if (pancake.browser.IE && window.localStorage == undefined) {
-                alert("Internet Explorer does not support offline localStorage,So online version will open");
+            if (window.localStorage === undefined) {
+                alert("Browser does not support offline localStorage,So online version will open");
                 pancake.browser.open("https://rabios.github.io/Pancake/games/snake.html");
             }
-            
+
             // Create context and set it external canvas with id "canvas"
             // Set created context index to 0
             // Set canvas index to 0,Since custom canvases can't have index
@@ -184,7 +183,7 @@
 
                 pancake.input.preventLoop();
             }
-
+            
             window.animate(game, 120);
         </script>
     </body>
