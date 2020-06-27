@@ -408,6 +408,7 @@ window.addEventListener("touchstart", function(e) {
     pancake.input.swipe_start_y = e.changedTouches[0].pageY;
     pancake.input.tap = true;
     pancake.input.touch_start_time = new Date().getTime();
+    e.preventDefault();
 });
 
 window.addEventListener("touchend", function(e) {
@@ -424,6 +425,7 @@ window.addEventListener("touchend", function(e) {
         else if (Math.abs(swipe_dist_y) >= 100 && Math.abs(swipe_dist_x) <= 300) {
             if (swipe_dist_y < 0) pancake.input.HORIZONTAL_SWIPE_DIRECTION = "UP";
             else pancake.input.HORIZONTAL_SWIPE_DIRECTION = "DOWN";
+            e.preventDefault();
         }
     }
     pancake.input.tap = true;
@@ -437,6 +439,7 @@ window.addEventListener("touchmove", function(e) {
     pancake.input.touch_x = e.changedTouches[0].clientX || e.changedTouches[0].pageX;
     pancake.input.touch_y = e.changedTouches[0].clientY || e.changedTouches[0].pageY;
     pancake.input.touchdown = true;
+    e.preventDefault();
 });
 
 window.addEventListener("click", function() {
