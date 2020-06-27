@@ -4,11 +4,35 @@
         <title>Pancake - Fullscreen</title>
     </head>
     <body>
-        <h1>Test fullscreen</h1>
         <script src="../build/pancake.js"></script>
-        <!-- pancake.graphics.toggleFullscreen() to toggle fullscreen -->
-        <!-- pancake.graphics.exitFullscreen() to exit fullscreen -->
-        <button onclick="pancake.graphics.toggleFullscreen()">Toggle fullscreen</button>
-        <button onclick="pancake.graphics.exitFullscreen()">Exit fullscreen</button>
+        <canvas id="canvas" onclick="pancake.graphics.toggleFullscreen();"></canvas>
+        <script>
+            // Create context and set it external canvas with id "canvas"
+            // Set created context index to 0
+            // Set canvas index to 0,Since custom canvases can't have index
+            pancake.context.use(document.getElementById("canvas"), 0);
+            pancake.canvas.set(document.getElementById("canvas"), 0);
+
+            // Resize canvas to fit the window
+            pancake.canvas.resize(pancake.canvas.compatible_width, pancake.canvas.compatible_height, 0);
+            
+            // Set background color
+            pancake.graphics.setBackgroundColor("black");            
+            
+            function game() {
+                // Clear
+                pancake.graphics.clear();
+
+                // Draw info text
+                pancake.graphics.color("white");
+                pancake.graphics.setFont("Arial", 32);
+                pancake.graphics.text("Click on canvas to toggle fullscreen", 10, 32);
+
+                // Prevent input loop
+                pancake.input.preventLoop();
+            }
+
+            var gameloop = pancake.timers.timer(game, 120);
+        </script>
     </body>
 </html>
