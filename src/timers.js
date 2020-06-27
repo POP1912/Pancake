@@ -1,4 +1,5 @@
 pancake.timers = {};
+pancake.timers.second = 80;
 
 pancake.timers.countdown = function(f, ms) {
     return window.setTimeout(f, ms);
@@ -13,7 +14,7 @@ pancake.timers.pause = function(timer) {
 };
 
 // Don't judge me,I used that one by Paul Irish
-// Sorry if that makes Pancake
+// Sorry if that makes Pancake sucks
 pancake.timers.animate = function() {
     return  window.requestAnimationFrame       ||
             window.webkitRequestAnimationFrame ||
