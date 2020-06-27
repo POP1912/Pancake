@@ -1,20 +1,26 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>Pancake - Internet connection</title>
+        <title>Pancake - Device vibration</title>
     </head>
     <body>
-        <p><b>User online: </b><i id="check"></i></p>
-        <p><b>NOTES: This requires to run in a Web server or else will return false</b></p>
-        <p><b>ALSO: Install <a href="https://addons.mozilla.org/en-US/firefox/addon/moesif-origin-cors-changer1">moesif origin and CORS changer plugin for Firefox</a>,Or <a href="https://chrome.google.com/webstore/detail/moesif-orign-cors-changer/digfbfaphojjndkpccljibejjbppifbc?hl=en-US">moesif origin and CORS changer plugin for Chrome</a> and turn CORS on from the plugin</b></p>
+        <p><b>Vibrating device...</b></p>
         <script src="../build/pancake.js"></script>
         <script>
-            function game() {
-                // It makes XHR request so it check if device online
-                document.getElementById("check").innerHTML = pancake.device.online();
-            }
-            
-            var gameloop = pancake.timers.timer(game, 120);
+            // Vibrate at first for 1/5 second
+            pancake.device.vibrate(200);
+
+            var start = pancake.timers.countdown(function() {
+
+                // The device will vibrate after 1 second,Following a pattern
+                // But next second vibration will stop
+                pancake.device.vibrate([ 100, 200, 300, 200, 100, 200, 100 ]);
+
+            }, 1000);
+
+            var stop = pancake.timers.countdown(function() {
+                pancake.device.stopVibrating();
+            }, 2000);
         </script>
     </body>
 </html>
