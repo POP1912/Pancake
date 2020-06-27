@@ -3,6 +3,29 @@ This is the official API page of Pancake,I know it's weird to believe how i fit 
 
 > NOTES: I recommend you see parameters meaning and what it accepts in the end of the API
 
+- [Pancake API](#pancake-api)
+  - [Canvas](#canvas)
+  - [Context](#context)
+  - [Graphics](#graphics)
+  - [Input](#input)
+  - [Physics](#physics)
+  - [Audio](#audio)
+  - [Timers](#timers)
+  - [Storage](#storage)
+  - [Device](#device)
+  - [Game](#game)
+  - [Browser](#browser)
+  - [OS](#os)
+  - [Debug](#debug)
+  - [Scripting](#scripting)
+  - [Utilities](#utilities)
+  - [Sprite](#sprite)
+  - [Arrays](#arrays)
+      - [How to get content from index?](#how-to-get-content-from-index)
+  - [Keyboard keys](#keyboard-keys)
+  - [Gamepad and mouse buttons](#gamepad-and-mouse-buttons)
+  - [Parameters reference](#parameters-reference)
+
 ## Canvas
 ```javascript
 pancake.canvas.create(w, h, canvas_index)                      // Create canvas with width,Height,And index
@@ -180,7 +203,11 @@ pancake.storage.clear()                                      // Clears localStor
 
 ## Device
 ```javascript
-pancake.device.online()                                      // Returns if device is online (Requires CORS but works 100%)
+// Variables
+pancake.device.screen_width                                  // Returns device screen width
+pancake.device.screen_height                                 // Returns device screen height
+
+// Functions
 pancake.device.vibrate(pattern)                              // Vibrate according to pattern
 pancake.device.stopVibrating()                               // Stops vibrating
 ```

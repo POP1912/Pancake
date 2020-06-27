@@ -50,8 +50,7 @@
   1. [Detect operating system](https://rabios.github.io/Pancake/examples/os_01.html)
 
 - Device
-  1. [Detect if user connected to internet (Requires to work in local using CORS,Not works in GitHub)](https://rabios.github.io/Pancake/examples/device_01.html)
-  2. [Vibrating device](https://rabios.github.io/Pancake/examples/device_02.html)
+  1. [Vibrating device](https://rabios.github.io/Pancake/examples/device_01.html)
 
 - Game
   1. [Closing, Restarting,And setting game title](https://rabios.github.io/Pancake/examples/game_01.html)
