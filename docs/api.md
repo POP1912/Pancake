@@ -64,6 +64,7 @@ pancake.graphics.random.HSL()                                 // Returns random 
 pancake.graphics.random.HSLA()                                // Returns random HSLA
 pancake.graphics.toggleFullscreen()                           // Toggle fullscreen
 pancake.graphics.exitFullscreen()                             // Exit fullscreen
+pancake.graphics.screenshot(canvas_index)                     // Takes screenshot of a canvas (You can ignore using canvas_index so it works on first canvas)
 pancake.graphics.useContext(context_index)                    // Sets context for drawing
 pancake.graphics.setAlpha(a)                                  // Sets alpha
 pancake.graphics.RGB(r, g, b)                                 // Returns RGB color
@@ -99,7 +100,6 @@ pancake.graphics.point(x, y)                                  // Draw point
 pancake.graphics.gradientRect(x, y, w, h, content)            // Draw gradient
 pancake.graphics.grid(size)                                   // Draw a grid
 pancake.graphics.setAntialiasing(enable, quality)             // Sets Antialiasing (Works on images only)
-pancake.graphics.setResolution(width, height)                 // Sets resolution
 pancake.graphics.setContext(context, context_index)           // Sets context or add it to index
 pancake.graphics.translate(x, y)                              // Translate
 pancake.graphics.scale(x, y)                                  // Scale
@@ -194,7 +194,7 @@ pancake.timers.second                                        // Returns 80 (Whic
 pancake.timers.countdown(f, ms)                              // Sets countdown then run function (Countdown in milliseconds)
 pancake.timers.timer(f, frames_per_second)                   // Sets interval then run function (frames per second integer from 0 to any)
 pancake.timers.pause(timer_variable)                         // Pauses countdown or interval
-pancake.timers.animate(f, frames_per_second)                 // Sets requestAnimationFrame to function in framer_per_second
+window.animate(f, frames_per_second)                         // Improved version of window.requestAnimationFrame(), With framerate
 ```
 
 ## Storage
