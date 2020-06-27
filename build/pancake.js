@@ -1,8 +1,8 @@
 // Pancake HTML5 game framework
 // Copyright (c) 2020 - 2021 Rabia Alhaffar,Licensed under MIT License
-// Build Date: 27/June/2020
+// Build Date: 28/June/2020
 var pancake = {};
-pancake.version = "v0.0.3";
+pancake.version = "v0.0.4";
 console.info("Made with Pancake " + pancake.version + "\nhttps://github.com/Rabios/Pancake");
 
 pancake.browser = {};
@@ -359,9 +359,9 @@ pancake.device.stopVibrating = function() {
 };
 
 pancake.input = {};
-pancake.input.latest_key_down = "";
-pancake.input.latest_key_up = "";
-pancake.input.latest_key_pressed = "";
+pancake.input.latest_key_down = -1;
+pancake.input.latest_key_up = -1;
+pancake.input.latest_key_pressed = -1;
 pancake.input.latest_mouse_button_down = -1;
 pancake.input.latest_mouse_button_up = -1;
 pancake.input.click = false;
@@ -462,15 +462,15 @@ window.addEventListener("mouseup", function(e) {
 });
 
 window.addEventListener("keydown", function(e) {
-    pancake.input.latest_key_down = e.key;
+    pancake.input.latest_key_down = e.which || e.keyCode;
 });
 
 window.addEventListener("keyup", function(e) {
-    pancake.input.latest_key_up = e.key;
+    pancake.input.latest_key_up = e.which || e.keyCode;
 });
 
 window.addEventListener("keypress", function(e) {
-    pancake.input.latest_key_pressed = e.key;
+    pancake.input.latest_key_pressed = e.which || e.keyCode;
 });
 
 pancake.input.mousedown = function(b) {
@@ -568,9 +568,9 @@ if (pancake.browser.support.GAMEPAD()) {
 }
 
 pancake.input.preventLoop = function() {
-    pancake.input.latest_key_down = "";
-    pancake.input.latest_key_up = "";
-    pancake.input.latest_key_pressed = "";
+    pancake.input.latest_key_down = -1;
+    pancake.input.latest_key_up = -1;
+    pancake.input.latest_key_pressed = -1;
     pancake.input.latest_mouse_button_down = -1;
     pancake.input.latest_mouse_button_up = -1;
     pancake.input.click = false;
@@ -588,13 +588,12 @@ pancake.input.preventLoop = function() {
 
 // Keyboard keys,Mouse and gamepad buttons
 pancake.input.key = {
-    A: "a", B: "b", C: "c", D: "d", E: "e", F: "f", G: "g", H: "h", I: "i", J: "j", K: "k",
-    L: "l", M: "m", N: "n", O: "o", P: "p", Q: "q", R: "r", S: "s", T: "t", U: "u", V: "v",
-    W: "w", X: "x", Y: "y", Z: "z", ZERO: "0", ONE: "1", TWO: "2", THREE: "3", FOUR: "4",
-    FIVE: "5", SIX: "6", SEVEN: "7", EIGHT: "8", NINE: "9", UP: "ArrowUp", DOWN: "ArrowDown",
-    LEFT: "ArrowLeft", RIGHT: "ArrowRight", SPACE: " ", TAB: "Tab", SHIFT: "Shift", CTRL: "Control",
-    ALT: "Alt", BACKSPACE: "Backspace", ENTER: "Enter", OS: "OS", UNIDENTIFIED: "Unidentified",
-    HOME: "Home", PGUP: "PageUp", PGDN: "PageDown", CLEAR: "Clear", DELETE: "Delete", ESCAPE: "Escape", INSERT: "Insert"
+    A: 65, B: 66, C: 67, D: 68,E: 69, F: 70, G: 71, H: 72, I: 73, J: 74, K: 75, L: 76, M: 77,
+    N: 78, O: 79, P: 80, Q: 81, R: 82, S: 83, T: 84, U: 85, V: 86, W: 87, X: 88, Y: 89, Z: 90,
+    ZERO: 48, ONE: 49, TWO: 50, THREE: 51, FOUR: 52, FIVE: 53, SIX: 54, SEVEN: 55, EIGHT: 56,
+    NINE: 57, UP: 38, DOWN: 40, LEFT: 37, RIGHT: 39, SPACE: 32, TAB: 9, SHIFT: 16, CONTROL: 17, 
+    ALT: 18, BACKSPACE: 8, ENTER: 13, NUMLOCK: 144, OS: 91, UNIDENTIFIED: 0, HOME: 36, PGUP: 33,
+    PGDN: 34, CLEAR: 12, DELETE: 46, ESCAPE: 27, INSERT: 45
 };
 
 pancake.input.button = {
@@ -717,8 +716,7 @@ pancake.graphics.fullscreen = function() {
 
 pancake.graphics.toggleFullscreen = function() {
     var canvas = pancake.graphics.context.canvas;
-    canvas.width = screen.width;
-    canvas.height = screen.height;
+    if(!pancake.browser.IE) canvas.width = screen.width, canvas.height = screen.height;
 	if (canvas.requestFullscreen) canvas.requestFullscreen();
     if (canvas.mozRequestFullScreen) canvas.mozRequestFullScreen();
     if (canvas.webkitRequestFullscreen) canvas.webkitRequestFullscreen();
