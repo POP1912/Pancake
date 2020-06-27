@@ -15,6 +15,12 @@
         <p><b>NOTES: If you saved score,Reload the page and press "Show saved score" button to see load in action</b></p>
         <script src="../build/pancake.js"></script>
         <script>
+            // If IE
+            if (pancake.browser.IE) {
+                alert("Internet Explorer does not support offline localStorage,So online version will open");
+                pancake.browser.open("https://rabios.github.io/Pancake/examples/storage_01.html");
+            }
+
             var score = 0;
             document.getElementById("more").onclick = function() {
                 score += 100;
