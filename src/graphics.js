@@ -36,8 +36,7 @@ pancake.graphics.fullscreen = function() {
 
 pancake.graphics.toggleFullscreen = function() {
     var canvas = pancake.graphics.context.canvas;
-    canvas.width = screen.width;
-    canvas.height = screen.height;
+    if(!pancake.browser.IE) canvas.width = screen.width, canvas.height = screen.height;
 	if (canvas.requestFullscreen) canvas.requestFullscreen();
     if (canvas.mozRequestFullScreen) canvas.mozRequestFullScreen();
     if (canvas.webkitRequestFullscreen) canvas.webkitRequestFullscreen();
