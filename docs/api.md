@@ -62,6 +62,7 @@ pancake.graphics.random.RGB()                                 // Returns random 
 pancake.graphics.random.RGBA()                                // Returns random RGBA
 pancake.graphics.random.HSL()                                 // Returns random HSL
 pancake.graphics.random.HSLA()                                // Returns random HSLA
+pancake.graphics.fullscreen()                                 // Returns if game is in fullscreen mode
 pancake.graphics.toggleFullscreen()                           // Toggle fullscreen
 pancake.graphics.exitFullscreen()                             // Exit fullscreen
 pancake.graphics.screenshot(canvas_index)                     // Takes screenshot of a canvas (You can ignore using canvas_index so it works on first canvas)
