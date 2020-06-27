@@ -1,5 +1,10 @@
 # Changelog
 
+### v0.0.4
+1. Added `pancake.graphics.fullscreen()` to check if game is in fullscreen
+2. Set keyboard input to use `KeyboardEvent.keyCode` instead of `KeyboardEvent.key`
+3. Fixed problem that some examples can't run offline on internet explorer cause of `localStorage`
+   
 ### v0.0.3
 1. Renamed `pancake.timers.animate()` to `window.animate()` cause of TypeError
 2. Added new game: Snake 

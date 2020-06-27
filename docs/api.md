@@ -334,7 +334,7 @@ pancake.scripts[0].async = true;                             // Get script with 
 
 ## Keyboard keys
 
-> NOTES: If you're advanced in JavaScript,You can still use `KeyboardEvent.key` strings
+> NOTES: If you're advanced in JavaScript,You can still use `KeyboardEvent.keyCode` (keyboard keycodes)
 
 ```javascript
 // Variables
