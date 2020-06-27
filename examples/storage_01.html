@@ -16,7 +16,7 @@
         <script src="../build/pancake.js"></script>
         <script>
             // If IE
-            if (pancake.browser.IE) {
+            if (pancake.browser.IE && window.localStorage == undefined) {
                 alert("Internet Explorer does not support offline localStorage,So online version will open");
                 pancake.browser.open("https://rabios.github.io/Pancake/examples/storage_01.html");
             }
