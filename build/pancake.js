@@ -711,6 +711,10 @@ pancake.graphics.random.HSLA = function() {
     return ("hsla(" + pancake.util.random(360) + "," + pancake.util.random(100) + "%," + pancake.util.random(100) + "%," + Math.random() + ")").toString();
 };
 
+pancake.graphics.fullscreen = function() {
+    return document.fullscreen;
+};
+
 pancake.graphics.toggleFullscreen = function() {
     var canvas = pancake.graphics.context.canvas;
     canvas.width = screen.width;
