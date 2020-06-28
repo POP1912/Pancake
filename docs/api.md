@@ -195,6 +195,7 @@ pancake.video.pause(video_index)                             // Pauses video fro
 pancake.video.setVolume(volume, video_index)                 // Sets volume of video from index
 pancake.video.setMute(mute, video_index)                     // Mutes or unmutes video from index
 pancake.video.setLoop(loop, video_index)                     // Loops or not to loop video from index
+pancake.video.finished(video_index)                          // Returns if video from index has finished playing
 ```
 
 ## Timers
