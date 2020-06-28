@@ -14,6 +14,7 @@ Pancake inspired by LOVE,Pygame,And even AppGameKit and it shares some of their 
 - Using `CanvasRenderingContext2D` as it's graphics core
 - Collision detection physics
 - Audio based on WebAudio API
+- Video support
 - Supports browsers that can't run ES6 (Internet Explorer >= 9 for example)
 - Using indexes,Which can be good for ordering sometimes,And gives easy control of game content
  
