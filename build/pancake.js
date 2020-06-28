@@ -1,8 +1,8 @@
 // Pancake HTML5 game framework
 // Copyright (c) 2020 - 2021 Rabia Alhaffar,Licensed under MIT License
-// Build Date: 28/June/2020
+// Build Date: 29/June/2020
 var pancake = {};
-pancake.version = "v0.0.4";
+pancake.version = "v0.0.5";
 console.info("Made with Pancake " + pancake.version + "\nhttps://github.com/Rabios/Pancake");
 
 pancake.browser = {};
@@ -100,10 +100,6 @@ pancake.game.restart = function() {
     window.location.reload();
 };
 
-pancake.game.close = function() {
-    window.close();
-};
-
 pancake.canvas = {};
 pancake.canvases = [];
 pancake.canvas.compatible_width = window.innerWidth - 20;
@@ -141,195 +137,7 @@ pancake.canvas.set = function(canvas, canvas_index) {
     pancake.canvases[canvas_index] = canvas;
 };
 
-// Written by Rabia Alhaffar in 9/February/2020
-// More functions to CanvasRenderingContext2D and pancake context module
-if(!CanvasRenderingContext2D.prototype.clear) 
-{
-    CanvasRenderingContext2D.prototype.clear = function() 
-    {
-        this.clearRect(0,0,this.canvas.width,this.canvas.height);
-    };
-}
-
-if(!CanvasRenderingContext2D.prototype.fillCircle)
-{
-    CanvasRenderingContext2D.prototype.fillCircle = function(x,y,radius)
-    {
-        this.beginPath();
-        this.arc(x,y,radius,90,180 * Math.PI);
-        this.closePath();
-        this.fill();
-    };
-}
-
-if(!CanvasRenderingContext2D.prototype.strokeCircle)
-{
-    CanvasRenderingContext2D.prototype.strokeCircle = function(x,y,radius)
-    {
-        this.beginPath();
-        this.arc(x,y,radius,90,180 * Math.PI);
-        this.closePath();
-        this.stroke();
-    };
-}
-
-if(!CanvasRenderingContext2D.prototype.fillEllipse)
-{
-    CanvasRenderingContext2D.prototype.fillEllipse = function(x, y, rx, ry, rotation, start_angle, end_angle, anticlockwise)
-    {
-        this.beginPath();
-        this.ellipse(x, y, rx, ry, rotation, start_angle, end_angle, anticlockwise);
-        this.closePath();
-        this.fill();
-    };
-}
-
-if(!CanvasRenderingContext2D.prototype.strokeEllipse)
-{
-    CanvasRenderingContext2D.prototype.strokeEllipse = function(x, y, rx, ry, rotation, start_angle, end_angle, anticlockwise)
-    {
-        this.beginPath();
-        this.ellipse(x, y, rx, ry, rotation, start_angle, end_angle, anticlockwise);
-        this.closePath();
-        this.stroke();
-    };
-}
-
-if(!CanvasRenderingContext2D.prototype.fillTriangle)
-{
-    CanvasRenderingContext2D.prototype.fillTriangle = function(x1,y1,x2,y2,x3,y3)
-    {
-        this.beginPath();
-        this.moveTo(x1,y1);
-        this.lineTo(x2,y2);
-        this.lineTo(x3,y3);
-        this.lineTo(x1,y1);
-        this.closePath();
-        this.fill();
-    };
-}
-
-if(!CanvasRenderingContext2D.prototype.strokeTriangle)
-{
-    CanvasRenderingContext2D.prototype.strokeTriangle = function(x1,y1,x2,y2,x3,y3)
-    {
-        this.beginPath();
-        this.moveTo(x1,y1);
-        this.lineTo(x2,y2);
-        this.lineTo(x3,y3);
-        this.lineTo(x1,y1);
-        this.closePath();
-        this.stroke();
-    };
-}
-
-if(!CanvasRenderingContext2D.prototype.fillPolygon)
-{
-    CanvasRenderingContext2D.prototype.fillPolygon = function(points)
-    {
-        this.beginPath();
-        this.moveTo(points[0][0], points[0][1]);
-        for(var i = 0; i < points.length; i++) this.lineTo(points[i][0], points[i][1]);
-        this.closePath();
-        this.fill();
-    };
-}
-
-if(!CanvasRenderingContext2D.prototype.strokePolygon)
-{
-    CanvasRenderingContext2D.prototype.strokePolygon = function(points)
-    {
-        this.beginPath();
-        this.moveTo(points[0][0], points[0][1]);
-        for(var i = 0; i < points.length; i++) this.lineTo(points[i][0], points[i][1]);
-        this.closePath();
-        this.stroke();
-    };
-}
-
-if(!CanvasRenderingContext2D.prototype.fillRoundedRect)
-{
-    CanvasRenderingContext2D.prototype.fillRoundedRect = function(x,y,width,height,radius)
-    {
-        this.beginPath();
-        this.moveTo(x + radius,y);
-        this.lineTo(x + width - radius,y);
-        this.quadraticCurveTo(x + width,y,x + width,y + radius);
-        this.lineTo(x + width,y + height - radius);
-        this.quadraticCurveTo(x + width,y + height,x + width - radius,y + height);
-        this.lineTo(x + radius,y + height);
-        this.quadraticCurveTo(x,y + height,x,y + height - radius);
-        this.lineTo(x,y + radius);
-        this.quadraticCurveTo(x,y,x + radius,y);
-        this.closePath();
-        this.fill();
-    };
-}
-
-if(!CanvasRenderingContext2D.prototype.strokeRoundedRect)
-{
-    CanvasRenderingContext2D.prototype.strokeRoundedRect = function(x,y,width,height,radius)
-    {
-        this.beginPath();
-        this.moveTo(x + radius,y);
-        this.lineTo(x + width - radius,y);
-        this.quadraticCurveTo(x + width,y,x + width,y + radius);
-        this.lineTo(x + width,y + height - radius);
-        this.quadraticCurveTo(x + width,y + height,x + width - radius,y + height);
-        this.lineTo(x + radius,y + height);
-        this.quadraticCurveTo(x,y + height,x,y + height - radius);
-        this.lineTo(x,y + radius);
-        this.quadraticCurveTo(x,y,x + radius,y);
-        this.closePath();
-        this.stroke();
-    };
-}
-
-if(!CanvasRenderingContext2D.prototype.clearFilters) 
-{
-    CanvasRenderingContext2D.prototype.clearFilters = function()
-    {
-        this.canvas.style.filter = "none";
-    };
-}
-
-if(!CanvasRenderingContext2D.prototype.fillSquare) 
-{
-    CanvasRenderingContext2D.prototype.fillSquare = function(x,y,size)
-    {
-        this.fillRect(x,y,size,size);
-    };
-}
-
-if(!CanvasRenderingContext2D.prototype.strokeSquare) 
-{
-    CanvasRenderingContext2D.prototype.strokeSquare = function(x,y,size)
-    {
-        this.strokeRect(x,y,size,size);
-    };
-}
-
-if(!CanvasRenderingContext2D.prototype.shear)
-{
-    CanvasRenderingContext2D.prototype.shear = function(sx,sy)
-    {
-        this.transform(1,sy,sx,1,0,0);
-    };
-}
-
-if(!CanvasRenderingContext2D.prototype.line)
-{
-    CanvasRenderingContext2D.prototype.line = function(x1,y1,x2,y2,size)
-    {
-        this.lineWidth = size;
-        this.beginPath();
-        this.moveTo(x1,y1);
-        this.lineTo(x2,y2);
-        this.closePath();
-        this.stroke();
-    };
-}
-
+// Rewritten by Rabia Alhaffar in 9/February/2020
 pancake.context = {};
 pancake.contexts = [];
 
@@ -407,6 +215,7 @@ window.addEventListener("mousemove",function(e) {
 });
 
 window.addEventListener("touchstart", function(e) {
+    if (e.touches.length === 0) return;
     pancake.input.touch_x = e.changedTouches[0].clientX || e.changedTouches[0].pageX;
     pancake.input.touch_y = e.changedTouches[0].clientY || e.changedTouches[0].pageY;
     pancake.input.swipe_start_x = e.changedTouches[0].pageX;
@@ -414,9 +223,11 @@ window.addEventListener("touchstart", function(e) {
     pancake.input.tap = true;
     pancake.input.touch_start_time = new Date().getTime();
     e.preventDefault();
-});
+    return false;
+}, false);
 
 window.addEventListener("touchend", function(e) {
+    if (e.touches.length === 0) return;
     pancake.input.touch_x = e.changedTouches[0].clientX || e.changedTouches[0].pageX;
     pancake.input.touch_y = e.changedTouches[0].clientY || e.changedTouches[0].pageY;
     var swipe_dist_x = e.changedTouches[0].pageX - pancake.input.swipe_start_x;
@@ -434,18 +245,22 @@ window.addEventListener("touchend", function(e) {
         }
     }
     pancake.input.tap = true;
-});
+    return false;
+}, false);
 
-window.addEventListener("touchcancel", function() {
+window.addEventListener("touchcancel", function(e) {
+    if (e.touches.length === 0) return;
     pancake.input.tap = false;
-});
+    return false;
+}, false);
 
 window.addEventListener("touchmove", function(e) {
+    if (e.touches.length === 0) return;
     pancake.input.touch_x = e.changedTouches[0].clientX || e.changedTouches[0].pageX;
     pancake.input.touch_y = e.changedTouches[0].clientY || e.changedTouches[0].pageY;
     pancake.input.touchdown = true;
-    e.preventDefault();
-});
+    return false;
+}, false);
 
 window.addEventListener("click", function() {
     pancake.input.click = true;
@@ -794,7 +609,7 @@ pancake.graphics.setTextAlignment = function(a) {
 };
 
 pancake.graphics.clear = function() {
-    pancake.graphics.context.clear();
+    pancake.graphics.context.clearRect(0, 0, pancake.graphics.context.canvas.width, pancake.graphics.context.canvas.height);
 };
 
 pancake.graphics.text = function(text, x, y) {
@@ -816,54 +631,86 @@ pancake.graphics.rect = function(x, y, w, h) {
 };
 
 pancake.graphics.roundedRect = function(x, y, w, h, r) {
-    if (pancake.graphics.mode == pancake.graphics.FILL) pancake.graphics.context.fillRoundedRect(x, y, w, h, r);
-    if (pancake.graphics.mode == pancake.graphics.STROKE) pancake.graphics.context.strokeRoundedRect(x, y, w, h, r);
+    pancake.graphics.context.beginPath();
+    pancake.graphics.context.moveTo(x + r, y);
+    pancake.graphics.context.lineTo(x + w - r, y);
+    pancake.graphics.context.quadraticCurveTo(x + w, y, x + w, y + r);
+    pancake.graphics.context.lineTo(x + w, y + h - r);
+    pancake.graphics.context.quadraticCurveTo(x + w, y + h, x + w - r, y + h);
+    pancake.graphics.context.lineTo(x + r, y + h);
+    pancake.graphics.context.quadraticCurveTo(x, y + h, x, y + h - r);
+    pancake.graphics.context.lineTo(x, y + r);
+    pancake.graphics.context.quadraticCurveTo(x, y, x + r, y);
+    pancake.graphics.context.closePath();
+    if (pancake.graphics.mode == pancake.graphics.FILL) pancake.graphics.context.fill();
+    if (pancake.graphics.mode == pancake.graphics.STROKE) pancake.graphics.context.stroke();
     if (pancake.graphics.mode == pancake.graphics.BOTH) {
-        pancake.graphics.context.fillRoundedRect(x, y, w, h, r);
-        pancake.graphics.context.strokeRoundedRect(x, y, w, h, r);
+        pancake.graphics.context.fill();
+        pancake.graphics.context.stroke();
     }
 };
 
 pancake.graphics.circle = function(x, y, r) {
-    if (pancake.graphics.mode == pancake.graphics.FILL) pancake.graphics.context.fillCircle(x, y, r);
-    if (pancake.graphics.mode == pancake.graphics.STROKE) pancake.graphics.context.strokeCircle(x, y, r);
-    if (pancake.graphics.mode == pancake.graphics.BOTH) {
-        pancake.graphics.context.fillRect(x, y, r);
-        pancake.graphics.context.strokeRect(x, y, r);
+    pancake.graphics.context.beginPath();
+    pancake.graphics.context.arc(x, y, r, 90, 180 * Math.PI);
+    pancake.graphics.context.closePath();
+    if (pancake.graphics.mode == pancake.graphics.FILL) pancake.graphics.context.fill();
+    if (pancake.graphics.mode == pancake.graphics.STROKE) pancake.graphics.context.stroke();
+    if (pancake.graphics.mode == pancake.graphics.BOTH) { 
+            pancake.graphics.context.fill();
+            pancake.graphics.context.stroke();
     }
 };
 
 pancake.graphics.ellipse = function(x, y, radius_x, radius_y, rotation, start_angle, end_angle, anticlockwise) {
-    if (pancake.graphics.mode == pancake.graphics.FILL) pancake.graphics.context.fillEllipse(x, y, radius_x, radius_y, rotation, start_angle, end_angle, anticlockwise);
-    if (pancake.graphics.mode == pancake.graphics.STROKE) pancake.graphics.context.strokeEllipse(x, y, radius_x, radius_y, rotation, start_angle, end_angle, anticlockwise);
+    pancake.graphics.context.beginPath();
+    pancake.graphics.context.ellipse(x, y, radius_x, radius_y, rotation, start_angle, end_angle, anticlockwise);
+    pancake.graphics.context.closePath();
+    if (pancake.graphics.mode == pancake.graphics.FILL) pancake.graphics.context.fill();
+    if (pancake.graphics.mode == pancake.graphics.STROKE) pancake.graphics.context.stroke();
     if (pancake.graphics.mode == pancake.graphics.BOTH) {
-        pancake.graphics.context.fillEllipse(x, y, radius_x, radius_y, rotation, start_angle, end_angle, anticlockwise);
-        pancake.graphics.context.strokeEllipse(x, y, radius_x, radius_y, rotation, start_angle, end_angle, anticlockwise);        
+        pancake.graphics.context.fill();
+        pancake.graphics.context.stroke();
     }
 };
 
 pancake.graphics.line = function(x1, y1, x2, y2, line_width) {
-    pancake.graphics.context.line(x1, y1, x2, y2, line_width);
+    pancake.graphics.context.lineWidth = line_width;
+    pancake.graphics.context.beginPath();
+    pancake.graphics.context.moveTo(x1,y1);
+    pancake.graphics.context.lineTo(x2,y2);
+    pancake.graphics.context.closePath();
+    pancake.graphics.context.stroke();
     pancake.graphics.context.lineWidth = 1;
 };
 
 pancake.graphics.triangle = function(x1, y1, x2, y2, x3, y3, line_width) {
     pancake.graphics.context.lineWidth = line_width;
-    if (pancake.graphics.mode == pancake.graphics.FILL) pancake.graphics.context.fillTriangle(x1, y1, x2, y2, x3, y3);
-    if (pancake.graphics.mode == pancake.graphics.STROKE) pancake.graphics.context.strokeTriangle(x1, y1, x2, y2, x3, y3);
+    pancake.graphics.context.beginPath();
+    pancake.graphics.context.moveTo(x1,y1);
+    pancake.graphics.context.lineTo(x2,y2);
+    pancake.graphics.context.lineTo(x3,y3);
+    pancake.graphics.context.lineTo(x1,y1);
+    pancake.graphics.context.closePath();
+    if (pancake.graphics.mode == pancake.graphics.FILL) pancake.graphics.context.fill();
+    if (pancake.graphics.mode == pancake.graphics.STROKE) pancake.graphics.context.stroke();
     if (pancake.graphics.mode == pancake.graphics.BOTH) {
-        pancake.graphics.context.fillTriangle(x1, y1, x2, y2, x3, y3);
-        pancake.graphics.context.strokeTriangle(x1, y1, x2, y2, x3, y3);
+        pancake.graphics.context.fill();
+        pancake.graphics.context.stroke();
     }
     pancake.graphics.context.lineWidth = 1;
 };
 
 pancake.graphics.polygon = function(points) {
-    if (pancake.graphics.mode == pancake.graphics.FILL) pancake.graphics.fillPolygon(points);
-    if (pancake.graphics.mode == pancake.graphics.STROKE) pancake.graphics.context.strokePolygon(points);
+    pancake.graphics.context.beginPath();
+    pancake.graphics.context.moveTo(points[0][0], points[0][1]);
+    for (var i = 0; i < points.length; i++) pancake.graphics.context.lineTo(points[i][0], points[i][1]);
+    pancake.graphics.context.closePath();
+    if (pancake.graphics.mode == pancake.graphics.FILL) pancake.graphics.fill();
+    if (pancake.graphics.mode == pancake.graphics.STROKE) pancake.graphics.context.stroke();
     if (pancake.graphics.mode == pancake.graphics.BOTH) {
-        pancake.graphics.context.fillPolygon(points);
-        pancake.graphics.context.strokePolygon(points);   
+        pancake.graphics.context.fill();
+        pancake.graphics.context.stroke(); 
     }
 };
 
@@ -894,7 +741,7 @@ pancake.graphics.addFilter = function(f, v) {
 };
 
 pancake.graphics.clearFilters = function() {
-    pancake.graphics.context.clearFilters();
+    pancake.graphics.context.canvas.style.filter = "none";
 };
 
 pancake.graphics.erase = function(x, y, w, h) {
@@ -930,7 +777,7 @@ pancake.graphics.point = function(x, y) {
 
 pancake.graphics.gradientRect = function(x, y, w, h, content) {
     var linear = pancake.graphics.context.createLinearGradient(x, y, w, h);
-    for(var loopdlg = 0;loopdlg < content.length;loopdlg++) linear.addColorStop(content[loopdlg][0], content[loopdlg][1]);
+    for(var loopdlg = 0; loopdlg < content.length; loopdlg++) linear.addColorStop(content[loopdlg][0], content[loopdlg][1]);
     pancake.graphics.color(linear, linear);
     if (pancake.graphics.mode == pancake.graphics.FILL) pancake.graphics.context.fillRect(x, y, w, h);
 	if (pancake.graphics.mode == pancake.graphics.STROKE) pancake.graphics.context.strokeRect(x, y, w, h);
@@ -980,7 +827,7 @@ pancake.graphics.scale = function(x, y) {
 };
 
 pancake.graphics.shear = function(x, y) {
-    pancake.graphics.context.shear(x, y);
+    pancake.graphics.context.transform(1, x, y, 1, 0, 0);
 };
 
 pancake.graphics.save = function() {
@@ -1003,33 +850,67 @@ pancake.audio.play = function(src) {
 };
 
 // Load audio to audio files array to play from index using functions below
-pancake.audio.load = function(src, index) {
-    pancake.audio_files[index] = new Audio(src);
+pancake.audio.load = function(src, audio_index) {
+    pancake.audio_files[audio_index] = new Audio(src);
 };
 
-pancake.audio.playFromIndex = function(index) {
-    pancake.audio_files[index].load();
-    pancake.audio_files[index].play();
+pancake.audio.playFromIndex = function(audio_index) {
+    pancake.audio_files[audio_index].load();
+    pancake.audio_files[audio_index].play();
 };
 
-pancake.audio.pauseFromIndex = function(index) {
-    pancake.audio_files[index].pause();
+pancake.audio.pauseFromIndex = function(audio_index) {
+    pancake.audio_files[audio_index].pause();
 };
 
-pancake.audio.setVolumeFromIndex = function(volume, index) {
-    pancake.audio_files[index].volume = volume;
+pancake.audio.setVolumeFromIndex = function(volume, audio_index) {
+    pancake.audio_files[audio_index].volume = volume;
 };
 
-pancake.audio.setMuteFromIndex = function(mute, index) {
-    pancake.audio_files[index].muted = mute;
+pancake.audio.setMuteFromIndex = function(mute, audio_index) {
+    pancake.audio_files[audio_index].muted = mute;
 };
 
-pancake.audio.setLoopFromIndex = function(loop, index) {
-    pancake.audio_files[index].loop = loop;
+pancake.audio.setLoopFromIndex = function(loop, audio_index) {
+    pancake.audio_files[audio_index].loop = loop;
 };
 
-pancake.audio.finishedPlayingFromIndex = function(index) {
-    return pancake.audio_files[index].ended;
+pancake.audio.finishedPlayingFromIndex = function(audio_index) {
+    return pancake.audio_files[audio_index].ended;
+};
+
+pancake.video = {};
+pancake.videos = [];
+var _video = undefined;
+
+pancake.video.load = function(src, video_index) {
+    pancake.videos[video_index] = document.createElement("video");
+    pancake.videos[video_index].src = src;
+    pancake.videos[video_index].autoplay = true;
+    pancake.videos[video_index].load();
+};
+
+pancake.video.play = function(video_index) {
+    if (!pancake.videos[video_index].ended) {
+        pancake.graphics.image(pancake.videos[video_index], 0, 0, pancake.graphics.context.canvas.width, pancake.graphics.context.canvas.height);
+        pancake.videos[video_index].play();
+    }
+};
+
+pancake.video.pause = function(video_index) {
+    pancake.videos[video_index].pause();
+};
+
+pancake.video.setVolume = function(volume, video_index) {
+    pancake.videos[video_index].volume = volume;
+};
+
+pancake.video.setMute = function(mute, video_index) {
+    pancake.videos[video_index].muted = mute;
+};
+
+pancake.video.setLoop = function(loop, video_index) {
+    pancake.videos[video_index].loop = loop;
 };
 
 pancake.script = {};
