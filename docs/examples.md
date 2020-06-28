@@ -22,10 +22,14 @@
   3. [Touch input](https://rabios.github.io/Pancake/examples/input_03.html)
   4. [Gamepad input](https://rabios.github.io/Pancake/examples/input_04.html)
   5. [Swipe using mouse/touchscreen](https://rabios.github.io/Pancake/examples/input_05.html)
+  6. [Touchscreen movement (Same as second Input example but for touch)](https://rabios.github.io/Pancake/examples/input_06.html)
 
 - Audio
   1. [Play audio file directly](https://rabios.github.io/Pancake/examples/audio_01.html)
   2. [Audio files indexing](https://rabios.github.io/Pancake/examples/audio_02.html)
+
+- Video
+  1. [Play video](https://rabios.github.io/Pancake/examples/video_01.html)
 
 - Physics
   1. [Rectangle collision types](https://rabios.github.io/Pancake/examples/physics_01.html)
