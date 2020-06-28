@@ -16,6 +16,7 @@
 
             // Index of sprite image
             var sprite_image = 0;
+            var fps = 240;
 
             // Create a sprite with it's images,And set index of the created sprite to 0
             // NOTES: You need to cut your spritesheet to images in equivalent width and height
@@ -40,9 +41,9 @@
                 // I used the first way as it's better for beginners
                 pancake.graphics.image(pancake.sprite.get(0)[sprite_image], 100, 100, 128, 128);
                 
-                // When 1/8 of the second pass,Change sprite images (frames) to the next frame
+                // When a second pass,Change sprite images (frames) to the next frame
                 // With restarting our sprite's timer
-                if (pancake.sprite.timers[0] >= 15) {
+                if (pancake.sprite.timers[0] >= pancake.timers.second) {
                     pancake.sprite.timers[0] = 0;
                     sprite_image++;
                 }
@@ -54,7 +55,7 @@
                 pancake.sprite.timers[0]++;
             }
 
-            var gameloop = pancake.timers.timer(game, 120);
+            var gameloop = pancake.timers.timer(game, fps);
         </script>
     </body>
 </html>

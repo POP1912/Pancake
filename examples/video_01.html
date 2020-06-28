@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Pancake - Video</title>
+    </head>
+    <body>
+        <canvas id="canvas"></canvas>
+        <script src="../build/pancake.js"></script>
+        <script>
+            // If MP4 supported then load video
+            if(pancake.browser.support.MP4()) pancake.video.load("video.mp4", 0);
+
+            // Set <canvas> tags that has id "canvas" index to 0
+            pancake.context.use(document.getElementById("canvas"), 0);
+            pancake.canvas.set(document.getElementById("canvas"), 0);
+
+            // Resize canvas to fit window size
+            pancake.canvas.resize(pancake.canvas.compatible_width, pancake.canvas.compatible_height, 0);
+            
+            // Use context
+            pancake.graphics.useContext(0);
+
+            // Setup text color and font
+            // Set canvas background color
+            pancake.graphics.setBackgroundColor("black");
+            pancake.graphics.setFont("Arial", 24);
+            pancake.graphics.color("white");
+
+            // To check if video played
+            var playvideo = false;
+
+            function game() {
+
+                // Clear
+                pancake.graphics.clear();
+
+                // Draw text that asks to interact with canvas to autoplay video
+                if (!playvideo) pancake.graphics.text("Click on canvas to play video", 10, 30);
+                
+                // If clicked or tapped,Play video 
+                if (pancake.input.tap || pancake.input.click) playvideo = true;
+                if (playvideo) pancake.video.play(0);
+
+                // Prevent input loop
+                pancake.input.preventLoop();
+            }
+
+            var gameloop = pancake.timers.timer(game, 120);
+        </script>
+    </body>
+</html>

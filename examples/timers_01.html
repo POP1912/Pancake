@@ -5,12 +5,11 @@
     </head>
     <body>
         <p id="status"></p>
-        <button onclick="pancake.timers.pause(gameloop)">Stop game loop</button>
         <script src="../build/pancake.js"></script>
         <script>
             var gameloop;
             var game = function() {
-                document.getElementById("status").innerHTML = "STATUS: RUNNING GAME LOOP...";
+                document.getElementById("status").innerHTML = "STATUS: RUNNING GAME LOOP,WAITING 3 SECONDS TO STOP...";
                 console.info("Game loop running...");
             };
 
