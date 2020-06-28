@@ -7,7 +7,3 @@ pancake.game.title = function(title) {
 pancake.game.restart = function() {
     window.location.reload();
 };
-
-pancake.game.close = function() {
-    window.close();
-};

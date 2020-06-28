@@ -114,7 +114,7 @@ pancake.graphics.setTextAlignment = function(a) {
 };
 
 pancake.graphics.clear = function() {
-    pancake.graphics.context.clear();
+    pancake.graphics.context.clearRect(0, 0, pancake.graphics.context.canvas.width, pancake.graphics.context.canvas.height);
 };
 
 pancake.graphics.text = function(text, x, y) {
@@ -136,54 +136,86 @@ pancake.graphics.rect = function(x, y, w, h) {
 };
 
 pancake.graphics.roundedRect = function(x, y, w, h, r) {
-    if (pancake.graphics.mode == pancake.graphics.FILL) pancake.graphics.context.fillRoundedRect(x, y, w, h, r);
-    if (pancake.graphics.mode == pancake.graphics.STROKE) pancake.graphics.context.strokeRoundedRect(x, y, w, h, r);
+    pancake.graphics.context.beginPath();
+    pancake.graphics.context.moveTo(x + r, y);
+    pancake.graphics.context.lineTo(x + w - r, y);
+    pancake.graphics.context.quadraticCurveTo(x + w, y, x + w, y + r);
+    pancake.graphics.context.lineTo(x + w, y + h - r);
+    pancake.graphics.context.quadraticCurveTo(x + w, y + h, x + w - r, y + h);
+    pancake.graphics.context.lineTo(x + r, y + h);
+    pancake.graphics.context.quadraticCurveTo(x, y + h, x, y + h - r);
+    pancake.graphics.context.lineTo(x, y + r);
+    pancake.graphics.context.quadraticCurveTo(x, y, x + r, y);
+    pancake.graphics.context.closePath();
+    if (pancake.graphics.mode == pancake.graphics.FILL) pancake.graphics.context.fill();
+    if (pancake.graphics.mode == pancake.graphics.STROKE) pancake.graphics.context.stroke();
     if (pancake.graphics.mode == pancake.graphics.BOTH) {
-        pancake.graphics.context.fillRoundedRect(x, y, w, h, r);
-        pancake.graphics.context.strokeRoundedRect(x, y, w, h, r);
+        pancake.graphics.context.fill();
+        pancake.graphics.context.stroke();
     }
 };
 
 pancake.graphics.circle = function(x, y, r) {
-    if (pancake.graphics.mode == pancake.graphics.FILL) pancake.graphics.context.fillCircle(x, y, r);
-    if (pancake.graphics.mode == pancake.graphics.STROKE) pancake.graphics.context.strokeCircle(x, y, r);
-    if (pancake.graphics.mode == pancake.graphics.BOTH) {
-        pancake.graphics.context.fillRect(x, y, r);
-        pancake.graphics.context.strokeRect(x, y, r);
+    pancake.graphics.context.beginPath();
+    pancake.graphics.context.arc(x, y, r, 90, 180 * Math.PI);
+    pancake.graphics.context.closePath();
+    if (pancake.graphics.mode == pancake.graphics.FILL) pancake.graphics.context.fill();
+    if (pancake.graphics.mode == pancake.graphics.STROKE) pancake.graphics.context.stroke();
+    if (pancake.graphics.mode == pancake.graphics.BOTH) { 
+            pancake.graphics.context.fill();
+            pancake.graphics.context.stroke();
     }
 };
 
 pancake.graphics.ellipse = function(x, y, radius_x, radius_y, rotation, start_angle, end_angle, anticlockwise) {
-    if (pancake.graphics.mode == pancake.graphics.FILL) pancake.graphics.context.fillEllipse(x, y, radius_x, radius_y, rotation, start_angle, end_angle, anticlockwise);
-    if (pancake.graphics.mode == pancake.graphics.STROKE) pancake.graphics.context.strokeEllipse(x, y, radius_x, radius_y, rotation, start_angle, end_angle, anticlockwise);
+    pancake.graphics.context.beginPath();
+    pancake.graphics.context.ellipse(x, y, radius_x, radius_y, rotation, start_angle, end_angle, anticlockwise);
+    pancake.graphics.context.closePath();
+    if (pancake.graphics.mode == pancake.graphics.FILL) pancake.graphics.context.fill();
+    if (pancake.graphics.mode == pancake.graphics.STROKE) pancake.graphics.context.stroke();
     if (pancake.graphics.mode == pancake.graphics.BOTH) {
-        pancake.graphics.context.fillEllipse(x, y, radius_x, radius_y, rotation, start_angle, end_angle, anticlockwise);
-        pancake.graphics.context.strokeEllipse(x, y, radius_x, radius_y, rotation, start_angle, end_angle, anticlockwise);        
+        pancake.graphics.context.fill();
+        pancake.graphics.context.stroke();
     }
 };
 
 pancake.graphics.line = function(x1, y1, x2, y2, line_width) {
-    pancake.graphics.context.line(x1, y1, x2, y2, line_width);
+    pancake.graphics.context.lineWidth = line_width;
+    pancake.graphics.context.beginPath();
+    pancake.graphics.context.moveTo(x1,y1);
+    pancake.graphics.context.lineTo(x2,y2);
+    pancake.graphics.context.closePath();
+    pancake.graphics.context.stroke();
     pancake.graphics.context.lineWidth = 1;
 };
 
 pancake.graphics.triangle = function(x1, y1, x2, y2, x3, y3, line_width) {
     pancake.graphics.context.lineWidth = line_width;
-    if (pancake.graphics.mode == pancake.graphics.FILL) pancake.graphics.context.fillTriangle(x1, y1, x2, y2, x3, y3);
-    if (pancake.graphics.mode == pancake.graphics.STROKE) pancake.graphics.context.strokeTriangle(x1, y1, x2, y2, x3, y3);
+    pancake.graphics.context.beginPath();
+    pancake.graphics.context.moveTo(x1,y1);
+    pancake.graphics.context.lineTo(x2,y2);
+    pancake.graphics.context.lineTo(x3,y3);
+    pancake.graphics.context.lineTo(x1,y1);
+    pancake.graphics.context.closePath();
+    if (pancake.graphics.mode == pancake.graphics.FILL) pancake.graphics.context.fill();
+    if (pancake.graphics.mode == pancake.graphics.STROKE) pancake.graphics.context.stroke();
     if (pancake.graphics.mode == pancake.graphics.BOTH) {
-        pancake.graphics.context.fillTriangle(x1, y1, x2, y2, x3, y3);
-        pancake.graphics.context.strokeTriangle(x1, y1, x2, y2, x3, y3);
+        pancake.graphics.context.fill();
+        pancake.graphics.context.stroke();
     }
     pancake.graphics.context.lineWidth = 1;
 };
 
 pancake.graphics.polygon = function(points) {
-    if (pancake.graphics.mode == pancake.graphics.FILL) pancake.graphics.fillPolygon(points);
-    if (pancake.graphics.mode == pancake.graphics.STROKE) pancake.graphics.context.strokePolygon(points);
+    pancake.graphics.context.beginPath();
+    pancake.graphics.context.moveTo(points[0][0], points[0][1]);
+    for (var i = 0; i < points.length; i++) pancake.graphics.context.lineTo(points[i][0], points[i][1]);
+    pancake.graphics.context.closePath();
+    if (pancake.graphics.mode == pancake.graphics.FILL) pancake.graphics.fill();
+    if (pancake.graphics.mode == pancake.graphics.STROKE) pancake.graphics.context.stroke();
     if (pancake.graphics.mode == pancake.graphics.BOTH) {
-        pancake.graphics.context.fillPolygon(points);
-        pancake.graphics.context.strokePolygon(points);   
+        pancake.graphics.context.fill();
+        pancake.graphics.context.stroke(); 
     }
 };
 
@@ -214,7 +246,7 @@ pancake.graphics.addFilter = function(f, v) {
 };
 
 pancake.graphics.clearFilters = function() {
-    pancake.graphics.context.clearFilters();
+    pancake.graphics.context.canvas.style.filter = "none";
 };
 
 pancake.graphics.erase = function(x, y, w, h) {
@@ -250,7 +282,7 @@ pancake.graphics.point = function(x, y) {
 
 pancake.graphics.gradientRect = function(x, y, w, h, content) {
     var linear = pancake.graphics.context.createLinearGradient(x, y, w, h);
-    for(var loopdlg = 0;loopdlg < content.length;loopdlg++) linear.addColorStop(content[loopdlg][0], content[loopdlg][1]);
+    for(var loopdlg = 0; loopdlg < content.length; loopdlg++) linear.addColorStop(content[loopdlg][0], content[loopdlg][1]);
     pancake.graphics.color(linear, linear);
     if (pancake.graphics.mode == pancake.graphics.FILL) pancake.graphics.context.fillRect(x, y, w, h);
 	if (pancake.graphics.mode == pancake.graphics.STROKE) pancake.graphics.context.strokeRect(x, y, w, h);
@@ -300,7 +332,7 @@ pancake.graphics.scale = function(x, y) {
 };
 
 pancake.graphics.shear = function(x, y) {
-    pancake.graphics.context.shear(x, y);
+    pancake.graphics.context.transform(1, x, y, 1, 0, 0);
 };
 
 pancake.graphics.save = function() {

@@ -47,6 +47,7 @@ window.addEventListener("mousemove",function(e) {
 });
 
 window.addEventListener("touchstart", function(e) {
+    if (e.touches.length === 0) return;
     pancake.input.touch_x = e.changedTouches[0].clientX || e.changedTouches[0].pageX;
     pancake.input.touch_y = e.changedTouches[0].clientY || e.changedTouches[0].pageY;
     pancake.input.swipe_start_x = e.changedTouches[0].pageX;
@@ -54,9 +55,11 @@ window.addEventListener("touchstart", function(e) {
     pancake.input.tap = true;
     pancake.input.touch_start_time = new Date().getTime();
     e.preventDefault();
-});
+    return false;
+}, false);
 
 window.addEventListener("touchend", function(e) {
+    if (e.touches.length === 0) return;
     pancake.input.touch_x = e.changedTouches[0].clientX || e.changedTouches[0].pageX;
     pancake.input.touch_y = e.changedTouches[0].clientY || e.changedTouches[0].pageY;
     var swipe_dist_x = e.changedTouches[0].pageX - pancake.input.swipe_start_x;
@@ -74,18 +77,22 @@ window.addEventListener("touchend", function(e) {
         }
     }
     pancake.input.tap = true;
-});
+    return false;
+}, false);
 
-window.addEventListener("touchcancel", function() {
+window.addEventListener("touchcancel", function(e) {
+    if (e.touches.length === 0) return;
     pancake.input.tap = false;
-});
+    return false;
+}, false);
 
 window.addEventListener("touchmove", function(e) {
+    if (e.touches.length === 0) return;
     pancake.input.touch_x = e.changedTouches[0].clientX || e.changedTouches[0].pageX;
     pancake.input.touch_y = e.changedTouches[0].clientY || e.changedTouches[0].pageY;
     pancake.input.touchdown = true;
-    e.preventDefault();
-});
+    return false;
+}, false);
 
 window.addEventListener("click", function() {
     pancake.input.click = true;

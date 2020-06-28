@@ -10,31 +10,31 @@ pancake.audio.play = function(src) {
 };
 
 // Load audio to audio files array to play from index using functions below
-pancake.audio.load = function(src, index) {
-    pancake.audio_files[index] = new Audio(src);
+pancake.audio.load = function(src, audio_index) {
+    pancake.audio_files[audio_index] = new Audio(src);
 };
 
-pancake.audio.playFromIndex = function(index) {
-    pancake.audio_files[index].load();
-    pancake.audio_files[index].play();
+pancake.audio.playFromIndex = function(audio_index) {
+    pancake.audio_files[audio_index].load();
+    pancake.audio_files[audio_index].play();
 };
 
-pancake.audio.pauseFromIndex = function(index) {
-    pancake.audio_files[index].pause();
+pancake.audio.pauseFromIndex = function(audio_index) {
+    pancake.audio_files[audio_index].pause();
 };
 
-pancake.audio.setVolumeFromIndex = function(volume, index) {
-    pancake.audio_files[index].volume = volume;
+pancake.audio.setVolumeFromIndex = function(volume, audio_index) {
+    pancake.audio_files[audio_index].volume = volume;
 };
 
-pancake.audio.setMuteFromIndex = function(mute, index) {
-    pancake.audio_files[index].muted = mute;
+pancake.audio.setMuteFromIndex = function(mute, audio_index) {
+    pancake.audio_files[audio_index].muted = mute;
 };
 
-pancake.audio.setLoopFromIndex = function(loop, index) {
-    pancake.audio_files[index].loop = loop;
+pancake.audio.setLoopFromIndex = function(loop, audio_index) {
+    pancake.audio_files[audio_index].loop = loop;
 };
 
-pancake.audio.finishedPlayingFromIndex = function(index) {
-    return pancake.audio_files[index].ended;
+pancake.audio.finishedPlayingFromIndex = function(audio_index) {
+    return pancake.audio_files[audio_index].ended;
 };

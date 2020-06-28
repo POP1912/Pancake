@@ -1,6 +1,6 @@
 // Pancake HTML5 game framework
 // Copyright (c) 2020 - 2021 Rabia Alhaffar,Licensed under MIT License
-// Build Date: 28/June/2020
+// Build Date: 29/June/2020
 var pancake = {};
-pancake.version = "v0.0.4";
+pancake.version = "v0.0.5";
 console.info("Made with Pancake " + pancake.version + "\nhttps://github.com/Rabios/Pancake");
