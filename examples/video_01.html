@@ -39,6 +39,10 @@
                 
                 // If clicked or tapped,Play video 
                 if (pancake.input.tap || pancake.input.click) playvideo = true;
+                
+                // You can also add x, y, w, h to set video dimensions and position
+                // pancake.video.play(video_index)
+                // pancake.video.play(video_index, x, y, w, h)
                 if (playvideo) pancake.video.play(0);
 
                 // Prevent input loop
