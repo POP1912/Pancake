@@ -913,6 +913,10 @@ pancake.video.setLoop = function(loop, video_index) {
     pancake.videos[video_index].loop = loop;
 };
 
+pancake.video.finished = function(video_index) {
+    return pancake.videos[video_index].ended;
+};
+
 pancake.script = {};
 pancake.scripts = [];
 
