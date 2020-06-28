@@ -190,7 +190,7 @@ pancake.audio.finishedPlayingFromIndex(audio_index)          // Returns if audio
 ## Video
 ```javascript
 pancake.video.load(src, video_index)                         // Loads video to index
-pancake.video.play(video_index)                              // Plays video from index
+pancake.video.play(video_index, x, y, w, h)                  // Plays video from index (Note that you can ignore x, y, w, h And just use video_index)
 pancake.video.pause(video_index)                             // Pauses video from index
 pancake.video.setVolume(volume, video_index)                 // Sets volume of video from index
 pancake.video.setMute(mute, video_index)                     // Mutes or unmutes video from index
