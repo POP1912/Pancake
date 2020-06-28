@@ -9,9 +9,13 @@ pancake.video.load = function(src, video_index) {
     pancake.videos[video_index].load();
 };
 
-pancake.video.play = function(video_index) {
+pancake.video.play = function(video_index, x, y, w, h) {
+    if (pancake.debug.unknown(x)) x = 0;
+    if (pancake.debug.unknown(y)) y = 0;
+    if (pancake.debug.unknown(w)) w = pancake.graphics.context.canvas.width;
+    if (pancake.debug.unknown(h)) h = pancake.graphics.context.canvas.height;
     if (!pancake.videos[video_index].ended) {
-        pancake.graphics.image(pancake.videos[video_index], 0, 0, pancake.graphics.context.canvas.width, pancake.graphics.context.canvas.height);
+        pancake.graphics.image(pancake.videos[video_index], x, y, w, h);
         pancake.videos[video_index].play();
     }
 };
