@@ -1,7 +1,7 @@
 # Pancake
 Lightweight,Fast,And easy-to-use HTML5 game programming library/Game framework for all purposes
 
-Pancake is successor of Cake game engine,Which removed from github
+Pancake is successor of Cake game engine,Which removed from GitHub
 
 Pancake inspired by LOVE,Pygame,And even AppGameKit and it shares some of their concepts
 
