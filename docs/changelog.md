@@ -1,5 +1,12 @@
 # Changelog
 
+### v0.0.5
+1. Fixed some problems related to touch
+2. Now functions of drawing shapes integrated with `pancake.graphics` instead of adding them to `CanvasRenderingContext2D.prototype`,To let framework take smaller size with same result
+3. Removed `pancake.game.close()` (Same as `window.close()` it gives warning)
+4. Improved touch
+5. Added video features,Check the API again
+
 ### v0.0.4
 1. Added `pancake.graphics.fullscreen()` to check if game is in fullscreen
 2. Set keyboard input to use `KeyboardEvent.keyCode` instead of `KeyboardEvent.key`

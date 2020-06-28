@@ -10,6 +10,7 @@ This is the official API page of Pancake,I know it's weird to believe how i fit 
   - [Input](#input)
   - [Physics](#physics)
   - [Audio](#audio)
+  - [Video](#video)
   - [Timers](#timers)
   - [Storage](#storage)
   - [Device](#device)
@@ -176,14 +177,24 @@ pancake.physics.distanceBetween(x1, y1, x2, y2)               // Returns distanc
 
 ## Audio
 ```javascript
-pancake.audio.play(src)                                      // Play audio file directly
-pancake.audio.load(src, audio_index)                         // Load audio file to index from source
+pancake.audio.play(src)                                      // Plays audio file directly
+pancake.audio.load(src, audio_index)                         // Loads audio file to index from source
 pancake.audio.playFromIndex(audio_index)                     // Plays audio file from index
 pancake.audio.pauseFromIndex(audio_index)                    // Pauses audio file playing from index
-pancake.audio.setVolumeFromIndex(volume, audio_index)        // Set volume of audio file from index
-pancake.audio.setMuteFromIndex(mute, audio_index)            // Mute or unmute audio file from index
-pancake.audio.setLoopFromIndex(loop, audio_index)            // Loop or not to loop audio file from index
+pancake.audio.setVolumeFromIndex(volume, audio_index)        // Sets volume of audio file from index
+pancake.audio.setMuteFromIndex(mute, audio_index)            // Mutes or unmutes audio file from index
+pancake.audio.setLoopFromIndex(loop, audio_index)            // Loops or not to loop audio file from index
 pancake.audio.finishedPlayingFromIndex(audio_index)          // Returns if audio file from index finished playing
+```
+
+## Video
+```javascript
+pancake.video.load(src, video_index)                         // Loads video to index
+pancake.video.play(video_index)                              // Plays video from index
+pancake.video.pause(video_index)                             // Pauses video from index
+pancake.video.setVolume(volume, video_index)                 // Sets volume of video from index
+pancake.video.setMute(mute, video_index)                     // Mutes or unmutes video from index
+pancake.video.setLoop(loop, video_index)                     // Loops or not to loop video from index
 ```
 
 ## Timers
@@ -221,7 +232,6 @@ pancake.device.stopVibrating()                               // Stops vibrating
 ```javascript
 pancake.game.title(title)                                    // Changes game title document
 pancake.game.restart()                                       // Reloads game page
-pancake.game.close()                                         // Closes game page
 ```
 
 ## Browser
@@ -264,8 +274,8 @@ pancake.os.XBOX                                              // Returns if OS is
 ## Debug
 ```javascript
 pancake.debug.unknown(variable)                              // Returns if variable is undefined or null,Or NaN
-pancake.debug.redefine(variable, value)                      // Change variable value and redefine it if value was undefined or null,Or NaN
-pancake.debug.type(variable)                                 // Get type of the variable
+pancake.debug.redefine(variable, value)                      // Changes variable value and redefine it if value was undefined or null,Or NaN
+pancake.debug.type(variable)                                 // Gets type of the variable
 ```
 
 ## Scripting
@@ -295,6 +305,7 @@ pancake.sprite.timers                                        // Sprites timers a
 pancake.scripts                                              // Scripts loaded array
 pancake.canvases                                             // Canvases created array
 pancake.contexts                                             // Contexts created array
+pancake.videos                                               // Video files array
 ```
 
 #### How to get content from index?
@@ -328,8 +339,8 @@ pancake.sprites[0](0);                                       // Another way to d
 pancake.sprite.timers[0];                                    // Gets timer of the sprite that have index 0,Timer is 0 but increase it in game loop and check if equals pancake.timers.second (to count 1 second then reset timer to 0)
 
 // Scripts
-pancake.script.load("script.js", 0);                         // Load script to index 0
-pancake.scripts[0].async = true;                             // Get script with index 0 and set async to true
+pancake.script.load("script.js", 0);                         // Loads script to index 0
+pancake.scripts[0].async = true;                             // Gets script with index 0 and set async to true
 ```
 
 ## Keyboard keys
@@ -463,6 +474,8 @@ script_index                                             // Index of JavaScript 
 context_index                                            // Index of context from pancake.contexts array
 gamepad_index                                            // Index of gamepad
 canvas_index                                             // Index of the canvas from pancake.canvases array
+video_index                                              // Index of video file from pancake.videos array
+audio_index                                              // Index of audio file from pancake.audio_files array
 
 // Booleans
 mute                                                     // true or false to mute audio or else
