@@ -13,6 +13,7 @@ This is the official API page of Pancake,I know it's weird to believe how i fit 
   - [Video](#video)
   - [Timers](#timers)
   - [Storage](#storage)
+  - [Content](#content)
   - [Device](#device)
   - [Game](#game)
   - [Browser](#browser)
@@ -63,6 +64,7 @@ pancake.graphics.random.RGB()                                 // Returns random 
 pancake.graphics.random.RGBA()                                // Returns random RGBA
 pancake.graphics.random.HSL()                                 // Returns random HSL
 pancake.graphics.random.HSLA()                                // Returns random HSLA
+pancake.graphics.resize(w, h)                                 // Resizes current context's canvas
 pancake.graphics.fullscreen()                                 // Returns if game is in fullscreen mode
 pancake.graphics.toggleFullscreen()                           // Toggle fullscreen
 pancake.graphics.exitFullscreen()                             // Exit fullscreen
@@ -152,7 +154,7 @@ pancake.input.keyup(key)                                      // Returns if keyb
 pancake.input.keypress(key)                                   // Returns if keyboard key press
 pancake.input.hideCursor(canvas_index)                        // Hides cursor
 pancake.input.showCursor(canvas_index)                        // Shows cursor
-pancake.input.lockPointer(canvas_index)                       // Locks pointer
+pancake.input.lockPointer()                                   // Locks pointer in current canvas (If toggled fullscreen)
 pancake.input.unlockPointer()                                 // Unlocks pointer
 pancake.input.gamepadConnected(gamepad_index)                 // Returns if gamepad connected
 pancake.input.gamepadID(gamepad_index)                        // Returns gamepad ID if connected
@@ -164,15 +166,21 @@ pancake.input.preventLoop()                                   // Prevents input 
 
 ## Physics
 ```javascript
+// Variables
+pancake.physics.distance_x                                         // Returns last stored distance between first x of position and second x of position
+pancake.physics.distance_y                                         // Returns last stored distance between first y of position and second y of position
+
+// Functions
 pancake.physics.checkCollisionRect(x1, y1, w1, h1, x2, y2, w2, h2) // Checks collision between rectangles
-pancake.physics.checkCollisionCircle(x1, y1, r1, x2, y2, r2)  // Checks collision between circles
-pancake.physics.checkCollisionCircleRect(x1, y1, r, x2, y2, w, h) // Checks collision between circle and rectangle
+pancake.physics.checkCollisionCircle(x1, y1, r1, x2, y2, r2)       // Checks collision between circles
+pancake.physics.checkCollisionCircleRect(x1, y1, r, x2, y2, w, h)  // Checks collision between circle and rectangle
 pancake.physics.checkCollisionCircleLine(x, y, r, line_from_x, line_from_y, line_to_x, line_to_y)  // Checks collision between circle and line
-pancake.physics.checkCollisionLeftCanvas(shape)               // Checks collision between circle/rectangle and canvas left side
-pancake.physics.checkCollisionRightCanvas(shape, canvas_index)  // Checks collision between circle/rectangle and canvas right side
-pancake.physics.checkCollisionTopCanvas(shape)                // Checks collision between circle/rectangle and canvas top side
-pancake.physics.checkCollisionBottomCanvas(shape, canvas_index)  // Checks collision between circle/rectangle and canvas bottom side
-pancake.physics.distanceBetween(x1, y1, x2, y2)               // Returns distance between first coordinates and second coordinates
+pancake.physics.checkCollisionLeftCanvas(shape)                    // Checks collision between circle/rectangle and canvas left side
+pancake.physics.checkCollisionRightCanvas(shape, canvas_index)     // Checks collision between circle/rectangle and canvas right side
+pancake.physics.checkCollisionTopCanvas(shape)                     // Checks collision between circle/rectangle and canvas top side
+pancake.physics.checkCollisionBottomCanvas(shape, canvas_index)    // Checks collision between circle/rectangle and canvas bottom side
+pancake.physics.distanceBetween(x1, y1, x2, y2)                    // Returns distance between first coordinates and second coordinates
+pancake.physics.getDistance(x1, y1, x2, y2)                        // Stores distance between 2 coordinates in pancake.physics.distance_x and pancake.physics.distance_y
 ```
 
 ## Audio
@@ -218,6 +226,11 @@ pancake.storage.remove(variable)                             // Removes a variab
 pancake.storage.clear()                                      // Clears localStorage and all variables saved/stored
 ```
 
+## Content
+```javascript
+pancake.content.load(json)                                   // Returns object contains JSON parsed content(string) from a variable
+```
+
 ## Device
 ```javascript
 // Variables
@@ -244,6 +257,7 @@ pancake.browser.SAFARI                                       // Returns if brows
 pancake.browser.OPERA                                        // Returns if browser is Opera
 pancake.browser.EDGE                                         // Returns if browser is Microsoft Edge
 pancake.browser.IE                                           // Returns if browser is Internet Explorer
+pancake.browser.SAMSUNG_INTERNET                             // Returns if browser is Samsung Internet Browser
 
 
 // Functions
@@ -268,8 +282,25 @@ pancake.os.WINDOWS                                           // Returns if OS is
 pancake.os.WINDOWS_PHONE                                     // Returns if OS is Microsoft Windows Phone
 pancake.os.LINUX                                             // Returns if OS is Linux
 pancake.os.UBUNTU                                            // Returns if OS is Ubuntu
-pancake.os.PLAYSTATION                                       // Returns if OS is a Sony PlayStation Console
-pancake.os.XBOX                                              // Returns if OS is a Microsoft XBOX Console
+pancake.os.PLAYSTATION                                       // Returns if OS is a Sony PlayStation console
+pancake.os.XBOX                                              // Returns if OS is a Microsoft XBOX console
+pancake.os.BLACKBERRY                                        // Returns if OS is blackberry
+pancake.os.CHROMECAST                                        // Returns if OS is Google Chromecast
+pancake.os.CHROME_OS                                         // Returns if OS is Chrome OS
+pancake.os.PS4                                               // Returns if OS is PlayStation 4 firmware
+pancake.os.PSVITA                                            // Returns if OS is PlayStation Vita
+pancake.os.XBOX_ONE                                          // Returns if OS is XBOX ONE firmware
+pancake.os.XBOX_ONE_S                                        // Returns if OS is XBOX ONE S firmware
+pancake.os.NINTENDO                                          // Returns if OS is Nintendo console
+pancake.os.N3DS                                              // Returns if OS is Nintendo 3DS firmware
+pancake.os.WII_U                                             // Returns if OS is Nintendo WiiU firmware
+pancake.os.FIRE_TV                                           // Returns if OS is Amazon Fire TV OS
+pancake.os.ROKU                                              // Returns if OS is Roku TV OS
+pancake.os.ROKU_ULTRA                                        // Returns if OS is Roku Ultra TV OS
+pancake.os.NEXUS_PLAYER                                      // Returns if OS is Google Nexus Player OS
+pancake.os.MINIX_NEO_X5                                      // Returns if OS is Minix Neo-X5 TV OS
+pancake.os.APPLE_TV                                          // Returns if OS is Apple TV OS
+pancake.os.KINDLE                                            // Returns if OS is Amazon Kindle OS
 ```
 
 ## Debug
