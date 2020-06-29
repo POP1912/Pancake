@@ -40,3 +40,10 @@ At the meantime,Tapping and swiping is supported by pancake so i think you can h
 ## NOTES
 1. If you're developing from mobile,Use Mozilla Firefox or Spck editor instead of Google Chrome cause Mozilla Firefox can allow file system,Plus i developed Pancake on Mozilla Firefox,NOT Google Chrome (It works in Chrome but not on mobile i think so).
 2. Touch and swipe are emulated on PC with mouse
+3. If your game using swipe and you are running it via Google Chrome on mobile,See below to know before using swiping on Chrome
+
+## Solve problem: Swiping down on Google Chrome for Android/iOS reloads page
+1. Go to `chrome://flags`
+2. Then search for "The pull-to-refresh effect",Set it to "disabled"
+3. Then if they ask to restart Google Chrome,Restart it
+4. That's all
