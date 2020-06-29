@@ -35,6 +35,7 @@
   1. [Rectangle collision types](https://rabios.github.io/Pancake/examples/physics_01.html)
   2. [Circle collision types](https://rabios.github.io/Pancake/examples/physics_02.html)
   3. [Collision with canvas sides](https://rabios.github.io/Pancake/examples/physics_03.html)
+  4. [Follow and move on a path by getting distance](https://rabios.github.io/Pancake/examples/physics_04.html)
 
 - Timers
   1. [Working with timers](https://rabios.github.io/Pancake/examples/timers_01.html)
