@@ -188,7 +188,7 @@ python build.py
 ```
 A folder named `build` will created (if not exist) in the repository folders,Containing `pancake.js`,Which is the full build
 
-> NOTES: Grab the build [here](https://cdn.jsdelivr.net/gh/Rabios/Pancake@master/build/pancake.js),Or [here](https://cdn.jsdelivr.net/gh/Rabios/Pancake@master/build/pancake.min.js) for the minimifed versio0n
+> NOTES: Grab the build [here](https://cdn.jsdelivr.net/gh/Rabios/Pancake@master/build/pancake.js),Or [here](https://cdn.jsdelivr.net/gh/Rabios/Pancake@master/build/pancake.min.js) for the minimifed version
 
 ## License
 ```
