@@ -53,10 +53,10 @@ window.addEventListener("touchstart", function(e) {
     pancake.input.swipe_start_y = e.changedTouches[0].pageY;
     pancake.input.tap = true;
     pancake.input.touch_start_time = new Date().getTime();
-});
+    e.preventDefault();
+}, false);
 
 window.addEventListener("touchend", function(e) {
-    if (e.touches.length === 0) return;
     pancake.input.touch_x = e.changedTouches[0].clientX || e.changedTouches[0].pageX;
     pancake.input.touch_y = e.changedTouches[0].clientY || e.changedTouches[0].pageY;
     var swipe_dist_x = e.changedTouches[0].pageX - pancake.input.swipe_start_x;
@@ -74,17 +74,20 @@ window.addEventListener("touchend", function(e) {
         }
     }
     pancake.input.tap = true;
-});
+    e.preventDefault();
+}, false);
 
 window.addEventListener("touchcancel", function(e) {
     pancake.input.tap = false;
-});
+    e.preventDefault();
+}, false);
 
 window.addEventListener("touchmove", function(e) {
     pancake.input.touch_x = e.changedTouches[0].clientX || e.changedTouches[0].pageX;
     pancake.input.touch_y = e.changedTouches[0].clientY || e.changedTouches[0].pageY;
     pancake.input.touchdown = true;
-});
+    e.preventDefault();
+}, false);
 
 window.addEventListener("click", function() {
     pancake.input.click = true;
