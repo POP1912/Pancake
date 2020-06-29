@@ -1,7 +1,7 @@
 pancake.debug = {};
 
 pancake.debug.unknown = function(variable) {
-    if ((variable == undefined) || (variable == null) || (variable == NaN)) return true;
+    return ((variable == undefined) || (variable == null) || (variable == NaN));
 };
 
 pancake.debug.redefine = function(variable, value) {

@@ -145,16 +145,16 @@ pancake.input.keypress = function(k) {
 };
 
 pancake.input.hideCursor = function(canvas_index) {
-    window.eval(" pancake.canvases[" + canvas_index.toString() + "].style.cursor = none; ");
+    pancake.canvases[canvas_index].style.cursor = "none";
 };
 
 pancake.input.showCursor = function(canvas_index) {
-    window.eval(" pancake.canvases[" + canvas_index.toString() + "].style.cursor = auto; ");
+    pancake.canvases[canvas_index].style.cursor = "auto";
 };
 
-pancake.input.lockPointer = function(canvas_index) {
-    if (pancake.canvases[index].requestPointerLock) pancake.canvases[canvas_index].requestPointerLock();
-    if (document.pointerLockElement === canvas) pancake.canvases[canvas_index].requestPointerLock();
+pancake.input.lockPointer = function() {
+    if (pancake.graphics.context.canvas.requestPointerLock) pancake.graphics.context.canvas.requestPointerLock();
+    if (document.pointerLockElement === pancake.graphics.context.canvas) pancake.graphics.context.canvas.requestPointerLock();
 };
 
 pancake.input.unlockPointer = function() {

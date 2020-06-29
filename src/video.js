@@ -6,6 +6,7 @@ pancake.video.load = function(src, video_index) {
     pancake.videos[video_index] = document.createElement("video");
     pancake.videos[video_index].src = src;
     pancake.videos[video_index].autoplay = true;
+    pancake.videos[video_index].loop = false;
     pancake.videos[video_index].load();
 };
 
@@ -17,6 +18,10 @@ pancake.video.play = function(video_index, x, y, w, h) {
     if (!pancake.videos[video_index].ended) {
         pancake.graphics.image(pancake.videos[video_index], x, y, w, h);
         pancake.videos[video_index].play();
+        if (pancake.videos[video_index].loop) {
+            pancake.graphics.image(pancake.videos[video_index], x, y, w, h);
+            pancake.videos[video_index].play();
+        }
     }
 };
 

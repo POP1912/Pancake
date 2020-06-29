@@ -12,11 +12,14 @@ pancake.audio.play = function(src) {
 // Load audio to audio files array to play from index using functions below
 pancake.audio.load = function(src, audio_index) {
     pancake.audio_files[audio_index] = new Audio(src);
+    pancake.audio_files[audio_index].loop = false;
+    pancake.audio_files[audio_index].load();
+
 };
 
 pancake.audio.playFromIndex = function(audio_index) {
-    pancake.audio_files[audio_index].load();
     pancake.audio_files[audio_index].play();
+    if (pancake.audio_files[audio_index].loop) pancake.audio_files[audio_index].play();
 };
 
 pancake.audio.pauseFromIndex = function(audio_index) {

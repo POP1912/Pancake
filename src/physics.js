@@ -1,4 +1,6 @@
 pancake.physics = {};
+pancake.physics.distance_x = undefined;
+pancake.physics.distance_y = undefined;
 
 pancake.physics.checkCollisionRect = function(x1, y1, w1, h1, x2, y2, w2, h2) {
     return (x1 < x2 + w2 && x1 + w1 > x2 && y1 < y2 + h2 && y1 + h1 > y2);
@@ -55,4 +57,10 @@ pancake.physics.checkCollisionBottomCanvas = function(shape, canvas_index) {
 
 pancake.physics.distanceBetween = function(x1, y1, x2, y2) {
     return Math.hypot(x2 - x1, y2 - y1);
+};
+
+// Distance are stored in pancake.physics.distance_x and pancake.physics_distance_y
+pancake.physics.getDistance = function(x1, y1, x2, y2) {
+    pancake.physics.distance_x = x2 - x1;
+    pancake.physics.distance_y = y2 - y1;
 };
