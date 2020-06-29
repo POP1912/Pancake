@@ -2,53 +2,55 @@
 // Copyright (c) 2020 - 2021 Rabia Alhaffar,Licensed under MIT License
 // Build Date: 29/June/2020
 var pancake = {};
-pancake.version = "v0.0.5";
+pancake.version = "v0.0.6";
 console.info("Made with Pancake " + pancake.version + "\nhttps://github.com/Rabios/Pancake");
 
 pancake.browser = {};
 pancake.browser.support = {};
-pancake.browser.CHROME = !(navigator.userAgent.match("Chrome") == null);
-pancake.browser.FIREFOX = !(navigator.userAgent.match("Firefox") == null);
-pancake.browser.OPERA = !(navigator.userAgent.match("OPR") == null);
-pancake.browser.SAFARI = !(navigator.userAgent.match("Safari") == null);
-pancake.browser.EDGE = !(navigator.userAgent.match("Edg") == null);
-pancake.browser.IE = !(navigator.userAgent.match("Trident") == null);
+pancake.browser.CHROME = navigator.userAgent.match("Chrome") != null;
+pancake.browser.FIREFOX = navigator.userAgent.match("Firefox") != null;
+pancake.browser.OPERA = navigator.userAgent.match("OPR") != null;
+pancake.browser.SAFARI = navigator.userAgent.match("Safari") != null;
+pancake.browser.EDGE = navigator.userAgent.match("Edg") != null;
+pancake.browser.IE = navigator.userAgent.match("Trident") != null;
+pancake.browser.SAMSUNG_INTERNET = navigator.userAgent.match("SamsungBrowser") != null;
 
 pancake.browser.support.CANVAS = function() {
     return (!!(document.createElement("canvas").getContext) && (document.createElement("canvas").getContext("2d"))) != null;
 };
 
 pancake.browser.support.MP3 = function() {
-    return !(document.createElement("audio").canPlayType("audio/mp3")) == "";
+    return document.createElement("audio").canPlayType("audio/mp3") != "";
 };
 
 pancake.browser.support.MPEG = function() {
-    return !(document.createElement("audio").canPlayType("audio/mpeg")) == "";
+    return document.createElement("audio").canPlayType("audio/mpeg") != "";
 };
 
 pancake.browser.support.MP4 = function() {
-    return !(document.createElement("video").canPlayType("video/mp4")) == "";
+    return document.createElement("video").canPlayType("video/mp4") != "";
 };
 
 pancake.browser.support.OGG = function() {
-    return !(document.createElement("audio").canPlayType("audio/ogg")) == "";
+    return document.createElement("audio").canPlayType("audio/ogg") != "";
 };
 
 pancake.browser.support.WAV = function() {
-    return !(document.createElement("audio").canPlayType("audio/wav")) == "";
+    return document.createElement("audio").canPlayType("audio/wav") != "";
 };
 
 pancake.browser.support.WEBM = function() {
-    return !(document.createElement("video").canPlayType("video/webm")) == "";
+    return document.createElement("video").canPlayType("video/webm") != "";
 };
 
 pancake.browser.support.GAMEPAD = function() {
-    return (!!navigator.getGamepads || !!navigator.webkitGetGamepads || !!navigator.webkitGamepads);
+    return "getGamepads" in window.navigator;
 };
 
 pancake.browser.open = function(url) {
     window.open(url);
 };
+
 
 pancake.os = {};
 pancake.os.iOS = navigator.userAgent.match(/iPhone|iPad|iPod|Apple-iPhone/i) != null;
@@ -60,6 +62,23 @@ pancake.os.LINUX = navigator.userAgent.match(/Linux|X11/i) != null;
 pancake.os.UBUNTU = navigator.userAgent.match(/Ubuntu/i) != null;
 pancake.os.PLAYSTATION = navigator.userAgent.match(/PlayStation/i) != null;
 pancake.os.XBOX = navigator.userAgent.match(/Xbox|XBOX_ONE_ED|Xbox One/i) != null;
+pancake.os.BLACKBERRY = navigator.userAgent.match(/Blackberry|BB/i) != null;
+pancake.os.CHROMECAST = navigator.userAgent.match(/CrKey/i) != null;
+pancake.os.CHROME_OS = navigator.userAgent.match(/CrOS/i) != null;
+pancake.os.PS4 = navigator.userAgent.match(/PlayStation 4/i) != null;
+pancake.os.PSVITA = navigator.userAgent.match(/PlayStation Vita/i) != null;
+pancake.os.XBOX_ONE = navigator.userAgent.match(/Xbox One/i) != null;
+pancake.os.XBOX_ONE_S = navigator.userAgent.match(/XBOX_ONE_ED/i) != null;
+pancake.os.NINTENDO = navigator.userAgent.match(/Nintendo/i) != null;
+pancake.os.N3DS = navigator.userAgent.match(/Nintendo 3DS/i) != null;
+pancake.os.WII_U = navigator.userAgent.match(/Nintendo WiiU/i) != null;
+pancake.os.FIRE_TV = navigator.userAgent.match(/AFTS/i) != null;
+pancake.os.ROKU_ULTRA = navigator.userAgent.match(/Roku4640X/i) != null;
+pancake.os.ROKU = navigator.userAgent.match(/Roku/i) != null;
+pancake.os.NEXUS_PLAYER = navigator.userAgent.match(/Nexus Player/i) != null;
+pancake.os.MINIX_NEO_X5 = navigator.userAgent.match(/NEO-X5/i) != null;
+pancake.os.APPLE_TV = navigator.userAgent.match(/AppleTV/i) != null;
+pancake.os.KINDLE = navigator.userAgent.match(/Kindle/i) != null;
 
 pancake.util = {};
 
@@ -79,7 +98,7 @@ pancake.util.quote = function(s) {
 pancake.debug = {};
 
 pancake.debug.unknown = function(variable) {
-    if ((variable == undefined) || (variable == null) || (variable == NaN)) return true;
+    return ((variable == undefined) || (variable == null) || (variable == NaN));
 };
 
 pancake.debug.redefine = function(variable, value) {
@@ -313,16 +332,16 @@ pancake.input.keypress = function(k) {
 };
 
 pancake.input.hideCursor = function(canvas_index) {
-    window.eval(" pancake.canvases[" + canvas_index.toString() + "].style.cursor = none; ");
+    pancake.canvases[canvas_index].style.cursor = "none";
 };
 
 pancake.input.showCursor = function(canvas_index) {
-    window.eval(" pancake.canvases[" + canvas_index.toString() + "].style.cursor = auto; ");
+    pancake.canvases[canvas_index].style.cursor = "auto";
 };
 
-pancake.input.lockPointer = function(canvas_index) {
-    if (pancake.canvases[index].requestPointerLock) pancake.canvases[canvas_index].requestPointerLock();
-    if (document.pointerLockElement === canvas) pancake.canvases[canvas_index].requestPointerLock();
+pancake.input.lockPointer = function() {
+    if (pancake.graphics.context.canvas.requestPointerLock) pancake.graphics.context.canvas.requestPointerLock();
+    if (document.pointerLockElement === pancake.graphics.context.canvas) pancake.graphics.context.canvas.requestPointerLock();
 };
 
 pancake.input.unlockPointer = function() {
@@ -419,6 +438,8 @@ pancake.input.button = {
 };
 
 pancake.physics = {};
+pancake.physics.distance_x = undefined;
+pancake.physics.distance_y = undefined;
 
 pancake.physics.checkCollisionRect = function(x1, y1, w1, h1, x2, y2, w2, h2) {
     return (x1 < x2 + w2 && x1 + w1 > x2 && y1 < y2 + h2 && y1 + h1 > y2);
@@ -477,6 +498,12 @@ pancake.physics.distanceBetween = function(x1, y1, x2, y2) {
     return Math.hypot(x2 - x1, y2 - y1);
 };
 
+// Distance are stored in pancake.physics.distance_x and pancake.physics_distance_y
+pancake.physics.getDistance = function(x1, y1, x2, y2) {
+    pancake.physics.distance_x = x2 - x1;
+    pancake.physics.distance_y = y2 - y1;
+};
+
 pancake.sprite = {};
 pancake.sprites = [];
 pancake.sprite.timers = [];
@@ -531,7 +558,7 @@ pancake.graphics.fullscreen = function() {
 
 pancake.graphics.toggleFullscreen = function() {
     var canvas = pancake.graphics.context.canvas;
-    if(!pancake.browser.IE) canvas.width = screen.width, canvas.height = screen.height;
+    if (!pancake.browser.IE) canvas.width = screen.width, canvas.height = screen.height;
 	if (canvas.requestFullscreen) canvas.requestFullscreen();
     if (canvas.mozRequestFullScreen) canvas.mozRequestFullScreen();
     if (canvas.webkitRequestFullscreen) canvas.webkitRequestFullscreen();
@@ -838,6 +865,11 @@ pancake.graphics.restore = function() {
     pancake.graphics.context.restore();
 };
 
+pancake.graphics.resize = function(w, h) {
+    pancake.graphics.context.canvas.width = w;
+    pancake.graphics.context.canvas.height = h;
+};
+
 // Pancake audio part
 // NOTES: To resume playing audio use same play function,Also you can even play music or song
 pancake.audio = {};
@@ -852,11 +884,14 @@ pancake.audio.play = function(src) {
 // Load audio to audio files array to play from index using functions below
 pancake.audio.load = function(src, audio_index) {
     pancake.audio_files[audio_index] = new Audio(src);
+    pancake.audio_files[audio_index].loop = false;
+    pancake.audio_files[audio_index].load();
+
 };
 
 pancake.audio.playFromIndex = function(audio_index) {
-    pancake.audio_files[audio_index].load();
     pancake.audio_files[audio_index].play();
+    if (pancake.audio_files[audio_index].loop) pancake.audio_files[audio_index].play();
 };
 
 pancake.audio.pauseFromIndex = function(audio_index) {
@@ -887,6 +922,7 @@ pancake.video.load = function(src, video_index) {
     pancake.videos[video_index] = document.createElement("video");
     pancake.videos[video_index].src = src;
     pancake.videos[video_index].autoplay = true;
+    pancake.videos[video_index].loop = false;
     pancake.videos[video_index].load();
 };
 
@@ -898,6 +934,10 @@ pancake.video.play = function(video_index, x, y, w, h) {
     if (!pancake.videos[video_index].ended) {
         pancake.graphics.image(pancake.videos[video_index], x, y, w, h);
         pancake.videos[video_index].play();
+        if (pancake.videos[video_index].loop) {
+            pancake.graphics.image(pancake.videos[video_index], x, y, w, h);
+            pancake.videos[video_index].play();
+        }
     }
 };
 
@@ -980,4 +1020,10 @@ window.animate = (function() {
                 window.setTimeout(callback, 1000 / fps);
             };
 })();
+
+pancake.content = {};
+
+pancake.content.load = function(json_content) {
+    return JSON.parse(JSON.stringify(json_content));
+};
 
