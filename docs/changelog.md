@@ -9,6 +9,7 @@
 6. Fixed problem when video and audio not looping if loop set to true
 7. Fixed problem mouse pointer not locked in canvas element
 8. Fixed lock pointer problems
+9. Fixed problem swiping doesn't works
 
 For more info check the [API](https://github.com/Rabios/Pancake/blob/master/docs/api.md)
 
