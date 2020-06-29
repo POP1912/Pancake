@@ -112,7 +112,7 @@ pancake.audio.playFromIndex(0);
 pancake.storage.save("score", Number(0));
 
 // Load it,It gives score value which is 0
-var score = pancake.storage.load("score");
+var score = Number(pancake.storage.load("score"));
 ```
 
 - Physics + Game Loop
