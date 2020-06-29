@@ -57,6 +57,7 @@ pancake.graphics.ANTIALIASING_MEDIUM                          // Medium Antialia
 pancake.graphics.ANTIALIASING_HIGH                            // High Antialiasing
 pancake.graphics.context                                      // CanvasRenderingContext2D (Context of the canvas)
 pancake.graphics.mode                                         // Graphics drawing shapes mode
+pancake.graphics.context.canvas                               // Current canvas used by the context
 
 // Functions
 pancake.graphics.random.alpha()                               // Returns random alpha
