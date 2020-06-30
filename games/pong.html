@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Pancake - Pong</title>
+    </head>
+    <body>
+        <canvas id="canvas" style="background-color: black;"></canvas>
+        <script src="../build/pancake.js"></script>
+        <script>
+            // Written by Rabia Alhaffar in July/1/2020
+            // Variables
+            // Paddles positions
+            var p1 = { x: pancake.canvas.compatible_width - 64, y: pancake.canvas.compatible_height / 2.5, up: false, down: false };
+            var p2 = { x: 32, y: pancake.canvas.compatible_height / 2.5, up: false, down: false };
+            
+            // Ball position,Ball speed,And ball radius
+            var ball = { x: pancake.canvas.compatible_width / 2, y: pancake.canvas.compatible_height / 2, vx: 0, vy: 0 };
+            
+            // Score for 2 players
+            var score = { p1: 0, p2: 0 };
+
+            // Use canvas from <canvas> tags that has id "canvas"
+            // Set it's index to 0
+            pancake.context.use(document.getElementById("canvas"), 0);
+            pancake.canvas.set(document.getElementById("canvas"), 0);
+
+            // Let graphics use context that has index 0
+            pancake.graphics.useContext(0);
+
+            // Resize canvas
+            pancake.graphics.resize(pancake.canvas.compatible_width, pancake.canvas.compatible_height);
+            
+            // Set font and fill color
+            pancake.graphics.color("white");
+            pancake.graphics.setFont("Arial", 64);
+
+            // Start game with ball moving to player 1 (You)
+            ball.vx = 10;
+
+            function game() {
+                
+                // Update ball and computer paddle movement
+                ball.x += ball.vx;
+                ball.y += ball.vy;
+                p2.y = ball.y;
+
+                // Clear
+                pancake.graphics.clear();
+                
+                // Draw paddles and ball
+                pancake.graphics.rect(p1.x, pancake.input.touch_y || p1.y, 32, 128);
+                pancake.graphics.rect(p2.x, p2.y, 32, 128);
+                pancake.graphics.circle(ball.x, ball.y, 16);
+
+                // Draw score
+                pancake.graphics.text(score.p2, 32, 64);
+                pancake.graphics.text(score.p1, pancake.canvas.compatible_width - 64, 64);
+
+                // Input for player 1
+                if (pancake.input.keydown(pancake.input.key.UP) || pancake.input.keydown(pancake.input.key.W)) p1.up = true;
+                if (pancake.input.keyup(pancake.input.key.UP) || pancake.input.keyup(pancake.input.key.W)) p1.up = false;
+                if (pancake.input.keydown(pancake.input.key.DOWN) || pancake.input.keydown(pancake.input.key.S)) p1.down = true;
+                if (pancake.input.keyup(pancake.input.key.DOWN) || pancake.input.keyup(pancake.input.key.S)) p1.down = false;
+                if (p1.up) p1.y -= 15;
+                if (p1.down) p1.y += 15;
+
+                // Physics
+                // Block players from moving out of edges 
+                if (p1.y > pancake.canvas.compatible_height - 128) p1.y = pancake.canvas.compatible_height - 128;
+                if (p2.y > pancake.canvas.compatible_height - 128) p2.y = pancake.canvas.compatible_height - 128;
+                if (p1.y < 0) p1.y = 0;
+                if (p2.y < 0) p2.y = 0;
+
+                // Collision with canvas borders
+                if (pancake.physics.checkCollisionCircleRect(ball.x, ball.y, 16, p1.x, p1.y, 32, 128)) {
+                    ball.vx = -ball.vx;
+                    ball.vy = pancake.util.randomBetween(-10, 10);
+                }
+                if (pancake.physics.checkCollisionCircleRect(ball.x, ball.y, 16, p2.x, p2.y, 32, 128)) {
+                    ball.vx = -ball.vx;
+                    ball.vy = pancake.util.randomBetween(-10, 10);
+                }
+
+                // Collision of ball with canvas borders
+                if (pancake.physics.checkCollisionTopCanvas([ ball.x, ball.y, 16, ball.vx, ball.vy ]) || pancake.physics.checkCollisionBottomCanvas([ ball.x, ball.y, 16, ball.vx, ball.vy ], 0)) ball.vy = -ball.vy;
+
+                // Collision with left/right side of canvas
+                if (pancake.physics.checkCollisionLeftCanvas([ ball.x, ball.y, 16, ball.vx, ball.vy ]) || pancake.physics.checkCollisionRightCanvas([ ball.x, ball.y, 16, ball.vx, ball.vy ], 0)) {
+                    
+                    // Check which side to increase score
+                    if (pancake.physics.checkCollisionLeftCanvas([ ball.x, ball.y, 16, ball.vx, ball.vy ])) score.p1++;
+                    if (pancake.physics.checkCollisionRightCanvas([ ball.x, ball.y, 16, ball.vx, ball.vy ], 0)) score.p2++;
+                    ball.vx = -ball.vx;
+                
+                }
+
+                // Prevent input loop
+                pancake.input.preventLoop();
+            }
+
+            var gameloop = pancake.timers.timer(game, 120);
+        </script>
+    </body>
+</html>
