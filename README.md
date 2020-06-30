@@ -176,16 +176,36 @@ var gameloop = pancake.timers.timer(game, 120); // Set frames per second to 120
 
 ## Build
 
-> NOTES: Pancake is prebuilt but if you are modify the source then you will need to rebuild it using `build.py`
+> NOTES: Pancake is prebuilt but if you are modify the source then you will need to rebuild by modifying and running one of the build scripts.
 
-To build Pancake you need Python,Although Pancake can run offline as single library
+To build Pancake run one of the build scripts Although Pancake can run offline as single library.
 
+Microsoft Windows:
+```batch
+mkdir pancake
+cd pancake
+git clone https://github.com/Rabios/Pancake.git
+build.bat
 ```
+
+Unix-based or Linux distro:
+```shell
+mkdir pancake
+cd pancake
+git clone https://github.com/Rabios/Pancake.git
+build.sh
+```
+
+Build using Python:
+```batch
 mkdir pancake
 cd pancake
 git clone https://github.com/Rabios/Pancake.git
 python build.py
 ```
+
+> NOTES: By default,Pancake built using the last method even if other methods works
+
 A folder named `build` will created (if not exist) in the repository folders,Containing `pancake.js`,Which is the full build
 
 > NOTES: Grab the build [here](https://cdn.jsdelivr.net/gh/Rabios/Pancake@master/build/pancake.js),Or [here](https://cdn.jsdelivr.net/gh/Rabios/Pancake@master/build/pancake.min.js) for the minimifed version
