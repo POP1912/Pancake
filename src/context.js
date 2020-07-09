@@ -9,6 +9,7 @@ pancake.context.create = function(canvas_index, context_index) {
 pancake.context.use = function(canvas, context_index) {
     pancake.contexts[context_index] = canvas.getContext("2d");
     pancake.graphics.useContext(context_index);
+    pancake.canvas.set(canvas, context_index);
 };
 
 pancake.context.set = function(context, context_index) {

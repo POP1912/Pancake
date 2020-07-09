@@ -6,7 +6,9 @@ pancake.browser.OPERA = navigator.userAgent.match("OPR") != null;
 pancake.browser.SAFARI = navigator.userAgent.match("Safari") != null;
 pancake.browser.EDGE = navigator.userAgent.match("Edg") != null;
 pancake.browser.IE = navigator.userAgent.match("Trident") != null;
+pancake.browser.MAXTHON = navigator.userAgent.match("Maxthon") != null;
 pancake.browser.SAMSUNG_INTERNET = navigator.userAgent.match("SamsungBrowser") != null;
+pancake.browser.SEAMONKEY = navigator.userAgent.match("SeaMonkey") != null;
 
 pancake.browser.support.CANVAS = function() {
     return (!!(document.createElement("canvas").getContext) && (document.createElement("canvas").getContext("2d"))) != null;

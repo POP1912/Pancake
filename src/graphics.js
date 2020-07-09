@@ -31,22 +31,15 @@ pancake.graphics.random.HSLA = function() {
 };
 
 pancake.graphics.fullscreen = function() {
-    return document.fullscreen;
+    return document.fullscreen || document.webkitIsFullScreen || document.mozFullscreen;
 };
 
 pancake.graphics.toggleFullscreen = function() {
     var canvas = pancake.graphics.context.canvas;
-    if (!pancake.browser.IE) canvas.width = screen.width, canvas.height = screen.height;
 	if (canvas.requestFullscreen) canvas.requestFullscreen();
     if (canvas.mozRequestFullScreen) canvas.mozRequestFullScreen();
     if (canvas.webkitRequestFullscreen) canvas.webkitRequestFullscreen();
     if (canvas.msRequestFullscreen) canvas.msRequestFullscreen();
-    document.onfullscreenchange = function() {
-        if(!document.fullscreen) {
-            canvas.width = pancake.canvas.compatible_width;
-            canvas.height = pancake.canvas.compatible_height;
-        }
-    };
 };
 
 pancake.graphics.exitFullscreen = function() {
@@ -343,7 +336,14 @@ pancake.graphics.restore = function() {
     pancake.graphics.context.restore();
 };
 
-pancake.graphics.resize = function(w, h) {
-    pancake.graphics.context.canvas.width = w;
-    pancake.graphics.context.canvas.height = h;
+document.onfullscreenchange = document.onmozfullscreenchange = document.onmsfullscreenchange = document.onwebkitfullscreenchange = function() {
+    if (pancake.graphics.fullscreen() && typeof(pancake.graphics.context.canvas) != undefined) {
+        pancake.graphics.context.canvas.width = screen.width;
+        pancake.graphics.context.canvas.height = screen.height;
+    }
+
+    if (!pancake.graphics.fullscreen() && typeof(pancake.graphics.context.canvas) != undefined) {
+        pancake.graphics.context.canvas.width = pancake.canvas.compatible_width;
+        pancake.graphics.context.canvas.height = pancake.canvas.compatible_height;
+    }
 };
