@@ -1,8 +1,8 @@
 // Pancake HTML5 game framework
 // Copyright (c) 2020 - 2021 Rabia Alhaffar,Licensed under MIT License
-// Build Date: 29/June/2020
+// Build Date: 1/July/2020
 var pancake = {};
-pancake.version = "v0.0.6";
+pancake.version = "v0.0.7";
 console.info("Made with Pancake " + pancake.version + "\nhttps://github.com/Rabios/Pancake");
 
 pancake.browser = {};
@@ -13,7 +13,9 @@ pancake.browser.OPERA = navigator.userAgent.match("OPR") != null;
 pancake.browser.SAFARI = navigator.userAgent.match("Safari") != null;
 pancake.browser.EDGE = navigator.userAgent.match("Edg") != null;
 pancake.browser.IE = navigator.userAgent.match("Trident") != null;
+pancake.browser.MAXTHON = navigator.userAgent.match("Maxthon") != null;
 pancake.browser.SAMSUNG_INTERNET = navigator.userAgent.match("SamsungBrowser") != null;
+pancake.browser.SEAMONKEY = navigator.userAgent.match("SeaMonkey") != null;
 
 pancake.browser.support.CANVAS = function() {
     return (!!(document.createElement("canvas").getContext) && (document.createElement("canvas").getContext("2d"))) != null;
@@ -51,7 +53,6 @@ pancake.browser.open = function(url) {
     window.open(url);
 };
 
-
 pancake.os = {};
 pancake.os.iOS = navigator.userAgent.match(/iPhone|iPad|iPod|Apple-iPhone/i) != null;
 pancake.os.ANDROID = navigator.userAgent.match(/Android/i) != null;
@@ -86,7 +87,7 @@ pancake.util.random = function(a) {
     return Math.floor(Math.random() * a);
 };
 
-// https://stackoverflow.com/a/1527820/2124254
+// @see https://stackoverflow.com/a/1527820/2124254
 pancake.util.randomBetween = function(a, b) {
     return Math.floor(Math.random() * (b - a)) + a;
 };
@@ -167,6 +168,7 @@ pancake.context.create = function(canvas_index, context_index) {
 pancake.context.use = function(canvas, context_index) {
     pancake.contexts[context_index] = canvas.getContext("2d");
     pancake.graphics.useContext(context_index);
+    pancake.canvas.set(canvas, context_index);
 };
 
 pancake.context.set = function(context, context_index) {
@@ -548,22 +550,15 @@ pancake.graphics.random.HSLA = function() {
 };
 
 pancake.graphics.fullscreen = function() {
-    return document.fullscreen;
+    return document.fullscreen || document.webkitIsFullScreen || document.mozFullscreen;
 };
 
 pancake.graphics.toggleFullscreen = function() {
     var canvas = pancake.graphics.context.canvas;
-    if (!pancake.browser.IE) canvas.width = screen.width, canvas.height = screen.height;
 	if (canvas.requestFullscreen) canvas.requestFullscreen();
     if (canvas.mozRequestFullScreen) canvas.mozRequestFullScreen();
     if (canvas.webkitRequestFullscreen) canvas.webkitRequestFullscreen();
     if (canvas.msRequestFullscreen) canvas.msRequestFullscreen();
-    document.onfullscreenchange = function() {
-        if(!document.fullscreen) {
-            canvas.width = pancake.canvas.compatible_width;
-            canvas.height = pancake.canvas.compatible_height;
-        }
-    };
 };
 
 pancake.graphics.exitFullscreen = function() {
@@ -860,11 +855,17 @@ pancake.graphics.restore = function() {
     pancake.graphics.context.restore();
 };
 
-pancake.graphics.resize = function(w, h) {
-    pancake.graphics.context.canvas.width = w;
-    pancake.graphics.context.canvas.height = h;
-};
+document.onfullscreenchange = document.onmozfullscreenchange = document.onmsfullscreenchange = document.onwebkitfullscreenchange = function() {
+    if (pancake.graphics.fullscreen() && typeof(pancake.graphics.context.canvas) != undefined) {
+        pancake.graphics.context.canvas.width = screen.width;
+        pancake.graphics.context.canvas.height = screen.height;
+    }
 
+    if (!pancake.graphics.fullscreen() && typeof(pancake.graphics.context.canvas) != undefined) {
+        pancake.graphics.context.canvas.width = pancake.canvas.compatible_width;
+        pancake.graphics.context.canvas.height = pancake.canvas.compatible_height;
+    }
+};
 // Pancake audio part
 // NOTES: To resume playing audio use same play function,Also you can even play music or song
 pancake.audio = {};
