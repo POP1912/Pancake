@@ -65,7 +65,6 @@ pancake.graphics.random.RGB()                                 // Returns random 
 pancake.graphics.random.RGBA()                                // Returns random RGBA
 pancake.graphics.random.HSL()                                 // Returns random HSL
 pancake.graphics.random.HSLA()                                // Returns random HSLA
-pancake.graphics.resize(w, h)                                 // Resizes current context's canvas
 pancake.graphics.fullscreen()                                 // Returns if game is in fullscreen mode
 pancake.graphics.toggleFullscreen()                           // Toggle fullscreen
 pancake.graphics.exitFullscreen()                             // Exit fullscreen
@@ -112,6 +111,7 @@ pancake.graphics.shear(x, y)                                  // Shear
 pancake.graphics.rotate(a)                                    // Rotate
 pancake.graphics.save()                                       // Save
 pancake.graphics.restore()                                    // Restore
+pancake.graphics.shadow(color, blur)                          // Set shadow color and blur (Blur value is number,Not string and without px)
 ```
 
 ## Input
@@ -259,6 +259,7 @@ pancake.browser.OPERA                                        // Returns if brows
 pancake.browser.EDGE                                         // Returns if browser is Microsoft Edge
 pancake.browser.IE                                           // Returns if browser is Internet Explorer
 pancake.browser.SAMSUNG_INTERNET                             // Returns if browser is Samsung Internet Browser
+pancake.browser.MAXTHON                                      // Returns if browser is Maxthon
 
 
 // Functions

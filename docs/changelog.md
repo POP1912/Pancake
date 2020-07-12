@@ -1,5 +1,18 @@
 # Changelog
 
+### v0.0.8
+1. Added `pancake.graphics.shadow(color, blur)` to apply shadows in-game
+
+> TODO: Optimizing
+
+### v0.0.7
+1. Removed `pancake.graphics.resize()` but let canvas used by `pancake.canvas.set()` in case you used a canvas using `pancake.context.use()` 
+2. Better fullscreen check and better fullscreen functionality
+3. Added ability to detect SeaMonkey browser,And Maxthon browser (In case developer didn't changed `navigator.userAgent` in Maxthon)
+4. Improved games,And also improved some examples
+
+> TODO: Optimize Pancake to become smaller,That doesn't means i will remove content
+
 ### v0.0.6
 1. Added content feature to load JSON content and parse it
 2. Added more operating systems and browsers to detect
