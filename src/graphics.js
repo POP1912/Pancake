@@ -347,3 +347,8 @@ document.onfullscreenchange = document.onmozfullscreenchange = document.onmsfull
         pancake.graphics.context.canvas.height = pancake.canvas.compatible_height;
     }
 };
+
+pancake.graphics.shadow = function(color, blur) {
+    pancake.graphics.content.shadowColor = color;
+    pancake.graphics.context.shadowBlur = blur;
+};
