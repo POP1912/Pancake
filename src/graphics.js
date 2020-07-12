@@ -349,6 +349,6 @@ document.onfullscreenchange = document.onmozfullscreenchange = document.onmsfull
 };
 
 pancake.graphics.shadow = function(color, blur) {
-    pancake.graphics.content.shadowColor = color;
+    pancake.graphics.context.shadowColor = color;
     pancake.graphics.context.shadowBlur = blur;
 };
