@@ -1,8 +1,8 @@
 // Pancake HTML5 game framework
 // Copyright (c) 2020 - 2021 Rabia Alhaffar,Licensed under MIT License
-// Build Date: 1/July/2020
+// Build Date: 12/July/2020
 var pancake = {};
-pancake.version = "v0.0.7";
+pancake.version = "v0.0.8";
 console.info("Made with Pancake " + pancake.version + "\nhttps://github.com/Rabios/Pancake");
 
 pancake.browser = {};
@@ -865,6 +865,11 @@ document.onfullscreenchange = document.onmozfullscreenchange = document.onmsfull
         pancake.graphics.context.canvas.width = pancake.canvas.compatible_width;
         pancake.graphics.context.canvas.height = pancake.canvas.compatible_height;
     }
+};
+
+pancake.graphics.shadow = function(color, blur) {
+    pancake.graphics.content.shadowColor = color;
+    pancake.graphics.context.shadowBlur = blur;
 };
 // Pancake audio part
 // NOTES: To resume playing audio use same play function,Also you can even play music or song
