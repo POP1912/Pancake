@@ -1,5 +1,10 @@
 # Changelog
 
+### v0.0.9
+1. Optimized the framework for the first time.
+
+> TODO: Optimize Pancake for the last time.
+
 ### v0.0.8
 1. Added `pancake.graphics.shadow(color, blur)` to apply shadows in-game
 
