@@ -2,7 +2,7 @@
 // Copyright (c) 2020 - 2021 Rabia Alhaffar,Licensed under MIT License
 // Build Date: 12/July/2020
 var pancake = {};
-pancake.version = "v0.0.8";
+pancake.version = "v0.0.9";
 console.info("Made with Pancake " + pancake.version + "\nhttps://github.com/Rabios/Pancake");
 
 pancake.browser = {};
@@ -49,8 +49,8 @@ pancake.browser.support.GAMEPAD = function() {
     return "getGamepads" in window.navigator;
 };
 
-pancake.browser.open = function(url) {
-    window.open(url);
+pancake.browser.open = function(u) {
+    window.open(u);
 };
 
 pancake.os = {};
@@ -98,22 +98,22 @@ pancake.util.quote = function(s) {
 
 pancake.debug = {};
 
-pancake.debug.unknown = function(variable) {
-    return ((variable == undefined) || (variable == null) || (variable == NaN));
+pancake.debug.unknown = function(v) {
+    return ((v == undefined) || (v == null) || (v == NaN));
 };
 
-pancake.debug.redefine = function(variable, value) {
-    if ((variable == undefined) || (variable == null) || (variable == NaN)) variable = value;
+pancake.debug.redefine = function(v, val) {
+    if ((v == undefined) || (v == null) || (v == NaN)) v = val;
 };
 
-pancake.debug.type = function(variable) {
-    return typeof(variable);
+pancake.debug.type = function(v) {
+    return typeof(v);
 };
 
 pancake.game = {};
 
-pancake.game.title = function(title) {
-    window.document.title = title;
+pancake.game.title = function(t) {
+    window.document.title = t;
 };
 
 pancake.game.restart = function() {
@@ -125,62 +125,62 @@ pancake.canvases = [];
 pancake.canvas.compatible_width = window.innerWidth - 20;
 pancake.canvas.compatible_height = window.innerHeight - 20;
 
-pancake.canvas.create = function(width, height, canvas_index) {
-    pancake.canvases[canvas_index] = document.createElement("canvas");
-    pancake.canvases[canvas_index].width = width;
-    pancake.canvases[canvas_index].height = height;
-    document.body.appendChild(pancake.canvases[canvas_index]);
+pancake.canvas.create = function(w, h, c) {
+    pancake.canvases[c] = document.createElement("canvas");
+    pancake.canvases[c].width = w;
+    pancake.canvases[c].height = h;
+    document.body.appendChild(pancake.canvases[c]);
 };
 
-pancake.canvas.resize = function(width, height, canvas_index) {
-    pancake.canvases[canvas_index].width = width;
-    pancake.canvases[canvas_index].height = height;
+pancake.canvas.resize = function(w, h, c) {
+    pancake.canvases[c].width = w;
+    pancake.canvases[c].height = h;
 };
 
-pancake.canvas.setAttribute = function(variable, value, canvas_index) {
-    window.eval(" pancake.canvases[" + canvas_index.toString() + "]." + variable.toString() + " = " + value.toString() + "; ");
+pancake.canvas.setAttribute = function(v, val, c) {
+    window.eval(" pancake.canvases[" + c.toString() + "]." + v.toString() + " = " + val.toString() + "; ");
 };
 
-pancake.canvas.remove = function(canvas_index) {
-    pancake.canvases[canvas_index].parentNode.removeChild(pancake.canvases[canvas_index]);
+pancake.canvas.remove = function(c) {
+    pancake.canvases[c].parentNode.removeChild(pancake.canvases[c]);
 };
 
-pancake.canvas.hide = function(canvas_index) {
-    pancake.canvases[canvas_index].style.visibility = "hidden";
+pancake.canvas.hide = function(c) {
+    pancake.canvases[c].style.visibility = "hidden";
 };
 
-pancake.canvas.show = function(canvas_index) {
-    pancake.canvases[canvas_index].style.visibility = "visible";
+pancake.canvas.show = function(c) {
+    pancake.canvases[c].style.visibility = "visible";
 };
 
-pancake.canvas.set = function(canvas, canvas_index) {
-    pancake.canvases[canvas_index] = canvas;
+pancake.canvas.set = function(ca, c) {
+    pancake.canvases[c] = ca;
 };
 
 // Rewritten by Rabia Alhaffar in 9/February/2020
 pancake.context = {};
 pancake.contexts = [];
 
-pancake.context.create = function(canvas_index, context_index) {
-    pancake.contexts[context_index] = pancake.canvases[canvas_index].getContext("2d");
+pancake.context.create = function(c, co) {
+    pancake.contexts[co] = pancake.canvases[c].getContext("2d");
 };
 
-pancake.context.use = function(canvas, context_index) {
-    pancake.contexts[context_index] = canvas.getContext("2d");
-    pancake.graphics.useContext(context_index);
-    pancake.canvas.set(canvas, context_index);
+pancake.context.use = function(c, co) {
+    pancake.contexts[co] = canvas.getContext("2d");
+    pancake.graphics.useContext(co);
+    pancake.canvas.set(c, co);
 };
 
-pancake.context.set = function(context, context_index) {
-    pancake.contexts[context_index] = context;
+pancake.context.set = function(nco, co) {
+    pancake.contexts[co] = nco;
 };
 
 pancake.device = {};
 pancake.device.screen_height = screen.height;
 pancake.device.screen_width = screen.width;
 
-pancake.device.vibrate = function(pattern) {
-    window.navigator.vibrate(pattern);
+pancake.device.vibrate = function(p) {
+    window.navigator.vibrate(p);
 };
 
 pancake.device.stopVibrating = function() {
@@ -328,12 +328,12 @@ pancake.input.keypress = function(k) {
     return pancake.input.latest_key_pressed == k;
 };
 
-pancake.input.hideCursor = function(canvas_index) {
-    pancake.canvases[canvas_index].style.cursor = "none";
+pancake.input.hideCursor = function(i) {
+    pancake.canvases[i].style.cursor = "none";
 };
 
-pancake.input.showCursor = function(canvas_index) {
-    pancake.canvases[canvas_index].style.cursor = "auto";
+pancake.input.showCursor = function(i) {
+    pancake.canvases[i].style.cursor = "auto";
 };
 
 pancake.input.lockPointer = function() {
@@ -357,44 +357,44 @@ if (pancake.browser.support.GAMEPAD()) {
     pancake.input.GAMEPAD_MOVE_ANALOG = 1;
     pancake.input.GAMEPAD_CAMERA_ANALOG = 2;
 
-    pancake.input.gamepadConnected = function(index) {
-        return !(navigator.getGamepads()[index] == undefined);
+    pancake.input.gamepadConnected = function(i) {
+        return !(navigator.getGamepads()[i] == undefined);
     };
     
-    pancake.input.gamepadID = function(index) {
-        if (!(navigator.getGamepads()[index] == undefined)) return navigator.getGamepads()[index].id;
+    pancake.input.gamepadID = function(i) {
+        if (!(navigator.getGamepads()[i] == undefined)) return navigator.getGamepads()[i].id;
     };
     
-    pancake.input.gamepadButtonPressed = function(button, index) {
-        if (!(navigator.getGamepads()[index] == undefined)) return navigator.getGamepads()[index].buttons[button].pressed;
+    pancake.input.gamepadButtonPressed = function(b, i) {
+        if (!(navigator.getGamepads()[i] == undefined)) return navigator.getGamepads()[i].buttons[b].pressed;
     };
     
-    pancake.input.gamepadButtonTouched = function(button, index) {
-        if (!(navigator.getGamepads()[index] == undefined)) return navigator.getGamepads()[index].buttons[button].touched;
+    pancake.input.gamepadButtonTouched = function(b, i) {
+        if (!(navigator.getGamepads()[i] == undefined)) return navigator.getGamepads()[i].buttons[b].touched;
     };
 
-    pancake.input.checkMovement = function(index, analog, direction) {
-        if (!(navigator.getGamepads()[index] == undefined)) {
-            if (analog == pancake.input.GAMEPAD_MOVE_ANALOG) {
-                if (navigator.getGamepads()[index].axes[1] <= direction) pancake.input.GAMEPAD_MOVE_HORIZONTAL_DIRECTION = "UP";
-                if (navigator.getGamepads()[index].axes[1] >= direction) pancake.input.GAMEPAD_MOVE_HORIZONTAL_DIRECTION = "DOWN";
-                if (navigator.getGamepads()[index].axes[0] <= direction) pancake.input.GAMEPAD_MOVE_VERTICAL_DIRECTION = "LEFT";
-                if (navigator.getGamepads()[index].axes[0] >= direction) pancake.input.GAMEPAD_MOVE_VERTICAL_DIRECTION = "RIGHT";
+    pancake.input.checkMovement = function(i, a, d) {
+        if (!(navigator.getGamepads()[i] == undefined)) {
+            if (a == pancake.input.GAMEPAD_MOVE_ANALOG) {
+                if (navigator.getGamepads()[i].axes[1] <= d) pancake.input.GAMEPAD_MOVE_HORIZONTAL_DIRECTION = "UP";
+                if (navigator.getGamepads()[i].axes[1] >= d) pancake.input.GAMEPAD_MOVE_HORIZONTAL_DIRECTION = "DOWN";
+                if (navigator.getGamepads()[i].axes[0] <= d) pancake.input.GAMEPAD_MOVE_VERTICAL_DIRECTION = "LEFT";
+                if (navigator.getGamepads()[i].axes[0] >= d) pancake.input.GAMEPAD_MOVE_VERTICAL_DIRECTION = "RIGHT";
             }
             
-            if (analog == pancake.input.GAMEPAD_CAMERA_ANALOG) {
-                if (navigator.getGamepads()[index].axes[3] <= direction) pancake.input.GAMEPAD_CAMERA_HORIZONTAL_DIRECTION = "UP";
-                if (navigator.getGamepads()[index].axes[3] >= direction) pancake.input.GAMEPAD_CAMERA_HORIZONTAL_DIRECTION = "DOWN";
-                if (navigator.getGamepads()[index].axes[2] <= direction) pancake.input.GAMEPAD_CAMERA_HORIZONTAL_DIRECTION = "LEFT";
-                if (navigator.getGamepads()[index].axes[2] >= direction) pancake.input.GAMEPAD_CAMERA_HORIZONTAL_DIRECTION = "RIGHT";
+            if (a == pancake.input.GAMEPAD_CAMERA_ANALOG) {
+                if (navigator.getGamepads()[i].axes[3] <= d) pancake.input.GAMEPAD_CAMERA_HORIZONTAL_DIRECTION = "UP";
+                if (navigator.getGamepads()[i].axes[3] >= d) pancake.input.GAMEPAD_CAMERA_HORIZONTAL_DIRECTION = "DOWN";
+                if (navigator.getGamepads()[i].axes[2] <= d) pancake.input.GAMEPAD_CAMERA_HORIZONTAL_DIRECTION = "LEFT";
+                if (navigator.getGamepads()[i].axes[2] >= d) pancake.input.GAMEPAD_CAMERA_HORIZONTAL_DIRECTION = "RIGHT";
             }
         }
     };
 
-    pancake.input.gamepadAnalogMoved = function(index, analog, analog_direction, direction) {
-        pancake.input.checkMovement(index, analog, analog_direction);
-        if (analog == pancake.input.GAMEPAD_MOVE_ANALOG) return (pancake.input.GAMEPAD_MOVE_HORIZONTAL_DIRECTION == direction || pancake.input.GAMEPAD_MOVE_VERTICAL_DIRECTION == direction);
-        if (analog == pancake.input.GAMEPAD_CAMERA_ANALOG) return (pancake.input.GAMEPAD_CAMERA_HORIZONTAL_DIRECTION == direction || pancake.input.GAMEPAD_CAMERA_VERTICAL_DIRECTION == direction);
+    pancake.input.gamepadAnalogMoved = function(i, a, ad, d) {
+        pancake.input.checkMovement(i, a, ad);
+        if (a == pancake.input.GAMEPAD_MOVE_ANALOG) return (pancake.input.GAMEPAD_MOVE_HORIZONTAL_DIRECTION == d || pancake.input.GAMEPAD_MOVE_VERTICAL_DIRECTION == d);
+        if (a == pancake.input.GAMEPAD_CAMERA_ANALOG) return (pancake.input.GAMEPAD_CAMERA_HORIZONTAL_DIRECTION == d || pancake.input.GAMEPAD_CAMERA_VERTICAL_DIRECTION == d);
     };
 }
 
@@ -452,17 +452,13 @@ pancake.physics.checkCollisionCircleRect = function(x1, y1, r, x2, y2, w, h) {
     return (Math.abs(x1 - x2 - w / 2) - w / 2 * Math.abs(x1 - x2 - w / 2) - w / 2 + Math.abs(y1 - y2 - h / 2) - h / 2 * Math.abs(y1 - y2 - h / 2) - h / 2 <= Math.pow(r,2));
 };
 
-pancake.physics.checkCollisionCircleLine = function(x, y, r, line_from_x, line_from_y, line_to_x, line_to_y) {
+pancake.physics.checkCollisionCircleLine = function(x, y, r, fx, fy, tx, ty) {
     var dist;
-    var v1x = line_to_x - line_from_x;
-    var v1y = line_to_y - line_from_y;
-    var v2x = x - line_from_x;
-    var v2y = y - line_from_y;
-    var u = (v2x * v1x + v2y * v1y) / (v1y * v1y + v1x * v1x);
-    if (u >= 0 && u <= 1) dist = Math.pow((line_from_x + v1x * u - x),2) + Math.pow((line_from_y + v1y * u - y),2);
+    var u = ((x - fx) * (tx - fx) + (y - fy) * (ty - fy)) / ((ty - fy) * (ty - fy) + (tx - fx) * (tx - fx));
+    if (u >= 0 && u <= 1) dist = Math.pow((fx + (tx - fx) * u - x),2) + Math.pow((fy + (ty - fy) * u - y),2);
     else {
-        if (u < 0) dist = Math.pow((line_from_x - x),2) + Math.pow((line_from_y - y),2);
-        else dist = Math.pow((line_to_x - x),2) + Math.pow((line_to_y - y),2);
+        if (u < 0) dist = Math.pow((fx - x),2) + Math.pow((fy - y),2);
+        else dist = Math.pow((tx - x),2) + Math.pow((ty - y),2);
     }
     if (dist < Math.pow(r,2)) return true;
 };
@@ -471,24 +467,24 @@ pancake.physics.checkCollisionCircleLine = function(x, y, r, line_from_x, line_f
 // NOTES: As shape info in array,Here is following bellow
 // [ x, y, width, height ] for rectangle
 // [ x1, y1, radius, speedX, speedY ] for circle
-pancake.physics.checkCollisionLeftCanvas = function(shape) {
-    if (shape.length == 4) return shape[0] <= shape[2] * 0.5;
-    if (shape.length == 5) return shape[0] + shape[3] < shape[2];
+pancake.physics.checkCollisionLeftCanvas = function(s) {
+    if (s.length == 4) return s[0] <= s[2] * 0.5;
+    if (s.length == 5) return s[0] + s[3] < s[2];
 };
 
-pancake.physics.checkCollisionRightCanvas = function(shape, canvas_index) {
-    if (shape.length == 4) return shape[0] + shape[2] >= pancake.canvases[canvas_index].width + shape[2] * 0.5;
-    if (shape.length == 5) return shape[0] + shape[3] > pancake.canvases[canvas_index].width - shape[2];
+pancake.physics.checkCollisionRightCanvas = function(s, c) {
+    if (s.length == 4) return s[0] + s[2] >= pancake.canvases[c].width + s[2] * 0.5;
+    if (s.length == 5) return s[0] + s[3] > pancake.canvases[c].width - s[2];
 };
 
-pancake.physics.checkCollisionTopCanvas = function(shape) {
-    if (shape.length == 4) return shape[1] <= shape[3] * 0.5;
-    if (shape.length == 5) return shape[1] + shape[4] < shape[2];
+pancake.physics.checkCollisionTopCanvas = function(s) {
+    if (s.length == 4) return s[1] <= s[3] * 0.5;
+    if (s.length == 5) return s[1] + s[4] < s[2];
 };
 
-pancake.physics.checkCollisionBottomCanvas = function(shape, canvas_index) {
-    if (shape.length == 4) return shape[1] + shape[3] >= pancake.canvases[canvas_index].height + shape[3] * 0.5;
-    if (shape.length == 5) return shape[1] + shape[4] > pancake.canvases[canvas_index].height - shape[2];
+pancake.physics.checkCollisionBottomCanvas = function(s, c) {
+    if (s.length == 4) return s[1] + s[3] >= pancake.canvases[c].height + s[3] * 0.5;
+    if (s.length == 5) return s[1] + s[4] > pancake.canvases[c].height - s[2];
 };
 
 pancake.physics.distanceBetween = function(x1, y1, x2, y2) {
@@ -504,17 +500,17 @@ pancake.physics.getDistance = function(x1, y1, x2, y2) {
 pancake.sprite = {};
 pancake.sprites = [];
 pancake.sprite.timers = [];
-pancake.sprite.create = function(images,sprite_index) {
-    pancake.sprites[sprite_index] = [];
-    pancake.sprite.timers[sprite_index] = 0;
-    for (var i = 0;i < images.length;i++) {
-        pancake.sprites[sprite_index][i] = new Image();
-        pancake.sprites[sprite_index][i].src = images[i];
+pancake.sprite.create = function(im, s) {
+    pancake.sprites[s] = [];
+    pancake.sprite.timers[s] = 0;
+    for (var i = 0;i < im.length;i++) {
+        pancake.sprites[s][i] = new Image();
+        pancake.sprites[s][i].src = im[i];
     }
 };
 
-pancake.sprite.get = function(sprite_index) {
-    return pancake.sprites[sprite_index];
+pancake.sprite.get = function(s) {
+    return pancake.sprites[s];
 };
 
 pancake.graphics = {};
@@ -608,8 +604,8 @@ pancake.graphics.color = function(f, s) {
     pancake.graphics.context.strokeStyle = s;
 };
 
-pancake.graphics.setBackgroundColor = function(color) {
-    pancake.graphics.context.canvas.style.backgroundColor = color;
+pancake.graphics.setBackgroundColor = function(c) {
+    pancake.graphics.context.canvas.style.backgroundColor = c;
 };
 
 pancake.graphics.setBackgroundImage = function(src) {
@@ -629,12 +625,12 @@ pancake.graphics.clear = function() {
     pancake.graphics.context.clearRect(0, 0, pancake.graphics.context.canvas.width, pancake.graphics.context.canvas.height);
 };
 
-pancake.graphics.text = function(text, x, y) {
-    if (pancake.graphics.mode == pancake.graphics.FILL) pancake.graphics.context.fillText(text, x, y);
-    if (pancake.graphics.mode == pancake.graphics.STROKE) pancake.graphics.context.strokeText(text, x, y);
+pancake.graphics.text = function(t, x, y) {
+    if (pancake.graphics.mode == pancake.graphics.FILL) pancake.graphics.context.fillText(t, x, y);
+    if (pancake.graphics.mode == pancake.graphics.STROKE) pancake.graphics.context.strokeText(t, x, y);
     if (pancake.graphics.mode == pancake.graphics.BOTH) {
-        pancake.graphics.context.fillText(text, x, y);
-        pancake.graphics.context.strokeText(text, x, y);
+        pancake.graphics.context.fillText(t, x, y);
+        pancake.graphics.context.strokeText(t, x, y);
     }
 };
 
@@ -679,9 +675,9 @@ pancake.graphics.circle = function(x, y, r) {
     }
 };
 
-pancake.graphics.ellipse = function(x, y, radius_x, radius_y, rotation, start_angle, end_angle, anticlockwise) {
+pancake.graphics.ellipse = function(x, y, rx, ry, rot, sa, ea, a) {
     pancake.graphics.context.beginPath();
-    pancake.graphics.context.ellipse(x, y, radius_x, radius_y, rotation, start_angle, end_angle, anticlockwise);
+    pancake.graphics.context.ellipse(x, y, rx, ry, rot, sa, ea, a);
     pancake.graphics.context.closePath();
     if (pancake.graphics.mode == pancake.graphics.FILL) pancake.graphics.context.fill();
     if (pancake.graphics.mode == pancake.graphics.STROKE) pancake.graphics.context.stroke();
@@ -691,8 +687,8 @@ pancake.graphics.ellipse = function(x, y, radius_x, radius_y, rotation, start_an
     }
 };
 
-pancake.graphics.line = function(x1, y1, x2, y2, line_width) {
-    pancake.graphics.context.lineWidth = line_width;
+pancake.graphics.line = function(x1, y1, x2, y2, lw) {
+    pancake.graphics.context.lineWidth = lw;
     pancake.graphics.context.beginPath();
     pancake.graphics.context.moveTo(x1,y1);
     pancake.graphics.context.lineTo(x2,y2);
@@ -701,8 +697,8 @@ pancake.graphics.line = function(x1, y1, x2, y2, line_width) {
     pancake.graphics.context.lineWidth = 1;
 };
 
-pancake.graphics.triangle = function(x1, y1, x2, y2, x3, y3, line_width) {
-    pancake.graphics.context.lineWidth = line_width;
+pancake.graphics.triangle = function(x1, y1, x2, y2, x3, y3, lw) {
+    pancake.graphics.context.lineWidth = lw;
     pancake.graphics.context.beginPath();
     pancake.graphics.context.moveTo(x1,y1);
     pancake.graphics.context.lineTo(x2,y2);
@@ -718,10 +714,10 @@ pancake.graphics.triangle = function(x1, y1, x2, y2, x3, y3, line_width) {
     pancake.graphics.context.lineWidth = 1;
 };
 
-pancake.graphics.polygon = function(points) {
+pancake.graphics.polygon = function(p) {
     pancake.graphics.context.beginPath();
-    pancake.graphics.context.moveTo(points[0][0], points[0][1]);
-    for (var i = 0; i < points.length; i++) pancake.graphics.context.lineTo(points[i][0], points[i][1]);
+    pancake.graphics.context.moveTo(p[0][0], p[0][1]);
+    for (var i = 0; i < p.length; i++) pancake.graphics.context.lineTo(p[i][0], p[i][1]);
     pancake.graphics.context.closePath();
     if (pancake.graphics.mode == pancake.graphics.FILL) pancake.graphics.fill();
     if (pancake.graphics.mode == pancake.graphics.STROKE) pancake.graphics.context.stroke();
@@ -731,22 +727,22 @@ pancake.graphics.polygon = function(points) {
     }
 };
 
-pancake.graphics.loadImage = function(src, index) {
-    pancake.images[index] = new Image();
-    pancake.images[index].src = src;
+pancake.graphics.loadImage = function(src, i) {
+    pancake.images[i] = new Image();
+    pancake.images[i].src = src;
 };
 
-pancake.graphics.loadImageFromDocument = function(elem, index) {
-    pancake.images[index] = new Image();
-    pancake.images[index].src = elem.src;
+pancake.graphics.loadImageFromDocument = function(e, i) {
+    pancake.images[i] = new Image();
+    pancake.images[i].src = e.src;
 };
 
-pancake.graphics.image = function(image, x, y, w, h) {
-    pancake.graphics.context.drawImage(image, x, y, w, h);
+pancake.graphics.image = function(i, x, y, w, h) {
+    pancake.graphics.context.drawImage(i, x, y, w, h);
 };
 
-pancake.graphics.imageFromIndex = function(image_index, x, y, w, h) {
-    pancake.graphics.context.drawImage(pancake.images[image_index], x, y, w, h);
+pancake.graphics.imageFromIndex = function(i, x, y, w, h) {
+    pancake.graphics.context.drawImage(pancake.images[i], x, y, w, h);
 };
 
 pancake.graphics.useFilters = function(f, v) {
@@ -765,22 +761,22 @@ pancake.graphics.erase = function(x, y, w, h) {
     pancake.graphics.context.clearRect(x, y, w, h);
 };
 
-pancake.graphics.canvasToImage = function(canvas_index) {
-    if (pancake.debug.unknown(canvas_index)) canvas_index = 0;
-    return pancake.canvases[canvas_index].toDataURL();
+pancake.graphics.canvasToImage = function(c) {
+    if (pancake.debug.unknown(c)) c = 0;
+    return pancake.canvases[c].toDataURL();
 };
 
-pancake.graphics.screenshot = function(canvas_index) {
-    if (pancake.debug.unknown(canvas_index)) canvas_index = 0;
-    window.open(pancake.canvases[canvas_index].toDataURL());
+pancake.graphics.screenshot = function(c) {
+    if (pancake.debug.unknown(c)) c = 0;
+    window.open(pancake.canvases[c].toDataURL());
 };
 
-pancake.graphics.square = function(x, y, size) {
-    if (pancake.graphics.mode == pancake.graphics.FILL) pancake.graphics.context.fillRect(x, y, size, size);
-    if (pancake.graphics.mode == pancake.graphics.STROKE) pancake.graphics.context.strokeRect(x, y, size, size);
+pancake.graphics.square = function(x, y, s) {
+    if (pancake.graphics.mode == pancake.graphics.FILL) pancake.graphics.context.fillRect(x, y, s, s);
+    if (pancake.graphics.mode == pancake.graphics.STROKE) pancake.graphics.context.strokeRect(x, y, s, s);
     if (pancake.graphics.mode == pancake.graphics.BOTH) {
-        pancake.graphics.context.fillRect(x, y, size, size);
-        pancake.graphics.context.strokeRect(x, y, size, size);
+        pancake.graphics.context.fillRect(x, y, s, s);
+        pancake.graphics.context.strokeRect(x, y, s, s);
     }
 };
 
@@ -805,30 +801,30 @@ pancake.graphics.gradientRect = function(x, y, w, h, content) {
 	}
 };
 
-pancake.graphics.grid = function(size) {
-    var grid_loop_width = pancake.graphics.context.canvas.width / size,grid_loop_height = pancake.graphics.context.canvas.height / size;
+pancake.graphics.grid = function(s) {
+    var grid_loop_width = pancake.graphics.context.canvas.width / s,grid_loop_height = pancake.graphics.context.canvas.height / s;
 	var x = 0,y = 0;
 	for(var i = 0;i < grid_loop_height;i++)
 	{
 		for(z = 0;z < grid_loop_width;z++)
 		{
-			pancake.graphics.context.strokeRect(x,y,size,size);
-            pancake.graphics.context.strokeRect(x + size,y,size,size);
-            x = x + size;
+			pancake.graphics.context.strokeRect(x,y,s,s);
+            pancake.graphics.context.strokeRect(x + s,y,s,s);
+            x = x + s;
 		}
-		x = 0,y = y + size;
+		x = 0,y = y + s;
 	}
 };
 
 // NOTES: Antialiasing works with images
-pancake.graphics.setAntialiasing = function(enable, quality) {
-    pancake.graphics.context.imageSmoothingEnabled = enable;
-    pancake.graphics.context.imageSmoothingQuality = quality;
+pancake.graphics.setAntialiasing = function(e, q) {
+    pancake.graphics.context.imageSmoothingEnabled = e;
+    pancake.graphics.context.imageSmoothingQuality = q;
 };
 
-pancake.graphics.setContext = function(context, context_index) {
-    pancake.graphics.context = context;
-    pancake.context.set(context, context_index);
+pancake.graphics.setContext = function(c, i) {
+    pancake.graphics.context = c;
+    pancake.context.set(c, i);
 };
 
 pancake.graphics.translate = function(x, y) {
@@ -867,9 +863,9 @@ document.onfullscreenchange = document.onmozfullscreenchange = document.onmsfull
     }
 };
 
-pancake.graphics.shadow = function(color, blur) {
-    pancake.graphics.context.shadowColor = color;
-    pancake.graphics.context.shadowBlur = blur;
+pancake.graphics.shadow = function(c, b) {
+    pancake.graphics.context.shadowColor = c;
+    pancake.graphics.context.shadowBlur = b;
 };
 // Pancake audio part
 // NOTES: To resume playing audio use same play function,Also you can even play music or song
@@ -878,116 +874,116 @@ pancake.audio_files = [];
 var _audio = undefined;
 
 // Play audio from source directly
-pancake.audio.play = function(src) {
-    _audio = new Audio(src).play();
+pancake.audio.play = function(s) {
+    _audio = new Audio(s).play();
 };
 
 // Load audio to audio files array to play from index using functions below
-pancake.audio.load = function(src, audio_index) {
-    pancake.audio_files[audio_index] = new Audio(src);
-    pancake.audio_files[audio_index].loop = false;
-    pancake.audio_files[audio_index].load();
+pancake.audio.load = function(s, a) {
+    pancake.audio_files[a] = new Audio(s);
+    pancake.audio_files[a].loop = false;
+    pancake.audio_files[a].load();
 
 };
 
-pancake.audio.playFromIndex = function(audio_index) {
-    pancake.audio_files[audio_index].play();
-    if (pancake.audio_files[audio_index].loop) pancake.audio_files[audio_index].play();
+pancake.audio.playFromIndex = function(a) {
+    pancake.audio_files[a].play();
+    if (pancake.audio_files[a].loop) pancake.audio_files[a].play();
 };
 
-pancake.audio.pauseFromIndex = function(audio_index) {
-    pancake.audio_files[audio_index].pause();
+pancake.audio.pauseFromIndex = function(a) {
+    pancake.audio_files[a].pause();
 };
 
-pancake.audio.setVolumeFromIndex = function(volume, audio_index) {
-    pancake.audio_files[audio_index].volume = volume;
+pancake.audio.setVolumeFromIndex = function(v, a) {
+    pancake.audio_files[a].volume = v;
 };
 
-pancake.audio.setMuteFromIndex = function(mute, audio_index) {
-    pancake.audio_files[audio_index].muted = mute;
+pancake.audio.setMuteFromIndex = function(m, a) {
+    pancake.audio_files[a].muted = m;
 };
 
-pancake.audio.setLoopFromIndex = function(loop, audio_index) {
-    pancake.audio_files[audio_index].loop = loop;
+pancake.audio.setLoopFromIndex = function(l, a) {
+    pancake.audio_files[a].loop = l;
 };
 
-pancake.audio.finishedPlayingFromIndex = function(audio_index) {
-    return pancake.audio_files[audio_index].ended;
+pancake.audio.finishedPlayingFromIndex = function(a) {
+    return pancake.audio_files[a].ended;
 };
 
 pancake.video = {};
 pancake.videos = [];
 var _video = undefined;
 
-pancake.video.load = function(src, video_index) {
-    pancake.videos[video_index] = document.createElement("video");
-    pancake.videos[video_index].src = src;
-    pancake.videos[video_index].autoplay = true;
-    pancake.videos[video_index].loop = false;
-    pancake.videos[video_index].load();
+pancake.video.load = function(s, v) {
+    pancake.videos[v] = document.createElement("video");
+    pancake.videos[v].src = s;
+    pancake.videos[v].autoplay = true;
+    pancake.videos[v].loop = false;
+    pancake.videos[v].load();
 };
 
-pancake.video.play = function(video_index, x, y, w, h) {
+pancake.video.play = function(v, x, y, w, h) {
     if (pancake.debug.unknown(x)) x = 0;
     if (pancake.debug.unknown(y)) y = 0;
     if (pancake.debug.unknown(w)) w = pancake.graphics.context.canvas.width;
     if (pancake.debug.unknown(h)) h = pancake.graphics.context.canvas.height;
-    if (!pancake.videos[video_index].ended) {
-        pancake.graphics.image(pancake.videos[video_index], x, y, w, h);
-        pancake.videos[video_index].play();
-        if (pancake.videos[video_index].loop) {
-            pancake.graphics.image(pancake.videos[video_index], x, y, w, h);
-            pancake.videos[video_index].play();
+    if (!pancake.videos[v].ended) {
+        pancake.graphics.image(pancake.videos[v], x, y, w, h);
+        pancake.videos[v].play();
+        if (pancake.videos[v].loop) {
+            pancake.graphics.image(pancake.videos[v], x, y, w, h);
+            pancake.videos[v].play();
         }
     }
 };
 
-pancake.video.pause = function(video_index) {
-    pancake.videos[video_index].pause();
+pancake.video.pause = function(v) {
+    pancake.videos[v].pause();
 };
 
-pancake.video.setVolume = function(volume, video_index) {
-    pancake.videos[video_index].volume = volume;
+pancake.video.setVolume = function(vo, v) {
+    pancake.videos[v].volume = vo;
 };
 
-pancake.video.setMute = function(mute, video_index) {
-    pancake.videos[video_index].muted = mute;
+pancake.video.setMute = function(m, v) {
+    pancake.videos[v].muted = m;
 };
 
-pancake.video.setLoop = function(loop, video_index) {
-    pancake.videos[video_index].loop = loop;
+pancake.video.setLoop = function(l, v) {
+    pancake.videos[v].loop = l;
 };
 
-pancake.video.finished = function(video_index) {
-    return pancake.videos[video_index].ended;
+pancake.video.finished = function(v) {
+    return pancake.videos[v].ended;
 };
 
 pancake.script = {};
 pancake.scripts = [];
 
-pancake.script.eval = function(code) {
-    window.eval(code);
+pancake.script.eval = function(c) {
+    window.eval(c);
 };
 
-pancake.script.load = function(src, script_index) {
-    pancake.scripts[script_index] = document.createElement("script"); 
-    pancake.scripts[script_index].src = src; 
-    pancake.scripts[script_index].type = "text/javascript"; 
-    pancake.scripts[script_index].defer = true; 
-    document.body.appendChild(pancake.scripts[script_index]);
+pancake.script.load = function(src, s) {
+    pancake.scripts[s] = document.createElement("script"); 
+    pancake.scripts[s].src = src; 
+    pancake.scripts[s].type = "text/javascript"; 
+    pancake.scripts[s].defer = true; 
+    document.body.appendChild(pancake.scripts[s]);
 };
 
 pancake.storage = {};
-pancake.storage.save = function(variable, value) {
-    window.localStorage.setItem(variable, value);
+pancake.storage.save = function(v, val) {
+    window.localStorage.setItem(v, val);
 };
 
-pancake.storage.load = function(variable) {
-    return window.localStorage.getItem(variable);
+pancake.storage.load = function(v) {
+    return window.localStorage.getItem(v);
 };
 
-pancake.storage.remove = function(variable) {
-    window.localStorage.removeItem(variable)
+pancake.storage.remove = function(v) {
+    window.localStorage.removeItem(v)
 };
 
 pancake.storage.clear = function() {
@@ -1005,8 +1001,8 @@ pancake.timers.timer = function(f, ms) {
     return window.setInterval(f, 1000 / ms);
 };
 
-pancake.timers.pause = function(timer) {
-    window.clearInterval(timer);
+pancake.timers.pause = function(t) {
+    window.clearInterval(t);
 };
 
 // Don't judge me,I used that one by Paul Irish
@@ -1024,7 +1020,7 @@ window.animate = (function() {
 
 pancake.content = {};
 
-pancake.content.load = function(json_content) {
-    return JSON.parse(JSON.stringify(json_content));
+pancake.content.load = function(j) {
+    return JSON.parse(JSON.stringify(j));
 };
 
