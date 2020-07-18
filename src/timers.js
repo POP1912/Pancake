@@ -9,8 +9,8 @@ pancake.timers.timer = function(f, ms) {
     return window.setInterval(f, 1000 / ms);
 };
 
-pancake.timers.pause = function(timer) {
-    window.clearInterval(timer);
+pancake.timers.pause = function(t) {
+    window.clearInterval(t);
 };
 
 // Don't judge me,I used that one by Paul Irish

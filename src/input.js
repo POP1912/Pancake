@@ -139,12 +139,12 @@ pancake.input.keypress = function(k) {
     return pancake.input.latest_key_pressed == k;
 };
 
-pancake.input.hideCursor = function(canvas_index) {
-    pancake.canvases[canvas_index].style.cursor = "none";
+pancake.input.hideCursor = function(i) {
+    pancake.canvases[i].style.cursor = "none";
 };
 
-pancake.input.showCursor = function(canvas_index) {
-    pancake.canvases[canvas_index].style.cursor = "auto";
+pancake.input.showCursor = function(i) {
+    pancake.canvases[i].style.cursor = "auto";
 };
 
 pancake.input.lockPointer = function() {
@@ -168,44 +168,44 @@ if (pancake.browser.support.GAMEPAD()) {
     pancake.input.GAMEPAD_MOVE_ANALOG = 1;
     pancake.input.GAMEPAD_CAMERA_ANALOG = 2;
 
-    pancake.input.gamepadConnected = function(index) {
-        return !(navigator.getGamepads()[index] == undefined);
+    pancake.input.gamepadConnected = function(i) {
+        return !(navigator.getGamepads()[i] == undefined);
     };
     
-    pancake.input.gamepadID = function(index) {
-        if (!(navigator.getGamepads()[index] == undefined)) return navigator.getGamepads()[index].id;
+    pancake.input.gamepadID = function(i) {
+        if (!(navigator.getGamepads()[i] == undefined)) return navigator.getGamepads()[i].id;
     };
     
-    pancake.input.gamepadButtonPressed = function(button, index) {
-        if (!(navigator.getGamepads()[index] == undefined)) return navigator.getGamepads()[index].buttons[button].pressed;
+    pancake.input.gamepadButtonPressed = function(b, i) {
+        if (!(navigator.getGamepads()[i] == undefined)) return navigator.getGamepads()[i].buttons[b].pressed;
     };
     
-    pancake.input.gamepadButtonTouched = function(button, index) {
-        if (!(navigator.getGamepads()[index] == undefined)) return navigator.getGamepads()[index].buttons[button].touched;
+    pancake.input.gamepadButtonTouched = function(b, i) {
+        if (!(navigator.getGamepads()[i] == undefined)) return navigator.getGamepads()[i].buttons[b].touched;
     };
 
-    pancake.input.checkMovement = function(index, analog, direction) {
-        if (!(navigator.getGamepads()[index] == undefined)) {
-            if (analog == pancake.input.GAMEPAD_MOVE_ANALOG) {
-                if (navigator.getGamepads()[index].axes[1] <= direction) pancake.input.GAMEPAD_MOVE_HORIZONTAL_DIRECTION = "UP";
-                if (navigator.getGamepads()[index].axes[1] >= direction) pancake.input.GAMEPAD_MOVE_HORIZONTAL_DIRECTION = "DOWN";
-                if (navigator.getGamepads()[index].axes[0] <= direction) pancake.input.GAMEPAD_MOVE_VERTICAL_DIRECTION = "LEFT";
-                if (navigator.getGamepads()[index].axes[0] >= direction) pancake.input.GAMEPAD_MOVE_VERTICAL_DIRECTION = "RIGHT";
+    pancake.input.checkMovement = function(i, a, d) {
+        if (!(navigator.getGamepads()[i] == undefined)) {
+            if (a == pancake.input.GAMEPAD_MOVE_ANALOG) {
+                if (navigator.getGamepads()[i].axes[1] <= d) pancake.input.GAMEPAD_MOVE_HORIZONTAL_DIRECTION = "UP";
+                if (navigator.getGamepads()[i].axes[1] >= d) pancake.input.GAMEPAD_MOVE_HORIZONTAL_DIRECTION = "DOWN";
+                if (navigator.getGamepads()[i].axes[0] <= d) pancake.input.GAMEPAD_MOVE_VERTICAL_DIRECTION = "LEFT";
+                if (navigator.getGamepads()[i].axes[0] >= d) pancake.input.GAMEPAD_MOVE_VERTICAL_DIRECTION = "RIGHT";
             }
             
-            if (analog == pancake.input.GAMEPAD_CAMERA_ANALOG) {
-                if (navigator.getGamepads()[index].axes[3] <= direction) pancake.input.GAMEPAD_CAMERA_HORIZONTAL_DIRECTION = "UP";
-                if (navigator.getGamepads()[index].axes[3] >= direction) pancake.input.GAMEPAD_CAMERA_HORIZONTAL_DIRECTION = "DOWN";
-                if (navigator.getGamepads()[index].axes[2] <= direction) pancake.input.GAMEPAD_CAMERA_HORIZONTAL_DIRECTION = "LEFT";
-                if (navigator.getGamepads()[index].axes[2] >= direction) pancake.input.GAMEPAD_CAMERA_HORIZONTAL_DIRECTION = "RIGHT";
+            if (a == pancake.input.GAMEPAD_CAMERA_ANALOG) {
+                if (navigator.getGamepads()[i].axes[3] <= d) pancake.input.GAMEPAD_CAMERA_HORIZONTAL_DIRECTION = "UP";
+                if (navigator.getGamepads()[i].axes[3] >= d) pancake.input.GAMEPAD_CAMERA_HORIZONTAL_DIRECTION = "DOWN";
+                if (navigator.getGamepads()[i].axes[2] <= d) pancake.input.GAMEPAD_CAMERA_HORIZONTAL_DIRECTION = "LEFT";
+                if (navigator.getGamepads()[i].axes[2] >= d) pancake.input.GAMEPAD_CAMERA_HORIZONTAL_DIRECTION = "RIGHT";
             }
         }
     };
 
-    pancake.input.gamepadAnalogMoved = function(index, analog, analog_direction, direction) {
-        pancake.input.checkMovement(index, analog, analog_direction);
-        if (analog == pancake.input.GAMEPAD_MOVE_ANALOG) return (pancake.input.GAMEPAD_MOVE_HORIZONTAL_DIRECTION == direction || pancake.input.GAMEPAD_MOVE_VERTICAL_DIRECTION == direction);
-        if (analog == pancake.input.GAMEPAD_CAMERA_ANALOG) return (pancake.input.GAMEPAD_CAMERA_HORIZONTAL_DIRECTION == direction || pancake.input.GAMEPAD_CAMERA_VERTICAL_DIRECTION == direction);
+    pancake.input.gamepadAnalogMoved = function(i, a, ad, d) {
+        pancake.input.checkMovement(i, a, ad);
+        if (a == pancake.input.GAMEPAD_MOVE_ANALOG) return (pancake.input.GAMEPAD_MOVE_HORIZONTAL_DIRECTION == d || pancake.input.GAMEPAD_MOVE_VERTICAL_DIRECTION == d);
+        if (a == pancake.input.GAMEPAD_CAMERA_ANALOG) return (pancake.input.GAMEPAD_CAMERA_HORIZONTAL_DIRECTION == d || pancake.input.GAMEPAD_CAMERA_VERTICAL_DIRECTION == d);
     };
 }
 

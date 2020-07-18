@@ -42,6 +42,6 @@ pancake.browser.support.GAMEPAD = function() {
     return "getGamepads" in window.navigator;
 };
 
-pancake.browser.open = function(url) {
-    window.open(url);
+pancake.browser.open = function(u) {
+    window.open(u);
 };

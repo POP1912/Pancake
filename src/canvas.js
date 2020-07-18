@@ -3,34 +3,34 @@ pancake.canvases = [];
 pancake.canvas.compatible_width = window.innerWidth - 20;
 pancake.canvas.compatible_height = window.innerHeight - 20;
 
-pancake.canvas.create = function(width, height, canvas_index) {
-    pancake.canvases[canvas_index] = document.createElement("canvas");
-    pancake.canvases[canvas_index].width = width;
-    pancake.canvases[canvas_index].height = height;
-    document.body.appendChild(pancake.canvases[canvas_index]);
+pancake.canvas.create = function(w, h, c) {
+    pancake.canvases[c] = document.createElement("canvas");
+    pancake.canvases[c].width = w;
+    pancake.canvases[c].height = h;
+    document.body.appendChild(pancake.canvases[c]);
 };
 
-pancake.canvas.resize = function(width, height, canvas_index) {
-    pancake.canvases[canvas_index].width = width;
-    pancake.canvases[canvas_index].height = height;
+pancake.canvas.resize = function(w, h, c) {
+    pancake.canvases[c].width = w;
+    pancake.canvases[c].height = h;
 };
 
-pancake.canvas.setAttribute = function(variable, value, canvas_index) {
-    window.eval(" pancake.canvases[" + canvas_index.toString() + "]." + variable.toString() + " = " + value.toString() + "; ");
+pancake.canvas.setAttribute = function(v, val, c) {
+    window.eval(" pancake.canvases[" + c.toString() + "]." + v.toString() + " = " + val.toString() + "; ");
 };
 
-pancake.canvas.remove = function(canvas_index) {
-    pancake.canvases[canvas_index].parentNode.removeChild(pancake.canvases[canvas_index]);
+pancake.canvas.remove = function(c) {
+    pancake.canvases[c].parentNode.removeChild(pancake.canvases[c]);
 };
 
-pancake.canvas.hide = function(canvas_index) {
-    pancake.canvases[canvas_index].style.visibility = "hidden";
+pancake.canvas.hide = function(c) {
+    pancake.canvases[c].style.visibility = "hidden";
 };
 
-pancake.canvas.show = function(canvas_index) {
-    pancake.canvases[canvas_index].style.visibility = "visible";
+pancake.canvas.show = function(c) {
+    pancake.canvases[c].style.visibility = "visible";
 };
 
-pancake.canvas.set = function(canvas, canvas_index) {
-    pancake.canvases[canvas_index] = canvas;
+pancake.canvas.set = function(ca, c) {
+    pancake.canvases[c] = ca;
 };

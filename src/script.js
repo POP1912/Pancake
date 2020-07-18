@@ -1,14 +1,14 @@
 pancake.script = {};
 pancake.scripts = [];
 
-pancake.script.eval = function(code) {
-    window.eval(code);
+pancake.script.eval = function(c) {
+    window.eval(c);
 };
 
-pancake.script.load = function(src, script_index) {
-    pancake.scripts[script_index] = document.createElement("script"); 
-    pancake.scripts[script_index].src = src; 
-    pancake.scripts[script_index].type = "text/javascript"; 
-    pancake.scripts[script_index].defer = true; 
-    document.body.appendChild(pancake.scripts[script_index]);
+pancake.script.load = function(src, s) {
+    pancake.scripts[s] = document.createElement("script"); 
+    pancake.scripts[s].src = src; 
+    pancake.scripts[s].type = "text/javascript"; 
+    pancake.scripts[s].defer = true; 
+    document.body.appendChild(pancake.scripts[s]);
 };

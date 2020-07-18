@@ -1,13 +1,13 @@
 pancake.debug = {};
 
-pancake.debug.unknown = function(variable) {
-    return ((variable == undefined) || (variable == null) || (variable == NaN));
+pancake.debug.unknown = function(v) {
+    return ((v == undefined) || (v == null) || (v == NaN));
 };
 
-pancake.debug.redefine = function(variable, value) {
-    if ((variable == undefined) || (variable == null) || (variable == NaN)) variable = value;
+pancake.debug.redefine = function(v, val) {
+    if ((v == undefined) || (v == null) || (v == NaN)) v = val;
 };
 
-pancake.debug.type = function(variable) {
-    return typeof(variable);
+pancake.debug.type = function(v) {
+    return typeof(v);
 };

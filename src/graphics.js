@@ -89,8 +89,8 @@ pancake.graphics.color = function(f, s) {
     pancake.graphics.context.strokeStyle = s;
 };
 
-pancake.graphics.setBackgroundColor = function(color) {
-    pancake.graphics.context.canvas.style.backgroundColor = color;
+pancake.graphics.setBackgroundColor = function(c) {
+    pancake.graphics.context.canvas.style.backgroundColor = c;
 };
 
 pancake.graphics.setBackgroundImage = function(src) {
@@ -110,12 +110,12 @@ pancake.graphics.clear = function() {
     pancake.graphics.context.clearRect(0, 0, pancake.graphics.context.canvas.width, pancake.graphics.context.canvas.height);
 };
 
-pancake.graphics.text = function(text, x, y) {
-    if (pancake.graphics.mode == pancake.graphics.FILL) pancake.graphics.context.fillText(text, x, y);
-    if (pancake.graphics.mode == pancake.graphics.STROKE) pancake.graphics.context.strokeText(text, x, y);
+pancake.graphics.text = function(t, x, y) {
+    if (pancake.graphics.mode == pancake.graphics.FILL) pancake.graphics.context.fillText(t, x, y);
+    if (pancake.graphics.mode == pancake.graphics.STROKE) pancake.graphics.context.strokeText(t, x, y);
     if (pancake.graphics.mode == pancake.graphics.BOTH) {
-        pancake.graphics.context.fillText(text, x, y);
-        pancake.graphics.context.strokeText(text, x, y);
+        pancake.graphics.context.fillText(t, x, y);
+        pancake.graphics.context.strokeText(t, x, y);
     }
 };
 
@@ -160,9 +160,9 @@ pancake.graphics.circle = function(x, y, r) {
     }
 };
 
-pancake.graphics.ellipse = function(x, y, radius_x, radius_y, rotation, start_angle, end_angle, anticlockwise) {
+pancake.graphics.ellipse = function(x, y, rx, ry, rot, sa, ea, a) {
     pancake.graphics.context.beginPath();
-    pancake.graphics.context.ellipse(x, y, radius_x, radius_y, rotation, start_angle, end_angle, anticlockwise);
+    pancake.graphics.context.ellipse(x, y, rx, ry, rot, sa, ea, a);
     pancake.graphics.context.closePath();
     if (pancake.graphics.mode == pancake.graphics.FILL) pancake.graphics.context.fill();
     if (pancake.graphics.mode == pancake.graphics.STROKE) pancake.graphics.context.stroke();
@@ -172,8 +172,8 @@ pancake.graphics.ellipse = function(x, y, radius_x, radius_y, rotation, start_an
     }
 };
 
-pancake.graphics.line = function(x1, y1, x2, y2, line_width) {
-    pancake.graphics.context.lineWidth = line_width;
+pancake.graphics.line = function(x1, y1, x2, y2, lw) {
+    pancake.graphics.context.lineWidth = lw;
     pancake.graphics.context.beginPath();
     pancake.graphics.context.moveTo(x1,y1);
     pancake.graphics.context.lineTo(x2,y2);
@@ -182,8 +182,8 @@ pancake.graphics.line = function(x1, y1, x2, y2, line_width) {
     pancake.graphics.context.lineWidth = 1;
 };
 
-pancake.graphics.triangle = function(x1, y1, x2, y2, x3, y3, line_width) {
-    pancake.graphics.context.lineWidth = line_width;
+pancake.graphics.triangle = function(x1, y1, x2, y2, x3, y3, lw) {
+    pancake.graphics.context.lineWidth = lw;
     pancake.graphics.context.beginPath();
     pancake.graphics.context.moveTo(x1,y1);
     pancake.graphics.context.lineTo(x2,y2);
@@ -199,10 +199,10 @@ pancake.graphics.triangle = function(x1, y1, x2, y2, x3, y3, line_width) {
     pancake.graphics.context.lineWidth = 1;
 };
 
-pancake.graphics.polygon = function(points) {
+pancake.graphics.polygon = function(p) {
     pancake.graphics.context.beginPath();
-    pancake.graphics.context.moveTo(points[0][0], points[0][1]);
-    for (var i = 0; i < points.length; i++) pancake.graphics.context.lineTo(points[i][0], points[i][1]);
+    pancake.graphics.context.moveTo(p[0][0], p[0][1]);
+    for (var i = 0; i < p.length; i++) pancake.graphics.context.lineTo(p[i][0], p[i][1]);
     pancake.graphics.context.closePath();
     if (pancake.graphics.mode == pancake.graphics.FILL) pancake.graphics.fill();
     if (pancake.graphics.mode == pancake.graphics.STROKE) pancake.graphics.context.stroke();
@@ -212,22 +212,22 @@ pancake.graphics.polygon = function(points) {
     }
 };
 
-pancake.graphics.loadImage = function(src, index) {
-    pancake.images[index] = new Image();
-    pancake.images[index].src = src;
+pancake.graphics.loadImage = function(src, i) {
+    pancake.images[i] = new Image();
+    pancake.images[i].src = src;
 };
 
-pancake.graphics.loadImageFromDocument = function(elem, index) {
-    pancake.images[index] = new Image();
-    pancake.images[index].src = elem.src;
+pancake.graphics.loadImageFromDocument = function(e, i) {
+    pancake.images[i] = new Image();
+    pancake.images[i].src = e.src;
 };
 
-pancake.graphics.image = function(image, x, y, w, h) {
-    pancake.graphics.context.drawImage(image, x, y, w, h);
+pancake.graphics.image = function(i, x, y, w, h) {
+    pancake.graphics.context.drawImage(i, x, y, w, h);
 };
 
-pancake.graphics.imageFromIndex = function(image_index, x, y, w, h) {
-    pancake.graphics.context.drawImage(pancake.images[image_index], x, y, w, h);
+pancake.graphics.imageFromIndex = function(i, x, y, w, h) {
+    pancake.graphics.context.drawImage(pancake.images[i], x, y, w, h);
 };
 
 pancake.graphics.useFilters = function(f, v) {
@@ -246,22 +246,22 @@ pancake.graphics.erase = function(x, y, w, h) {
     pancake.graphics.context.clearRect(x, y, w, h);
 };
 
-pancake.graphics.canvasToImage = function(canvas_index) {
-    if (pancake.debug.unknown(canvas_index)) canvas_index = 0;
-    return pancake.canvases[canvas_index].toDataURL();
+pancake.graphics.canvasToImage = function(c) {
+    if (pancake.debug.unknown(c)) c = 0;
+    return pancake.canvases[c].toDataURL();
 };
 
-pancake.graphics.screenshot = function(canvas_index) {
-    if (pancake.debug.unknown(canvas_index)) canvas_index = 0;
-    window.open(pancake.canvases[canvas_index].toDataURL());
+pancake.graphics.screenshot = function(c) {
+    if (pancake.debug.unknown(c)) c = 0;
+    window.open(pancake.canvases[c].toDataURL());
 };
 
-pancake.graphics.square = function(x, y, size) {
-    if (pancake.graphics.mode == pancake.graphics.FILL) pancake.graphics.context.fillRect(x, y, size, size);
-    if (pancake.graphics.mode == pancake.graphics.STROKE) pancake.graphics.context.strokeRect(x, y, size, size);
+pancake.graphics.square = function(x, y, s) {
+    if (pancake.graphics.mode == pancake.graphics.FILL) pancake.graphics.context.fillRect(x, y, s, s);
+    if (pancake.graphics.mode == pancake.graphics.STROKE) pancake.graphics.context.strokeRect(x, y, s, s);
     if (pancake.graphics.mode == pancake.graphics.BOTH) {
-        pancake.graphics.context.fillRect(x, y, size, size);
-        pancake.graphics.context.strokeRect(x, y, size, size);
+        pancake.graphics.context.fillRect(x, y, s, s);
+        pancake.graphics.context.strokeRect(x, y, s, s);
     }
 };
 
@@ -286,30 +286,30 @@ pancake.graphics.gradientRect = function(x, y, w, h, content) {
 	}
 };
 
-pancake.graphics.grid = function(size) {
-    var grid_loop_width = pancake.graphics.context.canvas.width / size,grid_loop_height = pancake.graphics.context.canvas.height / size;
+pancake.graphics.grid = function(s) {
+    var grid_loop_width = pancake.graphics.context.canvas.width / s,grid_loop_height = pancake.graphics.context.canvas.height / s;
 	var x = 0,y = 0;
 	for(var i = 0;i < grid_loop_height;i++)
 	{
 		for(z = 0;z < grid_loop_width;z++)
 		{
-			pancake.graphics.context.strokeRect(x,y,size,size);
-            pancake.graphics.context.strokeRect(x + size,y,size,size);
-            x = x + size;
+			pancake.graphics.context.strokeRect(x,y,s,s);
+            pancake.graphics.context.strokeRect(x + s,y,s,s);
+            x = x + s;
 		}
-		x = 0,y = y + size;
+		x = 0,y = y + s;
 	}
 };
 
 // NOTES: Antialiasing works with images
-pancake.graphics.setAntialiasing = function(enable, quality) {
-    pancake.graphics.context.imageSmoothingEnabled = enable;
-    pancake.graphics.context.imageSmoothingQuality = quality;
+pancake.graphics.setAntialiasing = function(e, q) {
+    pancake.graphics.context.imageSmoothingEnabled = e;
+    pancake.graphics.context.imageSmoothingQuality = q;
 };
 
-pancake.graphics.setContext = function(context, context_index) {
-    pancake.graphics.context = context;
-    pancake.context.set(context, context_index);
+pancake.graphics.setContext = function(c, i) {
+    pancake.graphics.context = c;
+    pancake.context.set(c, i);
 };
 
 pancake.graphics.translate = function(x, y) {
@@ -348,7 +348,7 @@ document.onfullscreenchange = document.onmozfullscreenchange = document.onmsfull
     }
 };
 
-pancake.graphics.shadow = function(color, blur) {
-    pancake.graphics.context.shadowColor = color;
-    pancake.graphics.context.shadowBlur = blur;
+pancake.graphics.shadow = function(c, b) {
+    pancake.graphics.context.shadowColor = c;
+    pancake.graphics.context.shadowBlur = b;
 };

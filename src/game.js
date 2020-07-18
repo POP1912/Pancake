@@ -1,7 +1,7 @@
 pancake.game = {};
 
-pancake.game.title = function(title) {
-    window.document.title = title;
+pancake.game.title = function(t) {
+    window.document.title = t;
 };
 
 pancake.game.restart = function() {
