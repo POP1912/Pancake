@@ -29,7 +29,8 @@ javascript_source_files = [
     open(source_code_folder + "script.js", "r"),
     open(source_code_folder + "storage.js", "r"),
     open(source_code_folder + "timers.js", "r"),
-    open(source_code_folder + "content.js", "r")
+    open(source_code_folder + "content.js", "r"),
+    open(source_code_folder + "define.js", "r")
 ]
 
 for javascript_file in javascript_source_files:
