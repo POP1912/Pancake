@@ -202,7 +202,7 @@ p.g.triangle = function(x1, y1, x2, y2, x3, y3, lw) {
 p.g.polygon = function(po) {
     p.g.context.beginPath();
     p.g.context.moveTo(po[0][0], po[0][1]);
-    for (var i = 0; i < p.length; i++) p.g.context.lineTo(po[i][0], po[i][1]);
+    for (var i = 0; i < po.length; i++) p.g.context.lineTo(po[i][0], po[i][1]);
     p.g.context.closePath();
     if (p.g.mode == p.g.FILL) p.g.fill();
     if (p.g.mode == p.g.STROKE) p.g.context.stroke();
