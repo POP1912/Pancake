@@ -1,14 +1,14 @@
-pancake.util = {};
+p.u = {};
 
-pancake.util.random = function(a) {
+p.u.random = function(a) {
     return Math.floor(Math.random() * a);
 };
 
 // @see https://stackoverflow.com/a/1527820/2124254
-pancake.util.randomBetween = function(a, b) {
+p.u.randomBetween = function(a, b) {
     return Math.floor(Math.random() * (b - a)) + a;
 };
 
-pancake.util.quote = function(s) {
+p.u.quote = function(s) {
     return JSON.stringify(s);
 };

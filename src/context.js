@@ -1,17 +1,17 @@
 // Rewritten by Rabia Alhaffar in 9/February/2020
-pancake.context = {};
-pancake.contexts = [];
+p.con = {};
+p.contexts = [];
 
-pancake.context.create = function(c, co) {
-    pancake.contexts[co] = pancake.canvases[c].getContext("2d");
+p.con.create = function(c, co) {
+    p.contexts[co] = p.canvases[c].getContext("2d");
 };
 
-pancake.context.use = function(c, co) {
-    pancake.contexts[co] = canvas.getContext("2d");
-    pancake.graphics.useContext(co);
-    pancake.canvas.set(c, co);
+p.con.use = function(c, co) {
+    p.contexts[co] = canvas.getContext("2d");
+    p.g.useContext(co);
+    p.can.set(c, co);
 };
 
-pancake.context.set = function(nco, co) {
-    pancake.contexts[co] = nco;
+p.con.set = function(nco, co) {
+    p.contexts[co] = nco;
 };

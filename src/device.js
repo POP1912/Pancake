@@ -1,11 +1,11 @@
-pancake.device = {};
-pancake.device.screen_height = screen.height;
-pancake.device.screen_width = screen.width;
+p.de = {};
+p.de.screen_height = screen.height;
+p.de.screen_width = screen.width;
 
-pancake.device.vibrate = function(p) {
+p.de.vibrate = function(p) {
     window.navigator.vibrate(p);
 };
 
-pancake.device.stopVibrating = function() {
+p.de.stopVibrating = function() {
     window.navigator.vibrate(0);
 };

@@ -1,5 +1,5 @@
-pancake.content = {};
+p.c = {};
 
-pancake.content.load = function(j) {
+p.c.load = function(j) {
     return JSON.parse(JSON.stringify(j));
 };

@@ -1,9 +1,9 @@
-pancake.game = {};
+p.ga = {};
 
-pancake.game.title = function(t) {
+p.ga.title = function(t) {
     window.document.title = t;
 };
 
-pancake.game.restart = function() {
+p.ga.restart = function() {
     window.location.reload();
 };

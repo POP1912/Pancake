@@ -1,15 +1,15 @@
-pancake.sprite = {};
-pancake.sprites = [];
-pancake.sprite.timers = [];
-pancake.sprite.create = function(im, s) {
-    pancake.sprites[s] = [];
-    pancake.sprite.timers[s] = 0;
+p.sp = {};
+p.sprites = [];
+p.sp.timers = [];
+p.sp.create = function(im, s) {
+    p.sprites[s] = [];
+    p.sp.timers[s] = 0;
     for (var i = 0;i < im.length;i++) {
-        pancake.sprites[s][i] = new Image();
-        pancake.sprites[s][i].src = im[i];
+        p.sprites[s][i] = new Image();
+        p.sprites[s][i].src = im[i];
     }
 };
 
-pancake.sprite.get = function(s) {
-    return pancake.sprites[s];
+p.sp.get = function(s) {
+    return p.sprites[s];
 };

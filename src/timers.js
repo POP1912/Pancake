@@ -1,15 +1,15 @@
-pancake.timers = {};
-pancake.timers.second = 80;
+p.t = {};
+p.t.second = 80;
 
-pancake.timers.countdown = function(f, ms) {
+p.t.countdown = function(f, ms) {
     return window.setTimeout(f, ms);
 };
 
-pancake.timers.timer = function(f, ms) {
+p.t.timer = function(f, ms) {
     return window.setInterval(f, 1000 / ms);
 };
 
-pancake.timers.pause = function(t) {
+p.t.pause = function(t) {
     window.clearInterval(t);
 };
 

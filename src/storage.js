@@ -1,16 +1,16 @@
-pancake.storage = {};
-pancake.storage.save = function(v, val) {
+p.st = {};
+p.st.save = function(v, val) {
     window.localStorage.setItem(v, val);
 };
 
-pancake.storage.load = function(v) {
+p.st.load = function(v) {
     return window.localStorage.getItem(v);
 };
 
-pancake.storage.remove = function(v) {
+p.st.remove = function(v) {
     window.localStorage.removeItem(v)
 };
 
-pancake.storage.clear = function() {
+p.st.clear = function() {
     window.localStorage.clear();
 };
