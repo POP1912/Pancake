@@ -1,5 +1,8 @@
 # Changelog
 
+### v0.0.10
+Optimized the framework for the second (And the last) time.
+
 ### v0.0.9
 1. Optimized the framework for the first time.
 
