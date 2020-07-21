@@ -340,6 +340,7 @@ pancake.scripts                                              // Scripts loaded a
 pancake.canvases                                             // Canvases created array
 pancake.contexts                                             // Contexts created array
 pancake.videos                                               // Video files array
+pancake.images                                               // Images array
 ```
 
 #### How to get content from index?
