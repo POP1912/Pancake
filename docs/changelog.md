@@ -1,22 +1,25 @@
 # Changelog
 
 ### v0.0.10
-Optimized the framework for the second (And the last) time.
+1. Optimized the framework for the second (And the last) time
+2. Fixed example `graphics_04.html` (Changing color mode example),Where color mode doesn't change
+
+> That's all,Thanks for support!
 
 ### v0.0.9
-1. Optimized the framework for the first time.
+1. Optimized the framework for the first time
 
-> TODO: Optimize Pancake for the second time.
+> TODO: Optimize Pancake for the second time
 
 ### v0.0.8
-1. Added `pancake.graphics.shadow(color, blur)` to apply shadows in-game
+1. Added `pancake.graphics.shadow(color, blur)` to apply shadows in-game when drawing shapes
 
 > TODO: Optimizing
 
 ### v0.0.7
 1. Removed `pancake.graphics.resize()` but let canvas used by `pancake.canvas.set()` in case you used a canvas using `pancake.context.use()` 
 2. Better fullscreen check and better fullscreen functionality
-3. Added ability to detect SeaMonkey browser,And Maxthon browser (In case developer didn't changed `navigator.userAgent` in Maxthon)
+3. Added ability to detect SeaMonkey browser,And Maxthon browser (In case developer didn't changed `navigator.userAgent` from Maxthon browser settings)
 4. Improved games,And also improved some examples
 
 > TODO: Optimize Pancake to become smaller,That doesn't means i will remove content
@@ -51,7 +54,7 @@ For more info check the [API](https://github.com/Rabios/Pancake/blob/master/docs
 2. Added new game: Snake 
 3. Resize canvas to fit screen when toggling fullscreen mode
 4. Added ability use `pancake.graphics.screenshot()` on a specified canvas (you just need to add canvas index as first parameter)
-5. Removed `pancake.graphics.setResolution()` (Resolution is ignored on mobile)
+5. Removed `pancake.graphics.setResolution()`
 
 ### v0.0.2
 1. Removed `pancake.device.online()` cause of incompatibility with Google Chrome and some browsers
