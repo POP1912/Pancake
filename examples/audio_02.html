@@ -11,15 +11,25 @@
             document.getElementById("load").onclick = function() {
                 // You just load audio file to index
                 // Here i loaded boom.mp3 to index 0
-                pancake.audio.load("boom.mp3", 0);
+                // In case MP3 is supported by browser,If not alert!
+                if (pancake.browser.support.MP3()) {
+                    pancake.audio.load("boom.mp3", 0);
+                } else {
+                    alert("ERROR: MP3 is not supported!");
+                }
             };
 
             document.getElementById("play").onclick = function() {
-                // I decreased volume from 1 (default) to 0.3 for audio file has index 0
-                pancake.audio.setVolumeFromIndex(0.3, 0);
+                // In case MP3 is supported by browser,If not alert!
+                if (pancake.browser.support.MP3()) {
+                    // Decrease volume from 1 (default) to 0.3 for audio file has index 0
+                    pancake.audio.setVolumeFromIndex(0.3, 0);
 
-                // Then play it
-                pancake.audio.playFromIndex(0);
+                    // Then play it
+                    pancake.audio.playFromIndex(0);
+                } else {
+                    alert("ERROR: You can't play audio cause MP3 not supported!");
+                }
             };
         </script>
     </body>

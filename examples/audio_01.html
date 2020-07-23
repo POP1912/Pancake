@@ -9,7 +9,12 @@
         <script>
             document.getElementById("play-sound").onclick = function() {
                 // That's it,Just nothing else
-                pancake.audio.play("click.wav");
+                // In case MP3 is supported by browser,If not show error!
+                if (pancake.browser.support.WAV()) {
+                    pancake.audio.play("click.wav");
+                } else {
+                    alert("ERROR: WAV is not supported!");
+                }
             };
         </script>
     </body>

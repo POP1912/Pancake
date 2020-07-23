@@ -7,6 +7,7 @@
         <script src="../build/pancake.js"></script>
         <button id="game-title">Change game title</button>
         <button id="restart-game">Restart game</button>
+        <button id="close-game">Close game</button>
         <script>
             document.getElementById("game-title").onclick = function() {
                 pancake.game.title("Game title changed!!!");
@@ -14,6 +15,10 @@
 
             document.getElementById("restart-game").onclick = function() {
                 pancake.game.restart();
+            };
+
+            document.getElementById("close-game").onclick = function() {
+                pancake.game.close();
             };
         </script>
     </body>

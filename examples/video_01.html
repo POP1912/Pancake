@@ -12,7 +12,6 @@
 
             // Set <canvas> tags that has id "canvas" index to 0
             pancake.context.use(document.getElementById("canvas"), 0);
-            pancake.canvas.set(document.getElementById("canvas"), 0);
 
             // Resize canvas to fit window size
             pancake.canvas.resize(pancake.canvas.compatible_width, pancake.canvas.compatible_height, 0);
@@ -30,10 +29,9 @@
             var playvideo = false;
 
             function game() {
-
                 // Clear
                 pancake.graphics.clear();
-
+                
                 // Draw text that asks to interact with canvas to autoplay video
                 if (!playvideo) pancake.graphics.text("Click on canvas to play video", 10, 30);
                 
@@ -43,7 +41,14 @@
                 // You can also add x, y, w, h to set video dimensions and position
                 // pancake.video.play(video_index)
                 // pancake.video.play(video_index, x, y, w, h)
-                if (playvideo) pancake.video.play(0);
+                if (playvideo) {
+                    // If MP4 supported then play video,If not alert!
+                    if (pancake.browser.support.MP4()) {
+                        pancake.video.play(0);
+                    } else {
+                        alert("ERROR: MP4 is not supported!");
+                    }
+                }
 
                 // Prevent input loop
                 pancake.input.preventLoop();
