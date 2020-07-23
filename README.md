@@ -11,7 +11,7 @@ Pancake inspired by LOVE,Pygame,And even AppGameKit and it shares some of their 
 - Free,Moddable and Open-Source
 - Fast,Lightweight,And thin in one pack (All in over 40kb, Minimifed version over 30kb)
 - Every part needed is written without dependencies,From OS detection to gamepad support
-- Using `CanvasRenderingContext2D` as it's graphics core (WebGL is coming soon)
+- Using `CanvasRenderingContext2D` as it's graphics core
 - Collision detection physics
 - Audio based on WebAudio API
 - Video support
