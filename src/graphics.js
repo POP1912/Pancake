@@ -11,27 +11,27 @@ p.g.context = undefined;
 p.g.mode = p.g.FILL;
 
 p.g.r.alpha = function() {
-    return pancake.util.random(1);
+    return p.u.random(1);
 };
 
 p.g.r.RGB = function() {
-    return ("rgb(" + pancake.util.random(255) + "," + pancake.util.random(255) + "," + pancake.util.random(255) + ")").toString();
+    return ("rgb(" + p.u.random(255) + "," + p.u.random(255) + "," + p.u.random(255) + ")").toString();
 };
 
 p.g.r.RGBA = function() {
-    return ("rgba(" + pancake.util.random(255) + "," + pancake.util.random(255) + "," + pancake.util.random(255) + "," + pancake.util.random(255) + ")").toString();
+    return ("rgba(" + p.u.random(255) + "," + p.u.random(255) + "," + p.u.random(255) + "," + p.u.random(255) + ")").toString();
 };
 
 p.g.r.HSL = function() {
-    return ("hsl(" + pancake.util.random(360) + "," + pancake.util.random(100) + "%," + pancake.util.random(100) + "%)").toString();
+    return ("hsl(" + p.u.random(360) + "," + p.u.random(100) + "%," + p.u.random(100) + "%)").toString();
 };
 
 p.g.r.HSLA = function() {
-    return ("hsla(" + pancake.util.random(360) + "," + pancake.util.random(100) + "%," + pancake.util.random(100) + "%," + Math.random() + ")").toString();
+    return ("hsla(" + p.u.random(360) + "," + p.u.random(100) + "%," + p.u.random(100) + "%," + Math.random() + ")").toString();
 };
 
 p.g.fullscreen = function() {
-    return document.fullscreen || document.webkitIsFullScreen || document.mozFullscreen;
+    return d.fullscreen || d.webkitIsFullScreen || d.mozFullscreen;
 };
 
 p.g.toggleFullscreen = function() {
@@ -43,12 +43,12 @@ p.g.toggleFullscreen = function() {
 };
 
 p.g.exitFullscreen = function() {
-    if (document.exitFullscreen) document.exitFullscreen();
-	if (document.mozCancelFullScreen) document.mozCancelFullScreen();
-	if (document.webkitExitFullscreen) document.webkitExitFullscreen();
-    if (document.msExitFullscreen) document.msExitFullscreen();
-    p.g.context.canvas.width = pancake.canvas.compatible_width;
-    p.g.context.canvas.height = pancake.canvas.compatible_height;
+    if (d.exitFullscreen) d.exitFullscreen();
+	if (d.mozCancelFullScreen) d.mozCancelFullScreen();
+	if (d.webkitExitFullscreen) d.webkitExitFullscreen();
+    if (d.msExitFullscreen) d.msExitFullscreen();
+    p.g.context.canvas.width = p.can.compatible_width;
+    p.g.context.canvas.height = p.can.compatible_height;
 };
 
 p.g.useContext = function(context_index) {
@@ -84,7 +84,7 @@ p.g.HEX = function(h) {
 };
 
 p.g.color = function(f, s) {
-    if (pancake.debug.unknown(s)) s = "black";
+    if (p.d.unknown(s)) s = "black";
     p.g.context.fillStyle = f;
     p.g.context.strokeStyle = s;
 };
@@ -247,12 +247,12 @@ p.g.erase = function(x, y, w, h) {
 };
 
 p.g.canvasToImage = function(c) {
-    if (pancake.debug.unknown(c)) c = 0;
+    if (p.d.unknown(c)) c = 0;
     return pancake.canvases[c].toDataURL();
 };
 
 p.g.screenshot = function(c) {
-    if (pancake.debug.unknown(c)) c = 0;
+    if (p.d.unknown(c)) c = 0;
     window.open(pancake.canvases[c].toDataURL());
 };
 
@@ -336,15 +336,15 @@ p.g.restore = function() {
     p.g.context.restore();
 };
 
-document.onfullscreenchange = document.onmozfullscreenchange = document.onmsfullscreenchange = document.onwebkitfullscreenchange = function() {
+d.onfullscreenchange = d.onmozfullscreenchange = d.onmsfullscreenchange = d.onwebkitfullscreenchange = function() {
     if (p.g.fullscreen() && typeof(p.g.context.canvas) != undefined) {
-        p.g.context.canvas.width = screen.width;
-        p.g.context.canvas.height = screen.height;
+        p.g.context.canvas.width = sc.width;
+        p.g.context.canvas.height = sc.height;
     }
 
     if (!p.g.fullscreen() && typeof(p.g.context.canvas) != undefined) {
-        p.g.context.canvas.width = pancake.canvas.compatible_width;
-        p.g.context.canvas.height = pancake.canvas.compatible_height;
+        p.g.context.canvas.width = p.can.compatible_width;
+        p.g.context.canvas.height = p.can.compatible_height;
     }
 };
 

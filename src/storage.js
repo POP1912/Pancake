@@ -1,16 +1,16 @@
 p.st = {};
 p.st.save = function(v, val) {
-    window.localStorage.setItem(v, val);
+    s.setItem(v, val);
 };
 
 p.st.load = function(v) {
-    return window.localStorage.getItem(v);
+    return s.getItem(v);
 };
 
 p.st.remove = function(v) {
-    window.localStorage.removeItem(v)
+    s.removeItem(v)
 };
 
 p.st.clear = function() {
-    window.localStorage.clear();
+    s.clear();
 };

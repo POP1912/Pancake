@@ -1,5 +1,5 @@
 p.c = {};
 
-p.c.load = function(j) {
-    return JSON.parse(JSON.stringify(j));
+p.c.load = function(s) {
+    return j.parse(j.stringify(c));
 };

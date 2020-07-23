@@ -17,13 +17,13 @@ p.i.swipe_start_y = 0;
 p.i.HORIZONTAL_SWIPE_DIRECTION = "";
 p.i.VERTICAL_SWIPE_DIRECTION = "";
 
-window.addEventListener("mousedown", function(e) {
+w.addEventListener("mousedown", function(e) {
     p.i.swipe_start_x = e.clientX || e.pageX;
     p.i.swipe_start_y = e.clientY || e.pageY;
     p.i.touch_start_time = new Date().getTime();
 });
 
-window.addEventListener("mouseup", function(e) {
+w.addEventListener("mouseup", function(e) {
     p.i.mouse_x = e.clientX || e.pageX;
     p.i.mouse_y = e.clientY || e.pageY;
     var swipe_dist_x = (e.clientX || e.pageX) - p.i.swipe_start_x;
@@ -41,12 +41,12 @@ window.addEventListener("mouseup", function(e) {
     }
 });
 
-window.addEventListener("mousemove",function(e) {
+w.addEventListener("mousemove",function(e) {
     p.i.mouse_x = e.clientX || e.pageX;
     p.i.mouse_y = e.clientY || e.pageY;
 });
 
-window.addEventListener("touchstart", function(e) {
+w.addEventListener("touchstart", function(e) {
     p.i.touch_x = e.changedTouches[0].clientX || e.changedTouches[0].pageX;
     p.i.touch_y = e.changedTouches[0].clientY || e.changedTouches[0].pageY;
     p.i.swipe_start_x = e.changedTouches[0].pageX;
@@ -56,7 +56,7 @@ window.addEventListener("touchstart", function(e) {
     e.preventDefault();
 }, false);
 
-window.addEventListener("touchend", function(e) {
+w.addEventListener("touchend", function(e) {
     p.i.touch_x = e.changedTouches[0].clientX || e.changedTouches[0].pageX;
     p.i.touch_y = e.changedTouches[0].clientY || e.changedTouches[0].pageY;
     var swipe_dist_x = e.changedTouches[0].pageX - p.i.swipe_start_x;
@@ -77,41 +77,41 @@ window.addEventListener("touchend", function(e) {
     e.preventDefault();
 }, false);
 
-window.addEventListener("touchcancel", function(e) {
+w.addEventListener("touchcancel", function(e) {
     p.i.tap = false;
     e.preventDefault();
 }, false);
 
-window.addEventListener("touchmove", function(e) {
+w.addEventListener("touchmove", function(e) {
     p.i.touch_x = e.changedTouches[0].clientX || e.changedTouches[0].pageX;
     p.i.touch_y = e.changedTouches[0].clientY || e.changedTouches[0].pageY;
     p.i.touchdown = true;
     e.preventDefault();
 }, false);
 
-window.addEventListener("click", function() {
+w.addEventListener("click", function() {
     p.i.click = true;
 });
 
-window.addEventListener("mousedown", function(e) {
+w.addEventListener("mousedown", function(e) {
     p.i.latest_mouse_button_down = e.button;
     p.i.click = false;
 });
 
-window.addEventListener("mouseup", function(e) {
+w.addEventListener("mouseup", function(e) {
     p.i.latest_mouse_button_up = e.button;
     p.i.click = false;
 });
 
-window.addEventListener("keydown", function(e) {
+w.addEventListener("keydown", function(e) {
     p.i.latest_key_down = e.which || e.keyCode;
 });
 
-window.addEventListener("keyup", function(e) {
+w.addEventListener("keyup", function(e) {
     p.i.latest_key_up = e.which || e.keyCode;
 });
 
-window.addEventListener("keypress", function(e) {
+w.addEventListener("keypress", function(e) {
     p.i.latest_key_pressed = e.which || e.keyCode;
 });
 
@@ -148,12 +148,12 @@ p.i.showCursor = function(i) {
 };
 
 p.i.lockPointer = function() {
-    if (pancake.graphics.context.canvas.requestPointerLock) pancake.graphics.context.canvas.requestPointerLock();
-    if (document.pointerLockElement === pancake.graphics.context.canvas) pancake.graphics.context.canvas.requestPointerLock();
+    if (p.g.context.canvas.requestPointerLock) p.g.context.canvas.requestPointerLock();
+    if (d.pointerLockElement === p.g.context.canvas) p.g.context.canvas.requestPointerLock();
 };
 
 p.i.unlockPointer = function() {
-    document.exitPointerLock();
+    d.exitPointerLock();
 };
 
 if (p.b.s.GAMEPAD()) {
@@ -169,35 +169,35 @@ if (p.b.s.GAMEPAD()) {
     p.i.GAMEPAD_CAMERA_ANALOG = 2;
 
     p.i.gamepadConnected = function(i) {
-        return !(navigator.getGamepads()[i] == undefined);
+        return !(n.getGamepads()[i] == undefined);
     };
     
     p.i.gamepadID = function(i) {
-        if (!(navigator.getGamepads()[i] == undefined)) return navigator.getGamepads()[i].id;
+        if (!(n.getGamepads()[i] == undefined)) return n.getGamepads()[i].id;
     };
     
     p.i.gamepadButtonPressed = function(b, i) {
-        if (!(navigator.getGamepads()[i] == undefined)) return navigator.getGamepads()[i].buttons[b].pressed;
+        if (!(n.getGamepads()[i] == undefined)) return n.getGamepads()[i].buttons[b].pressed;
     };
     
     p.i.gamepadButtonTouched = function(b, i) {
-        if (!(navigator.getGamepads()[i] == undefined)) return navigator.getGamepads()[i].buttons[b].touched;
+        if (!(n.getGamepads()[i] == undefined)) return n.getGamepads()[i].buttons[b].touched;
     };
 
     p.i.checkMovement = function(i, a, d) {
-        if (!(navigator.getGamepads()[i] == undefined)) {
+        if (!(n.getGamepads()[i] == undefined)) {
             if (a == p.i.GAMEPAD_MOVE_ANALOG) {
-                if (navigator.getGamepads()[i].axes[1] <= d) p.i.GAMEPAD_MOVE_HORIZONTAL_DIRECTION = "UP";
-                if (navigator.getGamepads()[i].axes[1] >= d) p.i.GAMEPAD_MOVE_HORIZONTAL_DIRECTION = "DOWN";
-                if (navigator.getGamepads()[i].axes[0] <= d) p.i.GAMEPAD_MOVE_VERTICAL_DIRECTION = "LEFT";
-                if (navigator.getGamepads()[i].axes[0] >= d) p.i.GAMEPAD_MOVE_VERTICAL_DIRECTION = "RIGHT";
+                if (n.getGamepads()[i].axes[1] <= d) p.i.GAMEPAD_MOVE_HORIZONTAL_DIRECTION = "UP";
+                if (n.getGamepads()[i].axes[1] >= d) p.i.GAMEPAD_MOVE_HORIZONTAL_DIRECTION = "DOWN";
+                if (n.getGamepads()[i].axes[0] <= d) p.i.GAMEPAD_MOVE_VERTICAL_DIRECTION = "LEFT";
+                if (n.getGamepads()[i].axes[0] >= d) p.i.GAMEPAD_MOVE_VERTICAL_DIRECTION = "RIGHT";
             }
             
             if (a == p.i.GAMEPAD_CAMERA_ANALOG) {
-                if (navigator.getGamepads()[i].axes[3] <= d) p.i.GAMEPAD_CAMERA_HORIZONTAL_DIRECTION = "UP";
-                if (navigator.getGamepads()[i].axes[3] >= d) p.i.GAMEPAD_CAMERA_HORIZONTAL_DIRECTION = "DOWN";
-                if (navigator.getGamepads()[i].axes[2] <= d) p.i.GAMEPAD_CAMERA_HORIZONTAL_DIRECTION = "LEFT";
-                if (navigator.getGamepads()[i].axes[2] >= d) p.i.GAMEPAD_CAMERA_HORIZONTAL_DIRECTION = "RIGHT";
+                if (n.getGamepads()[i].axes[3] <= d) p.i.GAMEPAD_CAMERA_HORIZONTAL_DIRECTION = "UP";
+                if (n.getGamepads()[i].axes[3] >= d) p.i.GAMEPAD_CAMERA_HORIZONTAL_DIRECTION = "DOWN";
+                if (n.getGamepads()[i].axes[2] <= d) p.i.GAMEPAD_CAMERA_HORIZONTAL_DIRECTION = "LEFT";
+                if (n.getGamepads()[i].axes[2] >= d) p.i.GAMEPAD_CAMERA_HORIZONTAL_DIRECTION = "RIGHT";
             }
         }
     };
@@ -220,7 +220,7 @@ p.i.preventLoop = function() {
     p.i.touchdown = false;
     p.i.HORIZONTAL_SWIPE_DIRECTION = "";
     p.i.VERTICAL_SWIPE_DIRECTION = "";
-    if (pancake.browser.support.GAMEPAD()) {
+    if (p.b.s.GAMEPAD()) {
         p.i.GAMEPAD_MOVE_HORIZONTAL_DIRECTION = "";
         p.i.GAMEPAD_MOVE_VERTICAL_DIRECTION = "";
         p.i.GAMEPAD_CAMERA_HORIZONTAL_DIRECTION = "";

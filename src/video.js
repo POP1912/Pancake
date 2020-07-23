@@ -3,7 +3,7 @@ p.videos = [];
 var _video = undefined;
 
 p.v.load = function(s, v) {
-    p.videos[v] = document.createElement("video");
+    p.videos[v] = d.createElement("video");
     p.videos[v].src = s;
     p.videos[v].autoplay = true;
     p.videos[v].loop = false;
@@ -11,15 +11,15 @@ p.v.load = function(s, v) {
 };
 
 p.v.play = function(v, x, y, w, h) {
-    if (pancake.debug.unknown(x)) x = 0;
-    if (pancake.debug.unknown(y)) y = 0;
-    if (pancake.debug.unknown(w)) w = pancake.graphics.context.canvas.width;
-    if (pancake.debug.unknown(h)) h = pancake.graphics.context.canvas.height;
+    if (p.d.unknown(x)) x = 0;
+    if (p.d.unknown(y)) y = 0;
+    if (p.d.unknown(w)) w = p.g.context.canvas.width;
+    if (p.d.unknown(h)) h = p.g.context.canvas.height;
     if (!p.videos[v].ended) {
-        pancake.graphics.image(p.videos[v], x, y, w, h);
+        p.g.image(p.videos[v], x, y, w, h);
         p.videos[v].play();
         if (p.videos[v].loop) {
-            pancake.graphics.image(p.videos[v], x, y, w, h);
+            p.g.image(p.videos[v], x, y, w, h);
             p.videos[v].play();
         }
     }
