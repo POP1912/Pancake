@@ -2,98 +2,108 @@
 // Copyright (c) 2020 - 2021 Rabia Alhaffar,Licensed under MIT License
 // Build Date: 19/July/2020
 var p = {};
-p.version = "v0.0.10";
-console.info("Made with Pancake " + p.version + "\nhttps://github.com/Rabios/Pancake");
-
+var w = window;
+var c = w.console;
+var d = w.document;
+var n = w.navigator;
+var j = w.JSON;
+var l = w.location;
+var b = d.body;
+var sc = w.screen;
+var s = w.localStorage;
+var m = Math;
+var ua = n.userAgent;
+p.version = "v0.0.11";
+c.info("Made with Pancake " + p.version + "\nhttps://github.com/Rabios/Pancake");
 p.b = {};
 p.b.s = {};
-p.b.CHROME = navigator.userAgent.match("Chrome") != null;
-p.b.FIREFOX = navigator.userAgent.match("Firefox") != null;
-p.b.OPERA = navigator.userAgent.match("OPR") != null;
-p.b.SAFARI = navigator.userAgent.match("Safari") != null;
-p.b.EDGE = navigator.userAgent.match("Edg") != null;
-p.b.IE = navigator.userAgent.match("Trident") != null;
-p.b.MAXTHON = navigator.userAgent.match("Maxthon") != null;
-p.b.SAMSUNG_INTERNET = navigator.userAgent.match("SamsungBrowser") != null;
-p.b.SEAMONKEY = navigator.userAgent.match("SeaMonkey") != null;
+p.b.CHROME = ua.match("Chrome") != null;
+p.b.FIREFOX = ua.match("Firefox") != null;
+p.b.OPERA = ua.match("OPR") != null;
+p.b.SAFARI = ua.match("Safari") != null;
+p.b.EDGE = ua.match("Edg") != null;
+p.b.IE = ua.match("Trident") != null;
+p.b.MAXTHON = ua.match("Maxthon") != null;
+p.b.SAMSUNG_INTERNET = ua.match("SamsungBrowser") != null;
+p.b.SEAMONKEY = ua.match("SeaMonkey") != null;
 
 p.b.s.CANVAS = function() {
-    return (!!(document.createElement("canvas").getContext) && (document.createElement("canvas").getContext("2d"))) != null;
+    return (!!(d.createElement("canvas").getContext) && (d.createElement("canvas").getContext("2d"))) != null;
 };
 
 p.b.s.MP3 = function() {
-    return document.createElement("audio").canPlayType("audio/mp3") != "";
+    return d.createElement("audio").canPlayType("audio/mp3") != "";
 };
 
 p.b.s.MPEG = function() {
-    return document.createElement("audio").canPlayType("audio/mpeg") != "";
+    return d.createElement("audio").canPlayType("audio/mpeg") != "";
 };
 
 p.b.s.MP4 = function() {
-    return document.createElement("video").canPlayType("video/mp4") != "";
+    return d.createElement("video").canPlayType("video/mp4") != "";
 };
 
 p.b.s.OGG = function() {
-    return document.createElement("audio").canPlayType("audio/ogg") != "";
+    return d.createElement("audio").canPlayType("audio/ogg") != "";
 };
 
 p.b.s.WAV = function() {
-    return document.createElement("audio").canPlayType("audio/wav") != "";
+    return d.createElement("audio").canPlayType("audio/wav") != "";
 };
 
 p.b.s.WEBM = function() {
-    return document.createElement("video").canPlayType("video/webm") != "";
+    return d.createElement("video").canPlayType("video/webm") != "";
 };
 
 p.b.s.GAMEPAD = function() {
-    return "getGamepads" in window.navigator;
+    return "getGamepads" in n;
 };
 
 p.b.open = function(u) {
-    window.open(u);
+    w.open(u);
 };
 
 p.o = {};
-p.o.iOS = navigator.userAgent.match(/iPhone|iPad|iPod|Apple-iPhone/i) != null;
-p.o.ANDROID = navigator.userAgent.match(/Android/i) != null;
-p.o.OSX = navigator.userAgent.match(/Macintosh|Intel Mac OS X/i) != null;
-p.o.WINDOWS = navigator.userAgent.match(/Windows|Windows NT/i) != null;
-p.o.WINDOWS_PHONE = navigator.userAgent.match(/Windows Phone/i) != null;
-p.o.LINUX = navigator.userAgent.match(/Linux|X11/i) != null;
-p.o.UBUNTU = navigator.userAgent.match(/Ubuntu/i) != null;
-p.o.PLAYSTATION = navigator.userAgent.match(/PlayStation/i) != null;
-p.o.XBOX = navigator.userAgent.match(/Xbox|XBOX_ONE_ED|Xbox One/i) != null;
-p.o.BLACKBERRY = navigator.userAgent.match(/Blackberry|BB/i) != null;
-p.o.CHROMECAST = navigator.userAgent.match(/CrKey/i) != null;
-p.o.CHROME_OS = navigator.userAgent.match(/CrOS/i) != null;
-p.o.PS4 = navigator.userAgent.match(/PlayStation 4/i) != null;
-p.o.PSVITA = navigator.userAgent.match(/PlayStation Vita/i) != null;
-p.o.XBOX_ONE = navigator.userAgent.match(/Xbox One/i) != null;
-p.o.XBOX_ONE_S = navigator.userAgent.match(/XBOX_ONE_ED/i) != null;
-p.o.NINTENDO = navigator.userAgent.match(/Nintendo/i) != null;
-p.o.N3DS = navigator.userAgent.match(/Nintendo 3DS/i) != null;
-p.o.WII_U = navigator.userAgent.match(/Nintendo WiiU/i) != null;
-p.o.FIRE_TV = navigator.userAgent.match(/AFTS/i) != null;
-p.o.ROKU_ULTRA = navigator.userAgent.match(/Roku4640X/i) != null;
-p.o.ROKU = navigator.userAgent.match(/Roku/i) != null;
-p.o.NEXUS_PLAYER = navigator.userAgent.match(/Nexus Player/i) != null;
-p.o.MINIX_NEO_X5 = navigator.userAgent.match(/NEO-X5/i) != null;
-p.o.APPLE_TV = navigator.userAgent.match(/AppleTV/i) != null;
-p.o.KINDLE = navigator.userAgent.match(/Kindle/i) != null;
+p.o.iOS = ua.match(/iPhone|iPad|iPod|Apple-iPhone/i) != null;
+p.o.ANDROID = ua.match(/Android/i) != null;
+p.o.OSX = ua.match(/Macintosh|Intel Mac OS X/i) != null;
+p.o.WINDOWS = ua.match(/Windows|Windows NT/i) != null;
+p.o.WINDOWS_PHONE = ua.match(/Windows Phone/i) != null;
+p.o.LINUX = ua.match(/Linux|X11/i) != null;
+p.o.UBUNTU = ua.match(/Ubuntu/i) != null;
+p.o.PLAYSTATION = ua.match(/PlayStation/i) != null;
+p.o.XBOX = ua.match(/Xbox|XBOX_ONE_ED|Xbox One/i) != null;
+p.o.BLACKBERRY = ua.match(/Blackberry|BB/i) != null;
+p.o.CHROMECAST = ua.match(/CrKey/i) != null;
+p.o.CHROME_OS = ua.match(/CrOS/i) != null;
+p.o.PS4 = ua.match(/PlayStation 4/i) != null;
+p.o.PSVITA = ua.match(/PlayStation Vita/i) != null;
+p.o.XBOX_ONE = ua.match(/Xbox One/i) != null;
+p.o.XBOX_ONE_S = ua.match(/XBOX_ONE_ED/i) != null;
+p.o.NINTENDO = ua.match(/Nintendo/i) != null;
+p.o.N3DS = ua.match(/Nintendo 3DS/i) != null;
+p.o.WII_U = ua.match(/Nintendo WiiU/i) != null;
+p.o.FIRE_TV = ua.match(/AFTS/i) != null;
+p.o.ROKU_ULTRA = ua.match(/Roku4640X/i) != null;
+p.o.ROKU = ua.match(/Roku/i) != null;
+p.o.NEXUS_PLAYER = ua.match(/Nexus Player/i) != null;
+p.o.MINIX_NEO_X5 = ua.match(/NEO-X5/i) != null;
+p.o.APPLE_TV = ua.match(/AppleTV/i) != null;
+p.o.KINDLE = ua.match(/Kindle/i) != null;
 
 p.u = {};
 
 p.u.random = function(a) {
-    return Math.floor(Math.random() * a);
+    return m.floor(m.random() * a);
 };
 
 // @see https://stackoverflow.com/a/1527820/2124254
 p.u.randomBetween = function(a, b) {
-    return Math.floor(Math.random() * (b - a)) + a;
+    return m.floor(m.random() * (b - a)) + a;
 };
 
 p.u.quote = function(s) {
-    return JSON.stringify(s);
+    return j.stringify(s);
 };
 
 p.d = {};
@@ -113,23 +123,33 @@ p.d.type = function(v) {
 p.ga = {};
 
 p.ga.title = function(t) {
-    window.document.title = t;
+    d.title = t;
 };
 
 p.ga.restart = function() {
-    window.location.reload();
+    l.reload();
 };
 
+// https://stackoverflow.com/questions/12297525/exit-from-app-when-click-button-in-android-phonegap
+p.ga.close = function() {
+    if (n.app) {
+        n.app.exitApp();
+    } else if (n.device) {
+        n.device.exitApp();
+    } else {
+        w.close();
+    }
+}
 p.can = {};
 p.canvases = [];
-p.can.compatible_width = window.innerWidth - 20;
-p.can.compatible_height = window.innerHeight - 20;
+p.can.compatible_width = w.innerWidth - 20;
+p.can.compatible_height = w.innerHeight - 20;
 
 p.can.create = function(w, h, c) {
-    p.canvases[c] = document.createElement("canvas");
+    p.canvases[c] = d.createElement("canvas");
     p.canvases[c].width = w;
     p.canvases[c].height = h;
-    document.body.appendChild(p.canvases[c]);
+    b.appendChild(p.canvases[c]);
 };
 
 p.can.resize = function(w, h, c) {
@@ -138,7 +158,7 @@ p.can.resize = function(w, h, c) {
 };
 
 p.can.setAttribute = function(v, val, c) {
-    window.eval(" p.canvases[" + c.toString() + "]." + v.toString() + " = " + val.toString() + "; ");
+    w.eval(" p.canvases[" + c.toString() + "]." + v.toString() + " = " + val.toString() + "; ");
 };
 
 p.can.remove = function(c) {
@@ -176,15 +196,15 @@ p.con.set = function(nco, co) {
 };
 
 p.de = {};
-p.de.screen_height = screen.height;
-p.de.screen_width = screen.width;
+p.de.screen_height = sc.height;
+p.de.screen_width = sc.width;
 
 p.de.vibrate = function(p) {
-    window.navigator.vibrate(p);
+    n.vibrate(p);
 };
 
 p.de.stopVibrating = function() {
-    window.navigator.vibrate(0);
+    n.vibrate(0);
 };
 
 p.i = {};
@@ -206,13 +226,13 @@ p.i.swipe_start_y = 0;
 p.i.HORIZONTAL_SWIPE_DIRECTION = "";
 p.i.VERTICAL_SWIPE_DIRECTION = "";
 
-window.addEventListener("mousedown", function(e) {
+w.addEventListener("mousedown", function(e) {
     p.i.swipe_start_x = e.clientX || e.pageX;
     p.i.swipe_start_y = e.clientY || e.pageY;
     p.i.touch_start_time = new Date().getTime();
 });
 
-window.addEventListener("mouseup", function(e) {
+w.addEventListener("mouseup", function(e) {
     p.i.mouse_x = e.clientX || e.pageX;
     p.i.mouse_y = e.clientY || e.pageY;
     var swipe_dist_x = (e.clientX || e.pageX) - p.i.swipe_start_x;
@@ -230,12 +250,12 @@ window.addEventListener("mouseup", function(e) {
     }
 });
 
-window.addEventListener("mousemove",function(e) {
+w.addEventListener("mousemove",function(e) {
     p.i.mouse_x = e.clientX || e.pageX;
     p.i.mouse_y = e.clientY || e.pageY;
 });
 
-window.addEventListener("touchstart", function(e) {
+w.addEventListener("touchstart", function(e) {
     p.i.touch_x = e.changedTouches[0].clientX || e.changedTouches[0].pageX;
     p.i.touch_y = e.changedTouches[0].clientY || e.changedTouches[0].pageY;
     p.i.swipe_start_x = e.changedTouches[0].pageX;
@@ -245,7 +265,7 @@ window.addEventListener("touchstart", function(e) {
     e.preventDefault();
 }, false);
 
-window.addEventListener("touchend", function(e) {
+w.addEventListener("touchend", function(e) {
     p.i.touch_x = e.changedTouches[0].clientX || e.changedTouches[0].pageX;
     p.i.touch_y = e.changedTouches[0].clientY || e.changedTouches[0].pageY;
     var swipe_dist_x = e.changedTouches[0].pageX - p.i.swipe_start_x;
@@ -266,41 +286,41 @@ window.addEventListener("touchend", function(e) {
     e.preventDefault();
 }, false);
 
-window.addEventListener("touchcancel", function(e) {
+w.addEventListener("touchcancel", function(e) {
     p.i.tap = false;
     e.preventDefault();
 }, false);
 
-window.addEventListener("touchmove", function(e) {
+w.addEventListener("touchmove", function(e) {
     p.i.touch_x = e.changedTouches[0].clientX || e.changedTouches[0].pageX;
     p.i.touch_y = e.changedTouches[0].clientY || e.changedTouches[0].pageY;
     p.i.touchdown = true;
     e.preventDefault();
 }, false);
 
-window.addEventListener("click", function() {
+w.addEventListener("click", function() {
     p.i.click = true;
 });
 
-window.addEventListener("mousedown", function(e) {
+w.addEventListener("mousedown", function(e) {
     p.i.latest_mouse_button_down = e.button;
     p.i.click = false;
 });
 
-window.addEventListener("mouseup", function(e) {
+w.addEventListener("mouseup", function(e) {
     p.i.latest_mouse_button_up = e.button;
     p.i.click = false;
 });
 
-window.addEventListener("keydown", function(e) {
+w.addEventListener("keydown", function(e) {
     p.i.latest_key_down = e.which || e.keyCode;
 });
 
-window.addEventListener("keyup", function(e) {
+w.addEventListener("keyup", function(e) {
     p.i.latest_key_up = e.which || e.keyCode;
 });
 
-window.addEventListener("keypress", function(e) {
+w.addEventListener("keypress", function(e) {
     p.i.latest_key_pressed = e.which || e.keyCode;
 });
 
@@ -337,12 +357,12 @@ p.i.showCursor = function(i) {
 };
 
 p.i.lockPointer = function() {
-    if (pancake.graphics.context.canvas.requestPointerLock) pancake.graphics.context.canvas.requestPointerLock();
-    if (document.pointerLockElement === pancake.graphics.context.canvas) pancake.graphics.context.canvas.requestPointerLock();
+    if (p.g.context.canvas.requestPointerLock) p.g.context.canvas.requestPointerLock();
+    if (d.pointerLockElement === p.g.context.canvas) p.g.context.canvas.requestPointerLock();
 };
 
 p.i.unlockPointer = function() {
-    document.exitPointerLock();
+    d.exitPointerLock();
 };
 
 if (p.b.s.GAMEPAD()) {
@@ -358,35 +378,35 @@ if (p.b.s.GAMEPAD()) {
     p.i.GAMEPAD_CAMERA_ANALOG = 2;
 
     p.i.gamepadConnected = function(i) {
-        return !(navigator.getGamepads()[i] == undefined);
+        return !(n.getGamepads()[i] == undefined);
     };
     
     p.i.gamepadID = function(i) {
-        if (!(navigator.getGamepads()[i] == undefined)) return navigator.getGamepads()[i].id;
+        if (!(n.getGamepads()[i] == undefined)) return n.getGamepads()[i].id;
     };
     
     p.i.gamepadButtonPressed = function(b, i) {
-        if (!(navigator.getGamepads()[i] == undefined)) return navigator.getGamepads()[i].buttons[b].pressed;
+        if (!(n.getGamepads()[i] == undefined)) return n.getGamepads()[i].buttons[b].pressed;
     };
     
     p.i.gamepadButtonTouched = function(b, i) {
-        if (!(navigator.getGamepads()[i] == undefined)) return navigator.getGamepads()[i].buttons[b].touched;
+        if (!(n.getGamepads()[i] == undefined)) return n.getGamepads()[i].buttons[b].touched;
     };
 
     p.i.checkMovement = function(i, a, d) {
-        if (!(navigator.getGamepads()[i] == undefined)) {
+        if (!(n.getGamepads()[i] == undefined)) {
             if (a == p.i.GAMEPAD_MOVE_ANALOG) {
-                if (navigator.getGamepads()[i].axes[1] <= d) p.i.GAMEPAD_MOVE_HORIZONTAL_DIRECTION = "UP";
-                if (navigator.getGamepads()[i].axes[1] >= d) p.i.GAMEPAD_MOVE_HORIZONTAL_DIRECTION = "DOWN";
-                if (navigator.getGamepads()[i].axes[0] <= d) p.i.GAMEPAD_MOVE_VERTICAL_DIRECTION = "LEFT";
-                if (navigator.getGamepads()[i].axes[0] >= d) p.i.GAMEPAD_MOVE_VERTICAL_DIRECTION = "RIGHT";
+                if (n.getGamepads()[i].axes[1] <= d) p.i.GAMEPAD_MOVE_HORIZONTAL_DIRECTION = "UP";
+                if (n.getGamepads()[i].axes[1] >= d) p.i.GAMEPAD_MOVE_HORIZONTAL_DIRECTION = "DOWN";
+                if (n.getGamepads()[i].axes[0] <= d) p.i.GAMEPAD_MOVE_VERTICAL_DIRECTION = "LEFT";
+                if (n.getGamepads()[i].axes[0] >= d) p.i.GAMEPAD_MOVE_VERTICAL_DIRECTION = "RIGHT";
             }
             
             if (a == p.i.GAMEPAD_CAMERA_ANALOG) {
-                if (navigator.getGamepads()[i].axes[3] <= d) p.i.GAMEPAD_CAMERA_HORIZONTAL_DIRECTION = "UP";
-                if (navigator.getGamepads()[i].axes[3] >= d) p.i.GAMEPAD_CAMERA_HORIZONTAL_DIRECTION = "DOWN";
-                if (navigator.getGamepads()[i].axes[2] <= d) p.i.GAMEPAD_CAMERA_HORIZONTAL_DIRECTION = "LEFT";
-                if (navigator.getGamepads()[i].axes[2] >= d) p.i.GAMEPAD_CAMERA_HORIZONTAL_DIRECTION = "RIGHT";
+                if (n.getGamepads()[i].axes[3] <= d) p.i.GAMEPAD_CAMERA_HORIZONTAL_DIRECTION = "UP";
+                if (n.getGamepads()[i].axes[3] >= d) p.i.GAMEPAD_CAMERA_HORIZONTAL_DIRECTION = "DOWN";
+                if (n.getGamepads()[i].axes[2] <= d) p.i.GAMEPAD_CAMERA_HORIZONTAL_DIRECTION = "LEFT";
+                if (n.getGamepads()[i].axes[2] >= d) p.i.GAMEPAD_CAMERA_HORIZONTAL_DIRECTION = "RIGHT";
             }
         }
     };
@@ -409,7 +429,7 @@ p.i.preventLoop = function() {
     p.i.touchdown = false;
     p.i.HORIZONTAL_SWIPE_DIRECTION = "";
     p.i.VERTICAL_SWIPE_DIRECTION = "";
-    if (pancake.browser.support.GAMEPAD()) {
+    if (p.b.s.GAMEPAD()) {
         p.i.GAMEPAD_MOVE_HORIZONTAL_DIRECTION = "";
         p.i.GAMEPAD_MOVE_VERTICAL_DIRECTION = "";
         p.i.GAMEPAD_CAMERA_HORIZONTAL_DIRECTION = "";
@@ -443,24 +463,24 @@ p.p.checkCollisionRect = function(x1, y1, w1, h1, x2, y2, w2, h2) {
 };
 
 p.p.checkCollisionCircle = function(x1, y1, r1, x2, y2, r2) {
-    return (Math.sqrt((x1 - x2 * x1 - x2) + (y1 + y2 * y1 + y2)) < r1 + r2);
+    return (m.sqrt((x1 - x2 * x1 - x2) + (y1 + y2 * y1 + y2)) < r1 + r2);
 };
 
 p.p.checkCollisionCircleRect = function(x1, y1, r, x2, y2, w, h) {
-    if (Math.abs(x1 - x2 - w / 2) > (w / 2 + r) || Math.abs(y1 - y2 - h / 2) > (h / 2 + r)) { return false; }
-	if (Math.abs(x1 - x2 - w / 2) <= (w / 2) || Math.abs(y1 - y2 - h / 2) <= (h / 2)) { return true; }
-    return (Math.abs(x1 - x2 - w / 2) - w / 2 * Math.abs(x1 - x2 - w / 2) - w / 2 + Math.abs(y1 - y2 - h / 2) - h / 2 * Math.abs(y1 - y2 - h / 2) - h / 2 <= Math.pow(r,2));
+    if (m.abs(x1 - x2 - w / 2) > (w / 2 + r) || m.abs(y1 - y2 - h / 2) > (h / 2 + r)) { return false; }
+	if (m.abs(x1 - x2 - w / 2) <= (w / 2) || m.abs(y1 - y2 - h / 2) <= (h / 2)) { return true; }
+    return (m.abs(x1 - x2 - w / 2) - w / 2 * m.abs(x1 - x2 - w / 2) - w / 2 + m.abs(y1 - y2 - h / 2) - h / 2 * m.abs(y1 - y2 - h / 2) - h / 2 <= m.pow(r,2));
 };
 
 p.p.checkCollisionCircleLine = function(x, y, r, fx, fy, tx, ty) {
     var dist;
     var u = ((x - fx) * (tx - fx) + (y - fy) * (ty - fy)) / ((ty - fy) * (ty - fy) + (tx - fx) * (tx - fx));
-    if (u >= 0 && u <= 1) dist = Math.pow((fx + (tx - fx) * u - x),2) + Math.pow((fy + (ty - fy) * u - y),2);
+    if (u >= 0 && u <= 1) dist = m.pow((fx + (tx - fx) * u - x),2) + m.pow((fy + (ty - fy) * u - y),2);
     else {
-        if (u < 0) dist = Math.pow((fx - x),2) + Math.pow((fy - y),2);
-        else dist = Math.pow((tx - x),2) + Math.pow((ty - y),2);
+        if (u < 0) dist = m.pow((fx - x),2) + m.pow((fy - y),2);
+        else dist = m.pow((tx - x),2) + m.pow((ty - y),2);
     }
-    if (dist < Math.pow(r,2)) return true;
+    if (dist < m.pow(r,2)) return true;
 };
 
 // Collision with canvas sides
@@ -488,7 +508,7 @@ p.p.checkCollisionBottomCanvas = function(s, c) {
 };
 
 p.p.distanceBetween = function(x1, y1, x2, y2) {
-    return Math.hypot(x2 - x1, y2 - y1);
+    return m.hypot(x2 - x1, y2 - y1);
 };
 
 // Distance are stored in p.p.distance_x and p.p_distance_y
@@ -526,27 +546,27 @@ p.g.context = undefined;
 p.g.mode = p.g.FILL;
 
 p.g.r.alpha = function() {
-    return pancake.util.random(1);
+    return p.u.random(1);
 };
 
 p.g.r.RGB = function() {
-    return ("rgb(" + pancake.util.random(255) + "," + pancake.util.random(255) + "," + pancake.util.random(255) + ")").toString();
+    return ("rgb(" + p.u.random(255) + "," + p.u.random(255) + "," + p.u.random(255) + ")").toString();
 };
 
 p.g.r.RGBA = function() {
-    return ("rgba(" + pancake.util.random(255) + "," + pancake.util.random(255) + "," + pancake.util.random(255) + "," + pancake.util.random(255) + ")").toString();
+    return ("rgba(" + p.u.random(255) + "," + p.u.random(255) + "," + p.u.random(255) + "," + p.u.random(255) + ")").toString();
 };
 
 p.g.r.HSL = function() {
-    return ("hsl(" + pancake.util.random(360) + "," + pancake.util.random(100) + "%," + pancake.util.random(100) + "%)").toString();
+    return ("hsl(" + p.u.random(360) + "," + p.u.random(100) + "%," + p.u.random(100) + "%)").toString();
 };
 
 p.g.r.HSLA = function() {
-    return ("hsla(" + pancake.util.random(360) + "," + pancake.util.random(100) + "%," + pancake.util.random(100) + "%," + Math.random() + ")").toString();
+    return ("hsla(" + p.u.random(360) + "," + p.u.random(100) + "%," + p.u.random(100) + "%," + Math.random() + ")").toString();
 };
 
 p.g.fullscreen = function() {
-    return document.fullscreen || document.webkitIsFullScreen || document.mozFullscreen;
+    return d.fullscreen || d.webkitIsFullScreen || d.mozFullscreen;
 };
 
 p.g.toggleFullscreen = function() {
@@ -558,12 +578,12 @@ p.g.toggleFullscreen = function() {
 };
 
 p.g.exitFullscreen = function() {
-    if (document.exitFullscreen) document.exitFullscreen();
-	if (document.mozCancelFullScreen) document.mozCancelFullScreen();
-	if (document.webkitExitFullscreen) document.webkitExitFullscreen();
-    if (document.msExitFullscreen) document.msExitFullscreen();
-    p.g.context.canvas.width = pancake.canvas.compatible_width;
-    p.g.context.canvas.height = pancake.canvas.compatible_height;
+    if (d.exitFullscreen) d.exitFullscreen();
+	if (d.mozCancelFullScreen) d.mozCancelFullScreen();
+	if (d.webkitExitFullscreen) d.webkitExitFullscreen();
+    if (d.msExitFullscreen) d.msExitFullscreen();
+    p.g.context.canvas.width = p.can.compatible_width;
+    p.g.context.canvas.height = p.can.compatible_height;
 };
 
 p.g.useContext = function(context_index) {
@@ -599,7 +619,7 @@ p.g.HEX = function(h) {
 };
 
 p.g.color = function(f, s) {
-    if (pancake.debug.unknown(s)) s = "black";
+    if (p.d.unknown(s)) s = "black";
     p.g.context.fillStyle = f;
     p.g.context.strokeStyle = s;
 };
@@ -762,12 +782,12 @@ p.g.erase = function(x, y, w, h) {
 };
 
 p.g.canvasToImage = function(c) {
-    if (pancake.debug.unknown(c)) c = 0;
+    if (p.d.unknown(c)) c = 0;
     return pancake.canvases[c].toDataURL();
 };
 
 p.g.screenshot = function(c) {
-    if (pancake.debug.unknown(c)) c = 0;
+    if (p.d.unknown(c)) c = 0;
     window.open(pancake.canvases[c].toDataURL());
 };
 
@@ -851,15 +871,15 @@ p.g.restore = function() {
     p.g.context.restore();
 };
 
-document.onfullscreenchange = document.onmozfullscreenchange = document.onmsfullscreenchange = document.onwebkitfullscreenchange = function() {
+d.onfullscreenchange = d.onmozfullscreenchange = d.onmsfullscreenchange = d.onwebkitfullscreenchange = function() {
     if (p.g.fullscreen() && typeof(p.g.context.canvas) != undefined) {
-        p.g.context.canvas.width = screen.width;
-        p.g.context.canvas.height = screen.height;
+        p.g.context.canvas.width = sc.width;
+        p.g.context.canvas.height = sc.height;
     }
 
     if (!p.g.fullscreen() && typeof(p.g.context.canvas) != undefined) {
-        p.g.context.canvas.width = pancake.canvas.compatible_width;
-        p.g.context.canvas.height = pancake.canvas.compatible_height;
+        p.g.context.canvas.width = p.can.compatible_width;
+        p.g.context.canvas.height = p.can.compatible_height;
     }
 };
 
@@ -916,7 +936,7 @@ p.videos = [];
 var _video = undefined;
 
 p.v.load = function(s, v) {
-    p.videos[v] = document.createElement("video");
+    p.videos[v] = d.createElement("video");
     p.videos[v].src = s;
     p.videos[v].autoplay = true;
     p.videos[v].loop = false;
@@ -924,15 +944,15 @@ p.v.load = function(s, v) {
 };
 
 p.v.play = function(v, x, y, w, h) {
-    if (pancake.debug.unknown(x)) x = 0;
-    if (pancake.debug.unknown(y)) y = 0;
-    if (pancake.debug.unknown(w)) w = pancake.graphics.context.canvas.width;
-    if (pancake.debug.unknown(h)) h = pancake.graphics.context.canvas.height;
+    if (p.d.unknown(x)) x = 0;
+    if (p.d.unknown(y)) y = 0;
+    if (p.d.unknown(w)) w = p.g.context.canvas.width;
+    if (p.d.unknown(h)) h = p.g.context.canvas.height;
     if (!p.videos[v].ended) {
-        pancake.graphics.image(p.videos[v], x, y, w, h);
+        p.g.image(p.videos[v], x, y, w, h);
         p.videos[v].play();
         if (p.videos[v].loop) {
-            pancake.graphics.image(p.videos[v], x, y, w, h);
+            p.g.image(p.videos[v], x, y, w, h);
             p.videos[v].play();
         }
     }
@@ -962,66 +982,66 @@ p.s = {};
 p.scripts = [];
 
 p.s.eval = function(c) {
-    window.eval(c);
+    w.eval(c);
 };
 
 p.s.load = function(src, s) {
-    p.scripts[s] = document.createElement("script"); 
+    p.scripts[s] = d.createElement("script"); 
     p.scripts[s].src = src; 
     p.scripts[s].type = "text/javascript"; 
     p.scripts[s].defer = true; 
-    document.body.appendChild(p.scripts[s]);
+    b.appendChild(p.scripts[s]);
 };
 
 p.st = {};
 p.st.save = function(v, val) {
-    window.localStorage.setItem(v, val);
+    s.setItem(v, val);
 };
 
 p.st.load = function(v) {
-    return window.localStorage.getItem(v);
+    return s.getItem(v);
 };
 
 p.st.remove = function(v) {
-    window.localStorage.removeItem(v)
+    s.removeItem(v)
 };
 
 p.st.clear = function() {
-    window.localStorage.clear();
+    s.clear();
 };
 
 p.t = {};
 p.t.second = 80;
 
 p.t.countdown = function(f, ms) {
-    return window.setTimeout(f, ms);
+    return w.setTimeout(f, ms);
 };
 
 p.t.timer = function(f, ms) {
-    return window.setInterval(f, 1000 / ms);
+    return w.setInterval(f, 1000 / ms);
 };
 
 p.t.pause = function(t) {
-    window.clearInterval(t);
+    w.clearInterval(t);
 };
 
 // Don't judge me,I used that one by Paul Irish
 // Sorry if that makes Pancake sucks
-window.animate = (function() {
-    return  window.requestAnimationFrame       ||
-            window.webkitRequestAnimationFrame ||
-            window.mozRequestAnimationFrame    ||
-            window.msRequestAnimationFrame     ||
-            window.oRequestAnimationFrame      ||
+w.animate = (function() {
+    return  w.requestAnimationFrame       ||
+            w.webkitRequestAnimationFrame ||
+            w.mozRequestAnimationFrame    ||
+            w.msRequestAnimationFrame     ||
+            w.oRequestAnimationFrame      ||
             function(callback, fps) {
-                window.setTimeout(callback, 1000 / fps);
+                w.setTimeout(callback, 1000 / fps);
             };
 })();
 
 p.c = {};
 
-p.c.load = function(j) {
-    return JSON.parse(JSON.stringify(j));
+p.c.load = function(s) {
+    return j.parse(j.stringify(c));
 };
 
 // Written by Rabia Alhaffar in 19/July/2020
