@@ -8,7 +8,7 @@ Pancake inspired by LOVE,Pygame,And even AppGameKit and it shares some of their 
 ## Features
 - Shares concepts of most lovable frameworks like LOVE,Pygame,And AppGameKit
 - Easy and simple to setup
-- Free,Moddable and Open-Source
+- Free,Moddable,Open-Source,And Cross-Platform
 - Fast,Lightweight,And thin in one pack (All in over 40kb, Minimifed version over 30kb)
 - Every part needed is written without dependencies,From OS detection to gamepad support
 - Using `CanvasRenderingContext2D` as it's graphics core
@@ -16,8 +16,9 @@ Pancake inspired by LOVE,Pygame,And even AppGameKit and it shares some of their 
 - Audio based on WebAudio API
 - Video support
 - Supports browsers that can't run ES6 (Internet Explorer >= 9 for example)
-- Using indexes,Which can be good for ordering sometimes,And gives easy control of game content
- 
+- Using indexes (Slots),Which can be good for ordering sometimes,And gives easy control of game content
+- Optimized for js13kGames game jam
+
 Want to know a lot? See the [documentation](https://github.com/Rabios/Pancake/tree/master/docs/README.md)
 
 ## Examples
