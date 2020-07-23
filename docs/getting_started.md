@@ -18,7 +18,7 @@
         <script>
             // Create canvas and set it's index to 0
             // With both width and height of 600
-            pancake.canvas.create(600,600,0);
+            pancake.canvas.create(600, 600, 0);
 
             // Create context and set it's index to 0
             // And use canvas with index 0

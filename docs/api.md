@@ -247,6 +247,7 @@ pancake.device.stopVibrating()                               // Stops vibrating
 ```javascript
 pancake.game.title(title)                                    // Changes game title document
 pancake.game.restart()                                       // Reloads game page
+pancake.game.close()                                         // Closes game (If could,In case game opened by script,Or with phonegab or cordova)
 ```
 
 ## Browser
@@ -340,7 +341,6 @@ pancake.scripts                                              // Scripts loaded a
 pancake.canvases                                             // Canvases created array
 pancake.contexts                                             // Contexts created array
 pancake.videos                                               // Video files array
-pancake.images                                               // Images array
 ```
 
 #### How to get content from index?
