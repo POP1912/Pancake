@@ -16,13 +16,28 @@
         <script src="../build/pancake.js"></script>
         <script>
             document.getElementById("crc2d").innerHTML = pancake.browser.support.CANVAS();
+            document.getElementById("crc2d").style.color = pancake.browser.support.CANVAS() ? "green" : "red";
+
             document.getElementById("gamepad").innerHTML = pancake.browser.support.GAMEPAD();
+            document.getElementById("gamepad").style.color = pancake.browser.support.GAMEPAD() ? "green" : "red";
+
             document.getElementById("mpeg").innerHTML = pancake.browser.support.MPEG();
+            document.getElementById("mpeg").style.color = pancake.browser.support.MPEG() ? "green" : "red";
+
             document.getElementById("mp3").innerHTML = pancake.browser.support.MP3();
+            document.getElementById("mp3").style.color = pancake.browser.support.MP3() ? "green" : "red";
+
             document.getElementById("ogg").innerHTML = pancake.browser.support.OGG();
+            document.getElementById("ogg").style.color = pancake.browser.support.OGG() ? "green" : "red";
+
             document.getElementById("wav").innerHTML = pancake.browser.support.WAV();
+            document.getElementById("wav").style.color = pancake.browser.support.WAV() ? "green" : "red";
+
             document.getElementById("mp4").innerHTML = pancake.browser.support.MP4();
+            document.getElementById("mp4").style.color = pancake.browser.support.MP4() ? "green" : "red";
+            
             document.getElementById("webm").innerHTML = pancake.browser.support.WEBM();
+            document.getElementById("webm").style.color = pancake.browser.support.WEBM() ? "green" : "red";
         </script>
         <style>
             code { color: red; }

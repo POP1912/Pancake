@@ -12,19 +12,36 @@
         <p>OSX: <code id="osx"></code></p>
         <p>Linux: <code id="linux"></code></p>
         <p>Ubuntu: <code id="ubuntu"></code></p>
-        <p>PLAYSTATION: <code id="ps"></code></p>
+        <p>PlayStation: <code id="ps"></code></p>
         <p>XBOX: <code id="xbox"></code></p>
         <script src="../build/pancake.js"></script>
         <script>
             document.getElementById("android").innerHTML = pancake.os.ANDROID;
+            document.getElementById("android").style.color = pancake.os.ANDROID ? "green" : "red";
+
             document.getElementById("ios").innerHTML = pancake.os.iOS;
+            document.getElementById("ios").style.color = pancake.os.iOS ? "green" : "red";
+            
             document.getElementById("windows").innerHTML = pancake.os.WINDOWS;
+            document.getElementById("windows").style.color = pancake.os.WINDOWS ? "green" : "red";
+            
             document.getElementById("windows_phone").innerHTML = pancake.os.WINDOWS_PHONE;
+            document.getElementById("windows_phone").style.color = pancake.os.WINDOWS_PHONE ? "green" : "red";
+            
             document.getElementById("osx").innerHTML = pancake.os.OSX;
+            document.getElementById("osx").style.color = pancake.os.OSX ? "green" : "red";
+            
             document.getElementById("linux").innerHTML = pancake.os.LINUX;
+            document.getElementById("linux").style.color = pancake.os.LINUX ? "green" : "red";
+            
             document.getElementById("ubuntu").innerHTML = pancake.os.UBUNTU;
+            document.getElementById("ubuntu").style.color = pancake.os.UBUNTU ? "green" : "red";
+            
             document.getElementById("ps").innerHTML = pancake.os.PLAYSTATION;
+            document.getElementById("ps").innerHTML = pancake.os.PLAYSTATION ? "green" : "red";
+            
             document.getElementById("xbox").innerHTML = pancake.os.XBOX;
+            document.getElementById("xbox").style.color = pancake.os.XBOX ? "green" : "red";
         </script>
         <style>
             code { color: red; }
