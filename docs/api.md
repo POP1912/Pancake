@@ -218,6 +218,7 @@ pancake.timers.timer(f, frames_per_second)                   // Sets interval th
 pancake.timers.pause(timer_variable)                         // Pauses countdown or interval
 window.animate(f, frames_per_second)                         // Improved version of window.requestAnimationFrame(), With framerate
 ```
+> CAUTION: If you are developing a game that focuses on frame rates or gets seconds or count time,Do not use `pancake.timers.second` as it's not accurate in counting a second
 
 ## Storage
 ```javascript

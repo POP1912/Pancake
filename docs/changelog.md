@@ -1,10 +1,11 @@
 # Changelog
 
 ### v0.0.11
-1. Adding `pancake.game.close()` back so you can close game if opened by script,Or if you use Phonegab or Apache Cordova (In case you linked their script to game HTML file)
+1. Added `pancake.game.close()` back so you can close game if opened by script,Or if you use Phonegab or Apache Cordova (In case you linked their script to game HTML file)
 2. Optimized the framework for the third time
 3. Updated video and audio examples to check if video and audio playing supported
-   
+4. Improved browser and OS examples
+
 > CAUTION: If you are developing a game that focuses on frame rates,Do not use `pancake.timers.second` as it's not accurate in counting a second
  
 > NOTES: This might be the last update for Pancake,So i maybe add tutorials or more docs if i would,But no updates for the framework source code as it's enough

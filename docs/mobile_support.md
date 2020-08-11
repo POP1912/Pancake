@@ -38,9 +38,10 @@ At the meantime,Tapping and swiping is supported by pancake so i think you can h
 </html>
 ```
 ## NOTES
-1. If you're developing from mobile,Use Mozilla Firefox or Spck editor instead of Google Chrome cause Mozilla Firefox can allow file system,Plus i developed Pancake on Mozilla Firefox,NOT Google Chrome (It works in Chrome but not on mobile i think so).
+1. If you're developing from mobile,Use Mozilla Firefox or Spck editor instead of Google Chrome cause Mozilla Firefox can allow file system,Plus i developed Pancake on Mozilla Firefox,NOT Google Chrome
 2. Touch and swipe are emulated on PC with mouse
 3. If your game using swipe and you are running it via Google Chrome on mobile,See below to know before using swiping on Chrome
+4. If you holded with your finger(s) for long time on screen/canvas,Game might not respond to touch input so you need to restart the entire game (Problem happens in most browsers on Android and iOS)
 
 ## Solve problem: Swiping down on Google Chrome for Android/iOS reloads page
 1. Go to `chrome://flags`
