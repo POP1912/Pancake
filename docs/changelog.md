@@ -1,38 +1,28 @@
 # Changelog
 
 ### v0.0.11
-1. Added `pancake.game.close()` back so you can close game if opened by script,Or if you use Phonegab or Apache Cordova (In case you linked their script to game HTML file)
+1. Added `pancake.game.close()` back so you can close game if opened by script, Or if you use Phonegab or Apache Cordova (In case you linked their script to game HTML file)
 2. Optimized the framework for the third time
 3. Updated video and audio examples to check if video and audio playing supported
 4. Improved browser and OS examples
 
-> CAUTION: If you are developing a game that focuses on frame rates,Do not use `pancake.timers.second` as it's not accurate in counting a second
- 
-> NOTES: This might be the last update for Pancake,So i maybe add tutorials or more docs if i would,But no updates for the framework source code as it's enough
+> CAUTION: If you develop a game that focuses on frame rates, Don't use `pancake.timers.second` as it's not accurate in counting a second!
 
 ### v0.0.10
 1. Optimized the framework for the second time
-2. Fixed example `graphics_04.html` (Changing color mode example),Where color mode doesn't change
-
-> That's all,Thanks for support!
+2. Fixed example `graphics_04.html` (Changing color mode example), Where color mode doesn't change
 
 ### v0.0.9
 1. Optimized the framework for the first time
 
-> TODO: Optimize Pancake for the second time
-
 ### v0.0.8
 1. Added `pancake.graphics.shadow(color, blur)` to apply shadows in-game when drawing shapes
-
-> TODO: Optimizing
 
 ### v0.0.7
 1. Removed `pancake.graphics.resize()` but let canvas used by `pancake.canvas.set()` in case you used a canvas using `pancake.context.use()` 
 2. Better fullscreen check and better fullscreen functionality
-3. Added ability to detect SeaMonkey browser,And Maxthon browser (In case developer didn't changed `navigator.userAgent` from Maxthon browser settings)
-4. Improved games,And also improved some examples
-
-> TODO: Optimize Pancake to become smaller,That doesn't means i will remove content
+3. Added ability to detect SeaMonkey browser, And Maxthon browser (In case developer didn't changed `navigator.userAgent` from Maxthon browser settings)
+4. Improved games, And also improved some examples
 
 ### v0.0.6
 1. Added content feature to load JSON content and parse it
@@ -49,10 +39,10 @@ For more info check the [API](https://github.com/Rabios/Pancake/blob/master/docs
 
 ### v0.0.5
 1. Fixed some problems related to touch support
-2. Now functions of drawing shapes integrated with `pancake.graphics` instead of adding them to `CanvasRenderingContext2D.prototype`,To let framework take smaller size with same result
+2. Now functions of drawing shapes integrated with `pancake.graphics` instead of adding them to `CanvasRenderingContext2D.prototype`, To let framework take smaller size with same result
 3. Removed `pancake.game.close()` (Same as `window.close()` it gives warning)
 4. Improved touch
-5. Added video features,Check the [API](https://github.com/Rabios/Pancake/blob/master/docs/api.md) again
+5. Added video features, Check the [API](https://github.com/Rabios/Pancake/blob/master/docs/api.md) again
 
 ### v0.0.4
 1. Added `pancake.graphics.fullscreen()` to check if game is in fullscreen
@@ -73,4 +63,4 @@ For more info check the [API](https://github.com/Rabios/Pancake/blob/master/docs
 4. Added `pancake.timers.second`
 
 ### v0.0.1
-First release,Looking for bugs to smash it!!!
+First release, Looking for bugs to smash it!!!
