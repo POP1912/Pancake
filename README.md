@@ -1,22 +1,22 @@
 # Pancake
-Lightweight,Fast,And easy-to-use HTML5 game programming library/Game framework for all purposes
+Lightweight, Fast, Easy-to-use HTML5 game programming library/Game framework for all purposes
 
 Pancake is successor of Cake game engine,Which removed from GitHub
 
-Pancake inspired by LOVE,Pygame,And even AppGameKit and it shares some of their concepts
+Pancake inspired by LOVE, Pygame, And even AppGameKit and it shares some of their concepts
 
 ## Features
-- Shares concepts of most lovable frameworks like LOVE,Pygame,And AppGameKit
+- Shares concepts of most lovable frameworks like LOVE, Pygame, And AppGameKit
 - Easy and simple to setup
-- Free,Moddable,Open-Source,And Cross-Platform
-- Fast,Lightweight,And thin in one pack (All in over 40kb, Minimifed version over 30kb)
+- Free, Moddable, Open-Source, Cross-Platform
+- Fast,Lightweight,A nd thin in one pack (All in over 40kb, Minimifed version over 30kb)
 - Every part needed is written without dependencies,From OS detection to gamepad support
-- Using `CanvasRenderingContext2D` as it's graphics core
+- Using `CanvasRenderingContext2D` as it's graphics core (`WebGLRenderingContext` core is in development!)
 - Collision detection physics
 - Audio based on WebAudio API
 - Video support
 - Supports browsers that can't run ES6 (Internet Explorer >= 9 for example)
-- Using indexes (Slots),Which can be good for ordering sometimes,And gives easy control of game content
+- Using indexes (Slots), Which can be good for ordering sometimes,And gives easy control of game content
 - Optimized for js13kGames game jam
 
 Want to know a lot? See the [documentation](https://github.com/Rabios/Pancake/tree/master/docs/README.md)
@@ -209,7 +209,7 @@ python build.py
 
 A folder named `build` will created (if not exist) in the repository folders,Containing `pancake.js`,Which is the full build
 
-> NOTES: Grab the build [here](https://cdn.jsdelivr.net/gh/Rabios/Pancake@master/build/pancake.js),Or [here](https://cdn.jsdelivr.net/gh/Rabios/Pancake@master/build/pancake.min.js) for the minimifed version
+> NOTES: Grab the build [here](https://cdn.jsdelivr.net/gh/Rabios/Pancake@master/build/pancake.js), Or [here](https://cdn.jsdelivr.net/gh/Rabios/Pancake@master/build/pancake.min.js) for the minimifed version
 
 ## License
 ```
