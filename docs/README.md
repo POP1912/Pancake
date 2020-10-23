@@ -10,3 +10,4 @@
 8. [Community works](https://github.com/Rabios/Pancake/blob/master/docs/community_works.md)
 9. [API](https://github.com/Rabios/Pancake/blob/master/docs/api.md)
 10. [Changelog](https://github.com/Rabios/Pancake/blob/master/docs/changelog.md)
+11. [About `WebGLRenderingContext` renderer](https://github.com/Rabios/Pancake/blob/master/docs/webgl.md)

@@ -1,27 +1,28 @@
 # Pancake
-Lightweight, Fast, Easy-to-use HTML5 game programming library/Game framework for all purposes
+Lightweight,Fast,And easy-to-use HTML5 game programming library/Game framework for all purposes
 
 Pancake is successor of Cake game engine,Which removed from GitHub
 
-Pancake inspired by LOVE, Pygame, And even AppGameKit and it shares some of their concepts
+Pancake inspired by LOVE,Pygame,And even AppGameKit and it shares some of their concepts
 
 ## Features
-- Shares concepts of most lovable frameworks like LOVE, Pygame, And AppGameKit
+- Shares concepts of most lovable frameworks like LOVE,Pygame,And AppGameKit
 - Easy and simple to setup
-- Free, Moddable, Open-Source, Cross-Platform
-- Fast,Lightweight,A nd thin in one pack (All in over 40kb, Minimifed version over 30kb)
+- Free, Moddable, Open-Source,And Cross-Platform
+- Fast, Lightweight, And thin in one pack (All in over 40kb, Minimifed version over 30kb)
 - Every part needed is written without dependencies,From OS detection to gamepad support
-- Using `CanvasRenderingContext2D` as it's graphics core (`WebGLRenderingContext` core is in development!)
+- You can use `CanvasRenderingContext2D` or `WebGLRenderingContext` as graphics core.
 - Collision detection physics
 - Audio based on WebAudio API
 - Video support
-- Supports browsers that can't run ES6 (Internet Explorer >= 9 for example)
-- Using indexes (Slots), Which can be good for ordering sometimes,And gives easy control of game content
+- Written in ES5 to support browsers that can't run ES6 (Internet Explorer >= 9 for example)
+- Using indexes (Slots), Which can be good for ordering sometimes, And gives easy control of game content
 - Optimized for js13kGames game jam
 
 Want to know a lot? See the [documentation](https://github.com/Rabios/Pancake/tree/master/docs/README.md)
 
 ## Examples
+
 - Creating a game canvas
 ```javascript
 // Create canvas with both width and height of 600,And set it's index to 0
@@ -177,39 +178,23 @@ var gameloop = pancake.timers.timer(game, 120); // Set frames per second to 120
 
 ## Build
 
-> NOTES: Pancake is prebuilt but if you are modify the source then you will need to rebuild by modifying and running one of the build scripts.
+> NOTE 1: Pancake is prebuilt but if you are modify the source then you will need to rebuild by modifying and running build script.
 
-To build Pancake run one of the build scripts Although Pancake can run offline as single library.
-
-Microsoft Windows:
-```batch
-mkdir pancake
-cd pancake
-git clone https://github.com/Rabios/Pancake.git
-build.bat
-```
-
-Unix-based or Linux distro:
-```shell
-mkdir pancake
-cd pancake
-git clone https://github.com/Rabios/Pancake.git
-build.sh
-```
+> NOTE 2: As of v0.0.12, I no longer offer build using batch or shell due to being unstable :(
 
 Build using Python:
 ```batch
 mkdir pancake
 cd pancake
 git clone https://github.com/Rabios/Pancake.git
-python build.py
+python build.py canvas
 ```
 
-> NOTES: By default,Pancake built using the last method even if other methods works
+> NOTE 3: You can use `webgl` instead of `canvas` when building to generate WebGL version of Pancake!
 
-A folder named `build` will created (if not exist) in the repository folders,Containing `pancake.js`,Which is the full build
+A folder named `build` will created (if not exist) in the repository folders,Containing `pancake.js`, Which is the full build.
 
-> NOTES: Grab the build [here](https://cdn.jsdelivr.net/gh/Rabios/Pancake@master/build/pancake.js), Or [here](https://cdn.jsdelivr.net/gh/Rabios/Pancake@master/build/pancake.min.js) for the minimifed version
+> NOTE 4: Grab the build [here](https://cdn.jsdelivr.net/gh/Rabios/Pancake@master/build/pancake.js),Or [here](https://cdn.jsdelivr.net/gh/Rabios/Pancake@master/build/pancake.min.js) for the minimifed version
 
 ## License
 ```

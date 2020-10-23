@@ -12,7 +12,6 @@
             // Set created context index to 0
             // Set canvas index to 0,Since custom canvases can't have index
             pancake.context.use(document.getElementById("canvas"), 0);
-            pancake.canvas.set(document.getElementById("canvas"), 0);
 
             // Resize canvas to fit the window
             pancake.canvas.resize(pancake.canvas.compatible_width, pancake.canvas.compatible_height, 0);
@@ -56,8 +55,8 @@
                     // Increase score with changing circle's position and color
                     if (pancake.physics.checkCollisionCircleRect(circle.x, circle.y, circle.r, pancake.input.mouse_x || pancake.input.touch_x, pancake.input.mouse_y || pancake.input.touch_y, 10, 10)) {
                         score += 100;
-                        circle.x = pancake.util.random(pancake.canvas.compatible_width) - (circle.r * 2);
-                        circle.y = pancake.util.random(pancake.canvas.compatible_height) - (circle.r * 2);
+                        circle.x = pancake.util.random(pancake.canvas.compatible_width);
+                        circle.y = pancake.util.random(pancake.canvas.compatible_height);
                         circle.color = pancake.graphics.random.RGB();
                     }
                 }

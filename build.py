@@ -1,15 +1,16 @@
 # Written by Rabia Alhaffar in 23/June/2020
-# Script to build Pancake game framework from source
-from os import system,path,mkdir
+# Script to build Pancake game framework from source!
+from os import system, path, mkdir
+import sys
 
 if not path.exists("build"):
     mkdir("build")
 
-# Tell python where is source folder and what name of build
+# Tell Python where is source folder and what name of build
 javascript_build = open("build/pancake.js","w")
-source_code_folder = "src/"
+source_code_folder = "src/" + sys.argv[1] + "/"
 
-# Source files are in order,DO NOT CHANGE ANYTHING
+# Source files are in order, DO NOT CHANGE ANYTHING!
 javascript_source_files = [
     open(source_code_folder + "main.js", "r"),
     open(source_code_folder + "browser.js", "r"),

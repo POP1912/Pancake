@@ -58,6 +58,9 @@ pancake.graphics.ANTIALIASING_HIGH                            // High Antialiasi
 pancake.graphics.context                                      // CanvasRenderingContext2D (Context of the canvas)
 pancake.graphics.mode                                         // Graphics drawing shapes mode
 pancake.graphics.context.canvas                               // Current canvas used by the context
+pancake.graphics.antialias                                    // Variable of antialiasing, Set it to true/false to enable/disable it
+pancake.graphics.ctx2d_enabled                                // Set it to false if you don't wish to use non-WebGL backend functions...
+pancake.graphics.ctx2d                                        // CanvasRenderingContext2D context used by WebGLRenderingContext backend for some stuff that is undone with WebGL
 
 // Functions
 pancake.graphics.random.alpha()                               // Returns random alpha
@@ -107,8 +110,8 @@ pancake.graphics.setAntialiasing(enable, quality)             // Sets Antialiasi
 pancake.graphics.setContext(context, context_index)           // Sets context or add it to index
 pancake.graphics.translate(x, y)                              // Translate
 pancake.graphics.scale(x, y)                                  // Scale
-pancake.graphics.shear(x, y)                                  // Shear
 pancake.graphics.rotate(a)                                    // Rotate
+pancake.graphics.rotate(x, y)                                 // Rotate (WebGL version)
 pancake.graphics.save()                                       // Save
 pancake.graphics.restore()                                    // Restore
 pancake.graphics.shadow(color, blur)                          // Set shadow color and blur (Blur value is number,Not string and without px)
@@ -209,15 +212,13 @@ pancake.video.finished(video_index)                          // Returns if video
 
 ## Timers
 ```javascript
-// Variables
-pancake.timers.second                                        // Returns 80 (Which can be used to count 1 second using timers)
-
 // Functions
 pancake.timers.countdown(f, ms)                              // Sets countdown then run function (Countdown in milliseconds)
 pancake.timers.timer(f, frames_per_second)                   // Sets interval then run function (frames per second integer from 0 to any)
 pancake.timers.pause(timer_variable)                         // Pauses countdown or interval
 window.animate(f, frames_per_second)                         // Improved version of window.requestAnimationFrame(), With framerate
 ```
+
 > CAUTION: If you are developing a game that focuses on frame rates or gets seconds or count time,Do not use `pancake.timers.second` as it's not accurate in counting a second
 
 ## Storage
@@ -265,6 +266,7 @@ pancake.browser.MAXTHON                                      // Returns if brows
 
 
 // Functions
+pancake.browser.support.WEBGL()                              // Returns if browser supports Canvas and WebGLRenderingContext
 pancake.browser.support.CANVAS()                             // Returns if browser supports Canvas and CanvasRenderingContext2D
 pancake.browser.support.MPEG()                               // Returns if browser supports MPEG audio files
 pancake.browser.support.MP3()                                // Returns if browser supports MP3 audio files
@@ -274,6 +276,7 @@ pancake.browser.support.MP4()                                // Returns if brows
 pancake.browser.support.WEBM()                               // Returns if browser supports WEBM video files
 pancake.browser.support.GAMEPAD()                            // Returns if browser supports Gamepad API
 pancake.browser.open(url)                                    // Opens URL in browser
+pancake.browser.supports(f)                                  // Checks if browser supports feature from above but as string name of feature
 ```
 
 ## OS

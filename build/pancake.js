@@ -1,6 +1,5 @@
 // Pancake HTML5 game framework
-// Copyright (c) 2020 - 2021 Rabia Alhaffar,Licensed under MIT License
-// Build Date: 19/July/2020
+// Copyright (c) 2020 - 2021 Rabia Alhaffar, Licensed under MIT License.
 var p = {};
 var w = window;
 var c = w.console;
@@ -11,10 +10,11 @@ var l = w.location;
 var b = d.body;
 var sc = w.screen;
 var s = w.localStorage;
-var m = Math;
+var m = w.Math;
 var ua = n.userAgent;
-p.version = "v0.0.11";
+p.version = "v0.0.12";
 c.info("Made with Pancake " + p.version + "\nhttps://github.com/Rabios/Pancake");
+
 p.b = {};
 p.b.s = {};
 p.b.CHROME = ua.match("Chrome") != null;
@@ -26,6 +26,10 @@ p.b.IE = ua.match("Trident") != null;
 p.b.MAXTHON = ua.match("Maxthon") != null;
 p.b.SAMSUNG_INTERNET = ua.match("SamsungBrowser") != null;
 p.b.SEAMONKEY = ua.match("SeaMonkey") != null;
+
+p.b.s.WEBGL = function() {
+    return (!!(d.createElement("canvas").getContext) && (d.createElement("canvas").getContext("experimental-webgl") || d.createElement("canvas").getContext("webgl"))) != null;
+};
 
 p.b.s.CANVAS = function() {
     return (!!(d.createElement("canvas").getContext) && (d.createElement("canvas").getContext("2d"))) != null;
@@ -63,6 +67,9 @@ p.b.open = function(u) {
     w.open(u);
 };
 
+p.b.supports = function(s) {
+    return p.b.s[s]();
+};
 p.o = {};
 p.o.iOS = ua.match(/iPhone|iPad|iPod|Apple-iPhone/i) != null;
 p.o.ANDROID = ua.match(/Android/i) != null;
@@ -194,7 +201,6 @@ p.con.use = function(c, co) {
 p.con.set = function(nco, co) {
     p.contexts[co] = nco;
 };
-
 p.de = {};
 p.de.screen_height = sc.height;
 p.de.screen_width = sc.width;
@@ -239,11 +245,11 @@ w.addEventListener("mouseup", function(e) {
     var swipe_dist_y = (e.clientY || e.pageY) - p.i.swipe_start_y;
     var elapsedTime = new Date().getTime() - p.i.touch_start_time;
     if (elapsedTime <= 1000) {
-        if (Math.abs(swipe_dist_x) >= 100 && Math.abs(swipe_dist_y) <= 300) {
+        if (m.abs(swipe_dist_x) >= 100 && m.abs(swipe_dist_y) <= 300) {
             if (swipe_dist_x < 0) p.i.VERTICAL_SWIPE_DIRECTION = "LEFT";
             else p.i.VERTICAL_SWIPE_DIRECTION = "RIGHT";
         }
-        else if (Math.abs(swipe_dist_y) >= 100 && Math.abs(swipe_dist_x) <= 300) {
+        else if (m.abs(swipe_dist_y) >= 100 && m.abs(swipe_dist_x) <= 300) {
             if (swipe_dist_y < 0) p.i.HORIZONTAL_SWIPE_DIRECTION = "UP";
             else p.i.HORIZONTAL_SWIPE_DIRECTION = "DOWN";
         }
@@ -272,11 +278,11 @@ w.addEventListener("touchend", function(e) {
     var swipe_dist_y = e.changedTouches[0].pageY - p.i.swipe_start_y;
     var elapsedTime = new Date().getTime() - p.i.touch_start_time;
     if (elapsedTime <= 1000) {
-        if (Math.abs(swipe_dist_x) >= 100 && Math.abs(swipe_dist_y) <= 300) {
+        if (m.abs(swipe_dist_x) >= 100 && m.abs(swipe_dist_y) <= 300) {
             if (swipe_dist_x < 0) p.i.VERTICAL_SWIPE_DIRECTION = "LEFT";
             else p.i.VERTICAL_SWIPE_DIRECTION = "RIGHT";
         }
-        else if (Math.abs(swipe_dist_y) >= 100 && Math.abs(swipe_dist_x) <= 300) {
+        else if (m.abs(swipe_dist_y) >= 100 && m.abs(swipe_dist_x) <= 300) {
             if (swipe_dist_y < 0) p.i.HORIZONTAL_SWIPE_DIRECTION = "UP";
             else p.i.HORIZONTAL_SWIPE_DIRECTION = "DOWN";
             e.preventDefault();
@@ -743,7 +749,7 @@ p.g.polygon = function(po) {
     p.g.c.moveTo(po[0][0], po[0][1]);
     for (var i = 0; i < po.length; i++) p.g.c.lineTo(po[i][0], po[i][1]);
     p.g.c.closePath();
-    if (p.g.mode == p.g.FILL) p.g.fill();
+    if (p.g.mode == p.g.FILL) p.g.c.fill();
     if (p.g.mode == p.g.STROKE) p.g.c.stroke();
     if (p.g.mode == p.g.BOTH) {
         p.g.c.fill();
@@ -863,10 +869,6 @@ p.g.rotate = function(a) {
 
 p.g.scale = function(x, y) {
     p.g.c.scale(x, y);
-};
-
-p.g.shear = function(x, y) {
-    p.g.c.transform(1, x, y, 1, 0, 0);
 };
 
 p.g.save = function() {
@@ -1017,7 +1019,7 @@ p.st.clear = function() {
 };
 
 p.t = {};
-p.t.second = 80;
+p.t.f = undefined;
 
 p.t.countdown = function(f, ms) {
     return w.setTimeout(f, ms);
@@ -1043,15 +1045,12 @@ w.animate = (function() {
                 w.setTimeout(callback, 1000 / fps);
             };
 })();
-
 p.c = {};
 
 p.c.load = function(s) {
     return j.parse(j.stringify(c));
 };
 
-// Written by Rabia Alhaffar in 19/July/2020
-// Defining for optimized versions of Pancake
 var pancake = p;
 pancake.audio = p.a;
 pancake.canvas = p.can;

@@ -20,15 +20,11 @@
             var score = { p1: 0, p2: 0 };
 
             // Use canvas from <canvas> tags that has id "canvas"
-            // Set it's index to 0
+            // With setting it's index to 0
             pancake.context.use(document.getElementById("canvas"), 0);
-            pancake.canvas.set(document.getElementById("canvas"), 0);
-
-            // Let graphics use context that has index 0
-            pancake.graphics.useContext(0);
 
             // Resize canvas
-            pancake.graphics.resize(pancake.canvas.compatible_width, pancake.canvas.compatible_height);
+            pancake.canvas.resize(pancake.canvas.compatible_width, pancake.canvas.compatible_height, 0);
             
             // Set font and fill color
             pancake.graphics.color("white");
@@ -48,7 +44,7 @@
                 pancake.graphics.clear();
                 
                 // Draw paddles and ball
-                pancake.graphics.rect(p1.x, pancake.input.touch_y || p1.y, 32, 128);
+                pancake.graphics.rect(p1.x, p1.y, 32, 128);
                 pancake.graphics.rect(p2.x, p2.y, 32, 128);
                 pancake.graphics.circle(ball.x, ball.y, 16);
 
@@ -57,12 +53,16 @@
                 pancake.graphics.text(score.p1, pancake.canvas.compatible_width - 64, 64);
 
                 // Input for player 1
-                if (pancake.input.keydown(pancake.input.key.UP) || pancake.input.keydown(pancake.input.key.W)) p1.up = true;
-                if (pancake.input.keyup(pancake.input.key.UP) || pancake.input.keyup(pancake.input.key.W)) p1.up = false;
-                if (pancake.input.keydown(pancake.input.key.DOWN) || pancake.input.keydown(pancake.input.key.S)) p1.down = true;
-                if (pancake.input.keyup(pancake.input.key.DOWN) || pancake.input.keyup(pancake.input.key.S)) p1.down = false;
-                if (p1.up) p1.y -= 15;
-                if (p1.down) p1.y += 15;
+                // If not mobile,Use keyboard
+                if (!(pancake.os.ANDROID || pancake.os.iOS || pancake.os.WINDOWS_PHONE)) {
+                    if (pancake.input.keydown(pancake.input.key.UP) || pancake.input.keydown(pancake.input.key.W)) p1.up = true;
+                    if (pancake.input.keyup(pancake.input.key.UP) || pancake.input.keyup(pancake.input.key.W)) p1.up = false;
+                    if (pancake.input.keydown(pancake.input.key.DOWN) || pancake.input.keydown(pancake.input.key.S)) p1.down = true;
+                    if (pancake.input.keyup(pancake.input.key.DOWN) || pancake.input.keyup(pancake.input.key.S)) p1.down = false;
+                    if (p1.up) p1.y -= 15;
+                    if (p1.down) p1.y += 15;
+                } else p1.y = pancake.input.touch_y;
+                
 
                 // Physics
                 // Block players from moving out of edges 

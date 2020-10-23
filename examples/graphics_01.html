@@ -20,7 +20,7 @@
             pancake.graphics.setBackgroundColor("black");
 
             // Set fill color to white
-            pancake.graphics.color("white");
+            pancake.graphics.color(pancake.graphics.RGB(255, 255, 255));
             
             // Draw text,Without font setup
             pancake.graphics.text("Text without fonts", 10, 20);
@@ -34,7 +34,7 @@
             // Let's change graphics mode to stroke
             // Second parameter of color function is for stroke color
             pancake.graphics.mode = pancake.graphics.STROKE;
-            pancake.graphics.color("white", "white");
+            pancake.graphics.color(pancake.graphics.RGB(255, 255, 255), pancake.graphics.RGB(255, 255, 255));
 
             // Draw stroked text
             pancake.graphics.setFont("Georgia", 48);

@@ -24,7 +24,7 @@
             pancake.graphics.setBackgroundColor("black");
 
             // Set color to fill and stroke with same color
-            pancake.graphics.color(shapes_color,shapes_color);
+            pancake.graphics.color(shapes_color, shapes_color);
 
             // Draw rectangle
             pancake.graphics.rect(10, 10, 50, 50);
@@ -43,14 +43,18 @@
             pancake.graphics.mode = pancake.graphics.BOTH;
 
             // Set color again to apply stroke
-            pancake.graphics.color(shapes_color, "white");
+            pancake.graphics.color(shapes_color, pancake.graphics.RGB(255, 255, 255));
 
             // Tip: You can set line width for better line
-            pancake.graphics.setLineWidth(4);
+            //pancake.graphics.setLineWidth(4);
 
             // But via CanvasRenderingContext2D
             // Setting line width will be by the way below
             // pancake.graphics.context.lineWidth = 4;
+
+            // On WebGLRenderingContext, it can be set via...
+            // pancake.graphics.context.lineWidth(a);
+            // a <= 1
 
             // Draw polygon
             pancake.graphics.polygon([
